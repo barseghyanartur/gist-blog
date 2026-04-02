@@ -8,7 +8,7 @@ PATH = "content"
 TIMEZONE = "UTC"
 DEFAULT_LANG = "en"
 
-# reST field lists (:date:, :category:, :tags:) are parsed automatically
+ # reST field lists (:date:, :category:, :tags:) are parsed automatically
 DEFAULT_DATE = "fs"
 
 ARTICLE_URL = "posts/{date:%Y}/{date:%m}/{slug}/"
