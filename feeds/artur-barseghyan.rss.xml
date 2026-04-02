@@ -1,5 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dev Notes - Artur Barseghyan</title><link>/gist-blog/</link><description/><atom:link href="/gist-blog/feeds/artur-barseghyan.rss.xml" rel="self"/><lastBuildDate>Fri, 03 Apr 2026 01:02:00 +0000</lastBuildDate><item><title>Useful plugins for VSCode</title><link>/gist-blog/posts/2026/04/useful-plugins-for-vscode/</link><description>&lt;!-- References: --&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dev Notes - Artur Barseghyan</title><link>/gist-blog/</link><description/><atom:link href="/gist-blog/feeds/artur-barseghyan.rss.xml" rel="self"/><lastBuildDate>Fri, 03 Apr 2026 01:08:00 +0000</lastBuildDate><item><title>CudaText</title><link>/gist-blog/posts/2026/04/cudatext/</link><description>&lt;p&gt;&lt;a class="reference external" href="https://github.com/Alexey-T/CudaText"&gt;https://github.com/Alexey-T/CudaText&lt;/a&gt;&lt;/p&gt;
+&lt;div class="section" id="macos-releases"&gt;
+&lt;h2&gt;macOS releases&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Go for aarch64 releases&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://github.com/Alexey-T/CudaText/discussions/5590#discussioncomment-15352982"&gt;https://github.com/Alexey-T/CudaText/discussions/5590#discussioncomment-15352982&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="tweaks"&gt;
+&lt;h2&gt;Tweaks&lt;/h2&gt;
+&lt;div class="section" id="post-installation"&gt;
+&lt;h3&gt;Post-installation&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;xattr&lt;span class="w"&gt; &lt;/span&gt;-cr&lt;span class="w"&gt; &lt;/span&gt;/Applications/CudaText.app
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="zshrc"&gt;
+&lt;h3&gt;.zshrc&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# ----------------------------------------------------------------------------
+# CudaText
+# ----------------------------------------------------------------------------
+alias cudatext=&amp;quot;/Applications/CudaText.app/Contents/MacOS/cudatext&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="plugins-list"&gt;
+&lt;h2&gt;Plugins list&lt;/h2&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://github.com/halfbrained/cudatext_plugins_list"&gt;https://github.com/halfbrained/cudatext_plugins_list&lt;/a&gt;&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;CudaExt&lt;/li&gt;
+&lt;li&gt;CudaLint&lt;/li&gt;
+&lt;li&gt;Differ&lt;/li&gt;
+&lt;li&gt;Favorites&lt;/li&gt;
+&lt;li&gt;Find in Files …&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Artur Barseghyan</dc:creator><pubDate>Fri, 03 Apr 2026 01:08:00 +0000</pubDate><guid>tag:None,2026-04-03:/gist-blog/posts/2026/04/cudatext/</guid><category>Tech</category><category>IDE</category><category>text-editor</category><category>CudaText</category></item><item><title>Useful plugins for VSCode</title><link>/gist-blog/posts/2026/04/useful-plugins-for-vscode/</link><description>&lt;!-- References: --&gt;
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=Tyriar.sort-lines"&gt;Sort lines&lt;/a&gt;: Sort lines of text for VS Code&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=nicohlr.pycharm"&gt;PyCharm Theme&lt;/a&gt;: PyCharm Theme for VS Code&lt;/li&gt;
