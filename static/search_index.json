@@ -6,5 +6,13 @@
     "category": "Uncategorized",
     "tags": [],
     "content": "open-webui setup on macOS ========================= :date: 2026-04-03 00:21 :category: Tech :tags: python, open-webui, macos      Here’s how to set up Open WebUI as a launchd service on macOS.  ----  Prerequisites -------------  First, install Open WebUI via uv if you haven’t already:  .. code:: bash     uv tool install open-webui  ----  1. Create the plist file ------------------------  .. code:: sh     cat > ~/Library/LaunchAgents/com.user.openwebui.plist << EOF    <?xml version=\"1.0\" encoding=\"UTF-8\"?>    <!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">    <plist version=\"1.0\"><dict>      <key>Label</key><string>com.user.openwebui</string>      <key>ProgramArguments</key><array>        <string>$HOME/.local/share/uv/tools/open-webui/b..."
+  },
+  {
+    "title": "Useful plugins for VSCode",
+    "url": "posts/2026/04/useful-plugins-for-vscode/",
+    "date": "2026-04-03",
+    "category": "Uncategorized",
+    "tags": [],
+    "content": "Useful plugins for VSCode ========================= :date: 2026-04-03 01:02 :category: Tech :tags: python, vs-code, vs-code-plugins  .. References:  .. _Sort lines: https://marketplace.visualstudio.com/items?itemName=Tyriar.sort-lines .. _PyCharm Theme: https://marketplace.visualstudio.com/items?itemName=nicohlr.pycharm .. _MarkdownLint: https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint .. _Makefile Tools: https://marketplace.visualstudio.com/items?itemName=ms-vscode.makefile-tools .. _Pylance: https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance .. _Even better TOML: https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml .. _reStructuredText Syntax highlighting: https://marketplace.visualstudio.com/items?itemNa..."
   }
 ]
