@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dev Notes - Artur Barseghyan</title><link href="/gist-blog/" rel="alternate"/><link href="/gist-blog/feeds/artur-barseghyan.atom.xml" rel="self"/><id>/gist-blog/</id><updated>2026-04-03T15:58:21.081647+00:00</updated><entry><title>Make scrollbars always visible in Vivaldi browser using Stylus</title><link href="/gist-blog/posts/2026/04/make-scrollbars-always-visible-in-vivaldi-browser-using-stylus/" rel="alternate"/><published>2026-04-03T15:58:21.081647+00:00</published><updated>2026-04-03T15:58:21.081647+00:00</updated><author><name>Artur Barseghyan</name></author><id>tag:None,2026-04-03:/gist-blog/posts/2026/04/make-scrollbars-always-visible-in-vivaldi-browser-using-stylus/</id><summary type="html">&lt;blockquote&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dev Notes - Artur Barseghyan</title><link href="/gist-blog/" rel="alternate"/><link href="/gist-blog/feeds/artur-barseghyan.atom.xml" rel="self"/><id>/gist-blog/</id><updated>2026-04-03T16:37:01.459890+00:00</updated><entry><title>Make scrollbars always visible in Vivaldi browser using Stylus</title><link href="/gist-blog/posts/2026/04/make-scrollbars-always-visible-in-vivaldi-browser-using-stylus/" rel="alternate"/><published>2026-04-03T16:37:01.459890+00:00</published><updated>2026-04-03T16:37:01.459890+00:00</updated><author><name>Artur Barseghyan</name></author><id>tag:None,2026-04-03:/gist-blog/posts/2026/04/make-scrollbars-always-visible-in-vivaldi-browser-using-stylus/</id><summary type="html">&lt;blockquote&gt;
 &lt;table class="docutils field-list" frame="void" rules="none"&gt;
 &lt;col class="field-name" /&gt;
 &lt;col class="field-body" /&gt;
@@ -93,7 +93,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-</content><category term="misc"/></entry><entry><title>Log4Brains images support</title><link href="/gist-blog/posts/2026/04/log4brains-images-support/" rel="alternate"/><published>2026-04-03T14:00:00+00:00</published><updated>2026-04-03T15:58:19.714253+00:00</updated><author><name>Artur Barseghyan</name></author><id>tag:None,2026-04-03:/gist-blog/posts/2026/04/log4brains-images-support/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="https://github.com/thomvaill/log4brains"&gt;https://github.com/thomvaill/log4brains&lt;/a&gt;&lt;/p&gt;
+</content><category term="misc"/></entry><entry><title>Log4Brains images support</title><link href="/gist-blog/posts/2026/04/log4brains-images-support/" rel="alternate"/><published>2026-04-03T14:00:00+00:00</published><updated>2026-04-03T16:37:00.351831+00:00</updated><author><name>Artur Barseghyan</name></author><id>tag:None,2026-04-03:/gist-blog/posts/2026/04/log4brains-images-support/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="https://github.com/thomvaill/log4brains"&gt;https://github.com/thomvaill/log4brains&lt;/a&gt;&lt;/p&gt;
 &lt;div class="section" id="directory-structure"&gt;
 &lt;h2&gt;Directory structure&lt;/h2&gt;
 &lt;pre class="literal-block"&gt;
@@ -211,7 +211,7 @@ serve:
 &lt;/span&gt;You will find here all the Architecture Decision Records (ADR) of the project.
 &lt;/pre&gt;
 &lt;/div&gt;
-</content><category term="Tech"/><category term="ADRs"/><category term="log4brains"/></entry><entry><title>CudaText installation and config for SublimeText users</title><link href="/gist-blog/posts/2026/04/cudatext-installation-and-config-for-sublimetext-users/" rel="alternate"/><published>2026-04-03T01:08:00+00:00</published><updated>2026-04-03T15:58:20.812119+00:00</updated><author><name>Artur Barseghyan</name></author><id>tag:None,2026-04-03:/gist-blog/posts/2026/04/cudatext-installation-and-config-for-sublimetext-users/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="https://github.com/Alexey-T/CudaText"&gt;https://github.com/Alexey-T/CudaText&lt;/a&gt;&lt;/p&gt;
+</content><category term="Tech"/><category term="ADRs"/><category term="log4brains"/></entry><entry><title>CudaText installation and config for SublimeText users</title><link href="/gist-blog/posts/2026/04/cudatext-installation-and-config-for-sublimetext-users/" rel="alternate"/><published>2026-04-03T01:08:00+00:00</published><updated>2026-04-03T16:37:01.027590+00:00</updated><author><name>Artur Barseghyan</name></author><id>tag:None,2026-04-03:/gist-blog/posts/2026/04/cudatext-installation-and-config-for-sublimetext-users/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="https://github.com/Alexey-T/CudaText"&gt;https://github.com/Alexey-T/CudaText&lt;/a&gt;&lt;/p&gt;
 &lt;div class="section" id="macos-releases"&gt;
 &lt;h2&gt;macOS releases&lt;/h2&gt;
 &lt;p&gt;&lt;em&gt;Go for aarch64 releases&lt;/em&gt;&lt;/p&gt;
@@ -301,7 +301,7 @@ alias cudatext=&amp;quot;/Applications/CudaText.app/Contents/MacOS/cudatext&amp;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-</content><category term="Tech"/><category term="IDE"/><category term="text-editor"/><category term="CudaText"/></entry><entry><title>Useful plugins for VSCode</title><link href="/gist-blog/posts/2026/04/useful-plugins-for-vscode/" rel="alternate"/><published>2026-04-03T01:02:00+00:00</published><updated>2026-04-03T15:58:20.743537+00:00</updated><author><name>Artur Barseghyan</name></author><id>tag:None,2026-04-03:/gist-blog/posts/2026/04/useful-plugins-for-vscode/</id><summary type="html">&lt;!-- References: --&gt;
+</content><category term="Tech"/><category term="IDE"/><category term="text-editor"/><category term="CudaText"/></entry><entry><title>Useful plugins for VSCode</title><link href="/gist-blog/posts/2026/04/useful-plugins-for-vscode/" rel="alternate"/><published>2026-04-03T01:02:00+00:00</published><updated>2026-04-03T16:37:00.812397+00:00</updated><author><name>Artur Barseghyan</name></author><id>tag:None,2026-04-03:/gist-blog/posts/2026/04/useful-plugins-for-vscode/</id><summary type="html">&lt;!-- References: --&gt;
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=Tyriar.sort-lines"&gt;Sort lines&lt;/a&gt;: Sort lines of text for VS Code&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=nicohlr.pycharm"&gt;PyCharm Theme&lt;/a&gt;: PyCharm Theme for VS Code&lt;/li&gt;
@@ -318,7 +318,7 @@ alias cudatext=&amp;quot;/Applications/CudaText.app/Contents/MacOS/cudatext&amp;
 &lt;li&gt;&lt;a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml"&gt;Even better TOML&lt;/a&gt;: A TOML language support for VS Code&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=trond-snekvik.simple-rst"&gt;reStructuredText Syntax highlighting&lt;/a&gt;: Syntax highlighting and non-intrusive section navigation for reStructuredText.&lt;/li&gt;
 &lt;/ol&gt;
-</content><category term="Tech"/><category term="python"/><category term="vs-code"/><category term="vs-code-plugins"/></entry><entry><title>open-webui setup on macOS</title><link href="/gist-blog/posts/2026/04/open-webui-setup-on-macos/" rel="alternate"/><published>2026-04-03T00:21:00+00:00</published><updated>2026-04-03T15:58:19.820636+00:00</updated><author><name>Artur Barseghyan</name></author><id>tag:None,2026-04-03:/gist-blog/posts/2026/04/open-webui-setup-on-macos/</id><summary type="html">&lt;p&gt;Here’s how to set up Open WebUI as a launchd service on macOS.&lt;/p&gt;
+</content><category term="Tech"/><category term="python"/><category term="vs-code"/><category term="vs-code-plugins"/></entry><entry><title>open-webui setup on macOS</title><link href="/gist-blog/posts/2026/04/open-webui-setup-on-macos/" rel="alternate"/><published>2026-04-03T00:21:00+00:00</published><updated>2026-04-03T16:37:00.628223+00:00</updated><author><name>Artur Barseghyan</name></author><id>tag:None,2026-04-03:/gist-blog/posts/2026/04/open-webui-setup-on-macos/</id><summary type="html">&lt;p&gt;Here’s how to set up Open WebUI as a launchd service on macOS.&lt;/p&gt;
 &lt;hr class="docutils" /&gt;
 &lt;div class="section" id="prerequisites"&gt;
 &lt;h2&gt;Prerequisites&lt;/h2&gt;
@@ -467,7 +467,7 @@ Progressive Web Apps. Click the &lt;tt class="docutils literal"&gt;Install&lt;/t
 to run Open WebUI as a standalone application.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
-</content><category term="Tech"/><category term="python"/><category term="open-webui"/><category term="macos"/></entry><entry><title>Hide *.py,cover files from IDE</title><link href="/gist-blog/posts/2026/04/hide-pycover-files-from-ide/" rel="alternate"/><published>2026-04-02T14:00:00+00:00</published><updated>2026-04-03T15:58:20.902984+00:00</updated><author><name>Artur Barseghyan</name></author><id>tag:None,2026-04-02:/gist-blog/posts/2026/04/hide-pycover-files-from-ide/</id><content type="html">&lt;div class="section" id="vscode"&gt;
+</content><category term="Tech"/><category term="python"/><category term="open-webui"/><category term="macos"/></entry><entry><title>Hide *.py,cover files from IDE</title><link href="/gist-blog/posts/2026/04/hide-pycover-files-from-ide/" rel="alternate"/><published>2026-04-02T14:00:00+00:00</published><updated>2026-04-03T16:37:01.166181+00:00</updated><author><name>Artur Barseghyan</name></author><id>tag:None,2026-04-02:/gist-blog/posts/2026/04/hide-pycover-files-from-ide/</id><content type="html">&lt;div class="section" id="vscode"&gt;
 &lt;h2&gt;VSCode&lt;/h2&gt;
 &lt;p&gt;Settings -&amp;gt; Text Editor -&amp;gt; Files -&amp;gt; Add Pattern: Add &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;**/*.py,cover&lt;/span&gt;&lt;/tt&gt;&lt;/p&gt;
 &lt;/div&gt;
@@ -475,7 +475,7 @@ to run Open WebUI as a standalone application.&lt;/li&gt;
 &lt;h2&gt;PyCharm&lt;/h2&gt;
 &lt;p&gt;Editor -&amp;gt; File Types -&amp;gt; Ignored Files and Folders : Add &lt;tt class="docutils literal"&gt;*.py,cover&lt;/tt&gt;&lt;/p&gt;
 &lt;/div&gt;
-</content><category term="Tech"/><category term="python"/><category term="vs-code"/><category term="pycharm"/></entry><entry><title>Safezip - zero-dependency wrapper for secure ZIP extraction</title><link href="/gist-blog/posts/2026/02/safezip-zero-dependency-wrapper-for-secure-zip-extraction/" rel="alternate"/><published>2026-02-25T13:00:00+00:00</published><updated>2026-04-03T15:58:19.521381+00:00</updated><author><name>Artur Barseghyan</name></author><id>tag:None,2026-02-25:/gist-blog/posts/2026/02/safezip-zero-dependency-wrapper-for-secure-zip-extraction/</id><summary type="html">&lt;a class="reference external image-reference" href="https://github.com/barseghyanartur/safezip"&gt;
+</content><category term="Tech"/><category term="python"/><category term="vs-code"/><category term="pycharm"/></entry><entry><title>Safezip - zero-dependency wrapper for secure ZIP extraction</title><link href="/gist-blog/posts/2026/02/safezip-zero-dependency-wrapper-for-secure-zip-extraction/" rel="alternate"/><published>2026-02-25T13:00:00+00:00</published><updated>2026-04-03T16:36:59.960636+00:00</updated><author><name>Artur Barseghyan</name></author><id>tag:None,2026-02-25:/gist-blog/posts/2026/02/safezip-zero-dependency-wrapper-for-secure-zip-extraction/</id><summary type="html">&lt;a class="reference external image-reference" href="https://github.com/barseghyanartur/safezip"&gt;
 &lt;img alt="Safezip" src="https://raw.githubusercontent.com/barseghyanartur/safezip/main/docs/_static/safezip_logo.webp" /&gt;
 &lt;/a&gt;
 &lt;p&gt;I wrote a small, zero-dependency wrapper for secure ZIP extraction.&lt;/p&gt;
@@ -541,7 +541,7 @@ fills all of those. I got tired of writing the same boilerplate every
 time, so I packaged it up.&lt;/p&gt;
 &lt;p&gt;-—&lt;/p&gt;
 &lt;p&gt;Documentation: &lt;a class="reference external" href="https://safezip.readthedocs.io/en/latest/"&gt;https://safezip.readthedocs.io/en/latest/&lt;/a&gt;&lt;/p&gt;
-</content><category term="Tech"/><category term="python"/><category term="zip"/><category term="security"/></entry><entry><title>Why is Vivaldi browser a great companion?</title><link href="/gist-blog/posts/2025/03/why-is-vivaldi-browser-a-great-companion/" rel="alternate"/><published>2025-03-12T14:03:00+00:00</published><updated>2026-04-03T15:58:20.992924+00:00</updated><author><name>Artur Barseghyan</name></author><id>tag:None,2025-03-12:/gist-blog/posts/2025/03/why-is-vivaldi-browser-a-great-companion/</id><summary type="html">&lt;!-- References: --&gt;
+</content><category term="Tech"/><category term="python"/><category term="zip"/><category term="security"/></entry><entry><title>Why is Vivaldi browser a great companion?</title><link href="/gist-blog/posts/2025/03/why-is-vivaldi-browser-a-great-companion/" rel="alternate"/><published>2025-03-12T14:03:00+00:00</published><updated>2026-04-03T16:37:01.278181+00:00</updated><author><name>Artur Barseghyan</name></author><id>tag:None,2025-03-12:/gist-blog/posts/2025/03/why-is-vivaldi-browser-a-great-companion/</id><summary type="html">&lt;!-- References: --&gt;
 &lt;p&gt;TL;DR&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://vivaldi.com/"&gt;Vivaldi&lt;/a&gt; browser has 1 killing feature, that no other browser has
 implemented. It can turn any website into a progressive web app.&lt;/p&gt;
@@ -594,7 +594,7 @@ I simply want to switch to them quickly. I don't want to have it in a browser.&l
 &lt;p&gt;The site now lives as its own standalone window, just like &lt;a class="reference external" href="https://whatsapp.com/"&gt;WhatsApp&lt;/a&gt; or &lt;a class="reference external" href="https://meet.google.com/"&gt;Google Meet&lt;/a&gt; do in Chrome. No browser chrome, no stray tabs, no digging through bookmarks or favourites. You can pin it to your taskbar/start menu/dock, launch it with one click, and it feels exactly like a real app.&lt;/p&gt;
 &lt;p&gt;That's it. That single right-click is why Vivaldi instantly earned the same spot in my workflow as Chrome. Every utility site I use regularly now has its own clean little window, and I can keep my main browsers for actual browsing instead of permanent tab graveyards.&lt;/p&gt;
 &lt;/div&gt;
-</content><category term="Tech"/><category term="vivaldi"/><category term="browsers"/><category term="progressive-web-apps"/></entry><entry><title>How to debug Python applications</title><link href="/gist-blog/posts/2022/06/how-to-debug-python-applications/" rel="alternate"/><published>2022-06-21T11:00:00+00:00</published><updated>2026-04-03T15:58:19.609635+00:00</updated><author><name>Artur Barseghyan</name></author><id>tag:None,2022-06-21:/gist-blog/posts/2022/06/how-to-debug-python-applications/</id><summary type="html">&lt;a class="reference external image-reference" href="https://postimg.cc/XZVZ1TM8"&gt;
+</content><category term="Tech"/><category term="vivaldi"/><category term="browsers"/><category term="progressive-web-apps"/></entry><entry><title>How to debug Python applications</title><link href="/gist-blog/posts/2022/06/how-to-debug-python-applications/" rel="alternate"/><published>2022-06-21T11:00:00+00:00</published><updated>2026-04-03T16:37:00.157186+00:00</updated><author><name>Artur Barseghyan</name></author><id>tag:None,2022-06-21:/gist-blog/posts/2022/06/how-to-debug-python-applications/</id><summary type="html">&lt;a class="reference external image-reference" href="https://postimg.cc/XZVZ1TM8"&gt;
 &lt;img alt="How to debug Python applications" src="https://i.postimg.cc/rp4SskQv/rp-L4mz-N2-ZJ0-Pnopju2da-1-kguub.jpg" /&gt;
 &lt;/a&gt;
 &lt;div class="section" id="introduction"&gt;
