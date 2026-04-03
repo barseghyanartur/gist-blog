@@ -23,8 +23,8 @@ PAGE_SAVE_AS = "pages/{slug}/index.html"
 STATIC_PATHS = ["static"]
 
 MENUITEMS = (
-    ("Home", "/"),
-    # ("Search", "/pages/search/"),
+    ("Home", "/gist-blog"),
+    ("Search", "/pages/search/"),
 )
 
 SUMMARY_MAX_LENGTH = 50
