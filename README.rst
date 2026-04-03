@@ -19,6 +19,8 @@ How to publish a post
     :date: 2026-04-02 14:00
     :category: Tech
     :tags: python, automation
+    :summary: This text appears **only** in the post listings (homepage, archives, etc.).
+    :image: https://picsum.photos/id/1015/800/450
 
     Post body starts here...
 

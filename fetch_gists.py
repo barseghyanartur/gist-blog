@@ -8,6 +8,7 @@ CONTENT_DIR = "content"
 PAGES_DIR = os.path.join(CONTENT_DIR, "pages")
 TEMP_PAGES = "temp_pages"
 
+
 def fetch_blog_gists():
     # Preserve any static pages (e.g. search page)
     pages_backup = None

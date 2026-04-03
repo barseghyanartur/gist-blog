@@ -1,5 +1,13 @@
 [
   {
+    "title": "Hide ``*.py,cover`` files from IDE",
+    "url": "posts/2026/04/hide-pycover-files-from-ide/",
+    "date": "2026-04-03",
+    "category": "Uncategorized",
+    "tags": [],
+    "content": "Hide ``*.py,cover`` files from IDE ================================== :date: 2026-04-02 14:00 :category: Tech :tags: python, vs-code, pycharm  VSCode ====== Settings -> Text Editor -> Files -> Add Pattern: Add ``**/*.py,cover``  PyCharm ======= Editor -> File Types -> Ignored Files and Folders : Add ``*.py,cover``"
+  },
+  {
     "title": "open-webui setup on macOS",
     "url": "posts/2026/04/open-webui-setup-on-macos/",
     "date": "2026-04-03",
@@ -16,11 +24,51 @@
     "content": "Useful plugins for VSCode ========================= :date: 2026-04-03 01:02 :category: Tech :tags: python, vs-code, vs-code-plugins  .. References:  .. _Sort lines: https://marketplace.visualstudio.com/items?itemName=Tyriar.sort-lines .. _PyCharm Theme: https://marketplace.visualstudio.com/items?itemName=nicohlr.pycharm .. _MarkdownLint: https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint .. _Makefile Tools: https://marketplace.visualstudio.com/items?itemName=ms-vscode.makefile-tools .. _Pylance: https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance .. _Even better TOML: https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml .. _reStructuredText Syntax highlighting: https://marketplace.visualstudio.com/items?itemNa..."
   },
   {
+    "title": "Safezip - zero-dependency wrapper for secure ZIP extraction",
+    "url": "posts/2026/04/safezip-zero-dependency-wrapper-for-secure-zip-extraction/",
+    "date": "2026-04-03",
+    "category": "Uncategorized",
+    "tags": [],
+    "content": "Safezip - zero-dependency wrapper for secure ZIP extraction =========================================================== :date: 2026-02-25 13:00 :category: Tech :tags: python, zip, security :summary: This text appears **only** in the post listings (homepage, archives, etc.). :image: https://raw.githubusercontent.com/barseghyanartur/safezip/main/docs/_static/safezip_logo.webp  .. image:: https://raw.githubusercontent.com/barseghyanartur/safezip/main/docs/_static/safezip_logo.webp    :target: https://github.com/barseghyanartur/safezip    :alt: Safezip  I wrote a small, zero-dependency wrapper for secure ZIP extraction.  https://github.com/barseghyanartur/safezip  **What My Project Does**  ``safezip`` is a zero-dependency wrapper around Python’s ``zipfile`` module that makes secure ZIP extract..."
+  },
+  {
     "title": "CudaText installation and config for SublimeText users",
     "url": "posts/2026/04/cudatext-installation-and-config-for-sublimetext-users/",
     "date": "2026-04-03",
     "category": "Uncategorized",
     "tags": [],
     "content": "CudaText installation and config for SublimeText users ====================================================== :date: 2026-04-03 01:08 :category: Tech :tags: IDE, text-editor, CudaText  https://github.com/Alexey-T/CudaText  macOS releases -------------- *Go for aarch64 releases*  https://github.com/Alexey-T/CudaText/discussions/5590#discussioncomment-15352982  Tweaks ------ Post-installation ~~~~~~~~~~~~~~~~~ .. code-block:: sh      xattr -cr /Applications/CudaText.app  .zshrc ~~~~~~ .. code-block:: text      # ----------------------------------------------------------------------------     # CudaText     # ----------------------------------------------------------------------------     alias cudatext=\"/Applications/CudaText.app/Contents/MacOS/cudatext\"  Plugins list ------------ https://gi..."
+  },
+  {
+    "title": "How to debug Python applications",
+    "url": "posts/2026/04/how-to-debug-python-applications/",
+    "date": "2026-04-03",
+    "category": "Uncategorized",
+    "tags": [],
+    "content": "How to debug Python applications ================================ :date: 2022-06-21 11:00 :category: Tech :tags: python, debugging  .. image:: https://i.postimg.cc/rp4SskQv/rp-L4mz-N2-ZJ0-Pnopju2da-1-kguub.jpg    :target: https://postimg.cc/XZVZ1TM8    :alt: How to debug Python applications  Introduction ------------  In software development, testing is an essential part of ensuring that code works as intended. One critical aspect of testing is debugging, which involves finding and fixing errors or bugs in a program. In this article, we’ll explore how to debug Python applications and highlight some of the most commonly used methods for debugging Python code.  Debugging options -----------------  When it comes to debugging Python, there are multiple options available, and you should conside..."
+  },
+  {
+    "title": "Make scrollbars always visible in Vivaldi browser using Stylus",
+    "url": "posts/2026/04/make-scrollbars-always-visible-in-vivaldi-browser-using-stylus/",
+    "date": "2026-04-03",
+    "category": "Uncategorized",
+    "tags": [],
+    "content": "Make scrollbars always visible in Vivaldi browser using Stylus ==============================================================  :date: 2026-04-03 01:42  :category: Tech  :tags: vivaldi, browsers, tweaks  .. References  .. _Stylus: https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne  #. Install `Stylus`_ Extension:     - Go to the Chrome Web Store and search for `Stylus`_.    - Install the `Stylus`_ extension.  #. Create a New Style in `Stylus`_:     - Click on the `Stylus`_ icon in your browser toolbar.    - Click on Manage > Write new style.    - Add the following CSS code to make scrollbars always visible:           .. code-block:: css              /* Always show vertical scrollbar */         html, body {             overflow-y: scroll !important;         }   ..."
+  },
+  {
+    "title": "Log4Brains images support",
+    "url": "posts/2026/04/log4brains-images-support/",
+    "date": "2026-04-03",
+    "category": "Uncategorized",
+    "tags": [],
+    "content": "Log4Brains images support ========================= :date: 2026-04-03 14:00 :category: Tech :tags: ADRs, log4brains  https://github.com/thomvaill/log4brains  Directory structure -------------------  ::     docs    ├── adr    │   ├── 20240416-architecture-v2.md    │   ├── 20240916-llm-choice.md    │   ├── 20240916-rag-framework-choice.md    │   ├── index.md    │   └── template.md    └── l4b-static        └── images            ├── favicon-16x16.png            └── favicon-32x32.png  Makefile --------  *Filename: Makefile*  ::     add-adr:        docker run --rm -ti -v $$(pwd):/workdir -p 4004:4004 thomvaill/log4brains adr new $(ARGS)     preview:        docker run --rm -ti -v $$(pwd):/workdir -p 4004:4004 thomvaill/log4brains preview $(ARGS)     build:        docker run --rm -ti -v $$(pwd):/w..."
+  },
+  {
+    "title": "Why is Vivaldi browser a great companion?",
+    "url": "posts/2026/04/why-is-vivaldi-browser-a-great-companion/",
+    "date": "2026-04-03",
+    "category": "Uncategorized",
+    "tags": [],
+    "content": "Why is Vivaldi browser a great companion? ========================================= :date: 2025-03-12 14:03 :category: Tech :tags: vivaldi, browsers, progressive-web-apps  .. References:  .. _Firefox: https://mozilla.org/firefox/ .. _Vivaldi: https://vivaldi.com/ .. _Edge: https://microsoft.com/edge/ .. _Google Chrome: https://google.com/chrome/ .. _Chromium: https://chromium.org/ .. _Opera: https://opera.com/ .. _Google Meet: https://meet.google.com/ .. _WhatsApp: https://whatsapp.com/ .. _RegEx101: https://regex101.com/ .. _JSONFormatter: https://jsonformatter.org/ .. _JSONDiff: https://jsondiff.com/ .. _Google Translate: https://translate.google.com/ .. _GMail: https://translate.google.com/ .. _Brave: https://brave.com/  TL;DR  `Vivaldi`_ browser has 1 killing feature, that no other bro..."
   }
 ]
