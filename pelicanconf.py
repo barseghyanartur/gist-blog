@@ -7,7 +7,7 @@ SITENAME = "Dev Notes"
 SITEURL = os.environ.get("SITEURL", "/gist-blog")
 
 PATH = "content"
-# THEME = "simple"
+THEME = os.path.join(os.path.dirname(__file__), "themes", "custom")
 
 TIMEZONE = "UTC"
 DEFAULT_LANG = "en"
