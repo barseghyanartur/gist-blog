@@ -5,7 +5,7 @@
     "date": "2026-04-04",
     "category": "Uncategorized",
     "tags": [],
-    "content": "Hide ``*.py,cover`` files from IDE ================================== :date: 2026-04-02 14:00 :category: Tech :tags: python, vs-code, pycharm :summary: Clean up your workspace by hiding those pesky *.py,cover files from your IDE. Whether you're using VS Code or PyCharm, this quick setting change keeps your file tree focused on your actual source code by filtering out coverage reports. Just a few clicks in your editor's \"Excluded\" or \"Ignored\" file settings, and those clutter-causing files disappear from view while remaining safe on your disk.  VSCode ====== Settings -> Text Editor -> Files -> Add Pattern: Add ``**/*.py,cover``  PyCharm ======= Editor -> File Types -> Ignored Files and Folders : Add ``*.py,cover``"
+    "content": "Hide ``*.py,cover`` files from IDE ================================== :date: 2026-04-02 14:00 :category: Tech :tags: python, vs-code, pycharm :summary: Clean up your workspace by hiding those pesky ``*.py,cover`` files from your IDE. Whether you're using VS Code or PyCharm, this quick setting change keeps your file tree focused on your actual source code by filtering out coverage reports. Just a few clicks in your editor's \"Excluded\" or \"Ignored\" file settings, and those clutter-causing files disappear from view while remaining safe on your disk.  VSCode ====== Settings -> Text Editor -> Files -> Add Pattern: Add ``**/*.py,cover``  PyCharm ======= Editor -> File Types -> Ignored Files and Folders : Add ``*.py,cover``"
   },
   {
     "title": "open-webui setup on macOS",

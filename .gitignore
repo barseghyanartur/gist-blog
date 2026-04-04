@@ -4,6 +4,7 @@ content/static/
 !content/pages/
 !content/static/
 output/
+static/search_index.json
 __pycache__/
 *.pyc
 *.pyo

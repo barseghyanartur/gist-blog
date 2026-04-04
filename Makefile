@@ -51,6 +51,11 @@ serve: build
 	@echo "Press Ctrl+C to stop"
 	uv run env SITEURL='' python -m http.server 8000 --directory output
 
+only-serve:
+	@echo "🚀 Serving built site at http://localhost:8000"
+	@echo "Press Ctrl+C to stop"
+	uv run env SITEURL='' python -m http.server 8000 --directory output
+
 dev: fetch
 	@echo "🚀 Starting DEV mode with live reload"
 	@echo "→ Changes to any .rst file in content/ will auto-rebuild"
