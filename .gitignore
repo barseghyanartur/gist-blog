@@ -2,6 +2,7 @@ content/
 !content/pages/
 !content/pages/**
 output/
+static/search_index.json
 __pycache__/
 *.pyc
 *.pyo
