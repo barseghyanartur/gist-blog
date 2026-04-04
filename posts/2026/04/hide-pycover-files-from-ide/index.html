@@ -4,10 +4,10 @@
                         <meta charset="utf-8" />
                         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                         <meta name="generator" content="Pelican" />
-                        <title>Useful plugins for VSCode</title>
+                        <title>Hide *.py,cover files from IDE</title>
                         <link rel="stylesheet" href="/gist-blog/theme/css/main.css" />
                                 <link href="/gist-blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dev Notes Atom Feed" />
-    <meta name="description" content="Supercharge your VS Code setup with this curated list of essential plugins! Whether you're a Python pro needing Pylance and Makefile support, or a..." />
+    <meta name="description" content="Clean up your workspace by hiding those pesky *.py,cover files from your IDE. Whether you're using VS Code or PyCharm, this quick setting change..." />
         </head>
 
         <body id="index" class="home">
@@ -24,17 +24,17 @@
     <article>
       <header>
         <h1 class="entry-title">
-          <a href="/gist-blog/posts/2026/04/useful-plugins-for-vscode/" rel="bookmark"
-             title="Permalink to Useful plugins for VSCode">Useful plugins for VSCode</a></h1>
+          <a href="/gist-blog/posts/2026/04/hide-pycover-files-from-ide/" rel="bookmark"
+             title="Permalink to Hide *.py,cover files from IDE">Hide <tt class="docutils literal">*.py,cover</tt> files from IDE</a></h1>
       </header>
 
       <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2026-04-03T01:02:00+00:00">
-                Published: Fri 03 April 2026
+        <abbr class="published" title="2026-04-02T14:00:00+00:00">
+                Published: Thu 02 April 2026
         </abbr>
                 <br />
-                <abbr class="modified" title="2026-04-04T20:06:46.654565+00:00">
+                <abbr class="modified" title="2026-04-04T20:06:46.847407+00:00">
                         Updated: Sat 04 April 2026
                 </abbr>
 
@@ -42,18 +42,16 @@
                         By                                 <a class="url fn" href="/gist-blog/author/artur-barseghyan.html">Artur Barseghyan</a>
                 </address>
         <p>In <a href="/gist-blog/category/tech.html">Tech</a>.</p>
-<p>tags: <a href="/gist-blog/tag/python.html">python</a> <a href="/gist-blog/tag/vs-code.html">vs-code</a> <a href="/gist-blog/tag/vs-code-plugins.html">vs-code-plugins</a> </p>        
-</footer><!-- /.post-info -->        <!-- References: -->
-<ol class="arabic simple">
-<li><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=Tyriar.sort-lines">Sort lines</a>: Sort lines of text for VS Code</li>
-<li><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=nicohlr.pycharm">PyCharm Theme</a>: PyCharm Theme for VS Code</li>
-<li><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint">MarkdownLint</a>: Markdown/CommonMark linting and style checking for VS Code</li>
-<li><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.makefile-tools">Makefile Tools</a>: Enhancing Makefile development in VS Code</li>
-<li><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance">Pylance</a>: A performant, feature-rich language server for Python in VS Code</li>
-<li><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml">Even better TOML</a>: A TOML language support for VS Code</li>
-<li><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=trond-snekvik.simple-rst">reStructuredText Syntax highlighting</a>: Syntax highlighting and non-intrusive section navigation for reStructuredText.</li>
-</ol>
-<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/cd525950b1cc849dc79306251db183fe" target="_blank" rel="noopener">GitHub Gist #cd525950b1cc849dc79306251db183fe</a></p>
+<p>tags: <a href="/gist-blog/tag/python.html">python</a> <a href="/gist-blog/tag/vs-code.html">vs-code</a> <a href="/gist-blog/tag/pycharm.html">pycharm</a> </p>        
+</footer><!-- /.post-info -->        <div class="section" id="vscode">
+<h2>VSCode</h2>
+<p>Settings -&gt; Text Editor -&gt; Files -&gt; Add Pattern: Add <tt class="docutils literal"><span class="pre">**/*.py,cover</span></tt></p>
+</div>
+<div class="section" id="pycharm">
+<h2>PyCharm</h2>
+<p>Editor -&gt; File Types -&gt; Ignored Files and Folders : Add <tt class="docutils literal">*.py,cover</tt></p>
+</div>
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/2e36de0a8b64198ed98e748a0a7b7f15" target="_blank" rel="noopener">GitHub Gist #2e36de0a8b64198ed98e748a0a7b7f15</a></p>
       </div><!-- /.entry-content -->
 
     </article>
