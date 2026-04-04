@@ -32,7 +32,7 @@ jobs:
           python generate_search_index.py
 
       - name: Build with Pelican
-        run: pelican content -o output -s pelicanconf.py
+        run: SITEURL=/gist-blog pelican content -o output -s pelicanconf.py
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
