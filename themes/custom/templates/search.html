@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block title %}Search — {{ SITENAME }}{% endblock %}
+
+{% block extra_head %}
+<style>
+  #search-box {
+    width: 100%;
+    padding: .6rem 1rem;
+    font-size: 1.1rem;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 1.5rem;
+  }
+  #search-box:focus { border-color: #1b6fa8; outline: none; }
+  #search-results { list-style: none; padding: 0; margin: 0; }
+  #search-results li { border-bottom: 1px solid #eee; padding: 1rem 0; }
+  #search-results li:last-child { border-bottom: none; }
+  #search-results h3 { margin: 0 0 .25rem; font-size: 1.1rem; }
+  #search-results h3 a { color: #1b6fa8; text-decoration: none; }
+  #search-results h3 a:hover { text-decoration: underline; }
+  #search-results .meta { font-size: .8rem; color: #777; margin-bottom: .4rem; }
+  #search-results .snippet { font-size: .95rem; color: #333; }
+  mark { background: #fff176; padding: 0 2px; border-radius: 2px; }
+  #search-status { color: #555; margin-bottom: 1rem; font-style: italic; }
+</style>
+{% endblock %}
+
+{% block content %}
+<section id="content" class="body">
+  <h1 class="entry-title">Search</h1>
+  <input id="search-box" type="search" placeholder="Search posts…" autofocus autocomplete="off" />
+  <p id="search-status"></p>
+  <ul id="search-results"></ul>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+(function () {
+  var SITEURL = "{{ SITEURL }}";
+  var indexUrl = SITEURL + "/static/search_index.json";
+
+  var searchBox    = document.getElementById("search-box");
+  var resultsList  = document.getElementById("search-results");
+  var statusEl     = document.getElementById("search-status");
+  var posts        = null;
+
+  function escapeRegex(s) {
+    return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+
+  function highlight(text, terms) {
+    var re = new RegExp("(" + terms.map(escapeRegex).join("|") + ")", "gi");
+    return text.replace(re, "<mark>$1</mark>");
+  }
+
+  function snippet(text, terms, maxLen) {
+    maxLen = maxLen || 200;
+    var re = new RegExp(escapeRegex(terms[0]), "i");
+    var idx = text.search(re);
+    var start = Math.max(0, idx - 80);
+    var chunk = text.slice(start, start + maxLen);
+    if (start > 0) chunk = "…" + chunk;
+    if (start + maxLen < text.length) chunk += "…";
+    return chunk;
+  }
+
+  function score(post, terms) {
+    var pts = 0;
+    terms.forEach(function (t) {
+      var re = new RegExp(escapeRegex(t), "gi");
+      var titleMatches   = (post.title   || "").match(re) || [];
+      var contentMatches = (post.content || "").match(re) || [];
+      var tagMatches     = (post.tags    || []).join(" ").match(re) || [];
+      pts += titleMatches.length * 10 + tagMatches.length * 5 + contentMatches.length;
+    });
+    return pts;
+  }
+
+  function renderResults(results, terms) {
+    resultsList.innerHTML = "";
+    if (results.length === 0) {
+      statusEl.textContent = "No results found.";
+      return;
+    }
+    statusEl.textContent = results.length + " result" + (results.length !== 1 ? "s" : "") + " found.";
+    results.forEach(function (post) {
+      var li      = document.createElement("li");
+      var rawSnip = snippet(post.content || post.summary || "", terms);
+      var hlTitle = highlight(post.title || "Untitled", terms);
+      var hlSnip  = highlight(rawSnip, terms);
+      var tags    = (post.tags || []).filter(Boolean).map(function (t) {
+        return '<span style="background:#eef;padding:1px 6px;border-radius:3px;margin-right:4px;">' + t + '</span>';
+      }).join("");
+      li.innerHTML = (
+        '<h3><a href="' + SITEURL + '/' + post.url + '">' + hlTitle + "</a></h3>" +
+        '<div class="meta">' + (post.date || "") + (post.category ? " &nbsp;·&nbsp; " + post.category : "") + (tags ? " &nbsp;·&nbsp; " + tags : "") + "</div>" +
+        '<div class="snippet">' + hlSnip + "</div>"
+      );
+      resultsList.appendChild(li);
+    });
+  }
+
+  function doSearch(query) {
+    if (!posts) return;
+    var q = query.trim().toLowerCase();
+    if (!q) {
+      resultsList.innerHTML = "";
+      statusEl.textContent = "";
+      return;
+    }
+    var terms = q.split(/\s+/).filter(Boolean);
+    var hits = posts.filter(function (post) {
+      return terms.every(function (t) {
+        var haystack = [
+          (post.title    || ""),
+          (post.content  || ""),
+          (post.summary  || ""),
+          (post.category || ""),
+          (post.tags     || []).join(" ")
+        ].join(" ").toLowerCase();
+        return haystack.indexOf(t) !== -1;
+      });
+    });
+    hits.sort(function (a, b) { return score(b, terms) - score(a, terms); });
+    renderResults(hits, terms);
+  }
+
+  // Load the index
+  fetch(indexUrl)
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      posts = data;
+      statusEl.textContent = "Ready. Type to search " + posts.length + " posts.";
+      // Run a search immediately if the box was pre-filled (e.g. back-navigation)
+      if (searchBox.value.trim()) doSearch(searchBox.value);
+    })
+    .catch(function () {
+      statusEl.textContent = "Could not load search index.";
+    });
+
+  searchBox.addEventListener("input", function () { doSearch(this.value); });
+})();
+</script>
+{% endblock %}
