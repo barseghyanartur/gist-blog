@@ -1,7 +1,11 @@
-content/
+content/*.rst
+content/pages/
+content/static/
 !content/pages/
-!content/pages/**
+!content/static/
 output/
 __pycache__/
 *.pyc
 *.pyo
+temp_pages/
+temp_static/

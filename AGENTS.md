@@ -76,6 +76,14 @@ make serve            # static preview only
 make clean            # remove output/
 ```
 
+``uv`` is used behind the scenes.
+
+```bash
+uv pip install -r requirements.txt
+uv run python fetch_gists.py
+uv run python generate_search_index.py
+```
+
 All features (preview images, summaries, Gist links, search) work identically locally and in production.
 
 ---
