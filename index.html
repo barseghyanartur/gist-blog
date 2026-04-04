@@ -15,85 +15,52 @@
                         <nav><ul>
                                         <li><a href="/gist-blog">Home</a></li>
                                         <li><a href="/pages/search/">Search</a></li>
-                                                <li><a href="/gist-blog/category/misc.html">misc</a></li>
                                                 <li><a href="/gist-blog/category/tech.html">Tech</a></li>
                         </ul></nav>
                 </header><!-- /#banner -->
 
                 <aside id="featured" class="body">
                     <article>
-                        <h1 class="entry-title"><a href="/gist-blog/posts/2026/04/make-scrollbars-always-visible-in-vivaldi-browser-using-stylus/">Make scrollbars always visible in Vivaldi browser using Stylus</a></h1>
+                        <h1 class="entry-title"><a href="/gist-blog/posts/2026/04/licence-normaliser-taming-licence-chaos-in-python/">licence-normaliser: Taming licence chaos in Python</a></h1>
 <footer class="post-info minimal">
         <span class="post-date">2026-04-04</span>
-<span class="post-category"> | <a href="/gist-blog/category/misc.html">misc</a></span></footer><blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field"><th class="field-name">date:</th><td class="field-body">2026-04-03 01:42</td>
-</tr>
-<tr class="field"><th class="field-name">category:</th><td class="field-body">Tech</td>
-</tr>
-<tr class="field"><th class="field-name">tags:</th><td class="field-body">vivaldi, browsers, tweaks</td>
-</tr>
-<tr class="field"><th class="field-name">summary:</th><td class="field-body">Tired of scrollbars playing hide-and-seek? This quick guide shows you how to use the Stylus extension to force scrollbars to stay visible in Vivaldi. With a simple CSS snippet, you can reclaim your navigation bars and even give them a custom look so they never disappear on you again.</td>
-</tr>
-</tbody>
-</table>
-</blockquote>
-<!-- References -->
-<ol class="arabic">
-<li><p class="first">Install <a class="reference external" href="https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne">Stylus</a> Extension:</p>
-<ul class="simple">
-<li>Go to the Chrome Web Store and search for <a class="reference external" href="https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne">Stylus</a>.</li>
-<li>Install the <a class="reference external" href="https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne">Stylus</a> extension.</li>
-</ul>
-</li>
-<li><p class="first">Create a New Style in <a class="reference external" href="https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne">Stylus</a>:</p>
-<ul>
-<li><p class="first">Click on the <a class="reference external" href="https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne">Stylus</a> icon in your browser toolbar.</p>
-</li>
-<li><p class="first">Click on Manage &gt; Write new style.</p>
-</li>
-<li><p class="first">Add the following CSS code to make scrollbars always visible:</p>
-<div class="highlight"><pre><span></span><span class="c">/* Always show vertical scrollbar */</span>
-<span class="nt">html</span><span class="o">,</span><span class="w"> </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">overflow-y</span><span class="p">:</span><span class="w"> </span><span class="kc">scroll</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="post-category"> | <a href="/gist-blog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gist-blog/tag/python.html">python</a>, <a href="/gist-blog/tag/licence.html">licence</a></span></footer><p>Hey, ever tried cleaning up messy license strings — like <tt class="docutils literal">CC <span class="pre">BY-NC-ND</span> 4.0</tt> or <tt class="docutils literal">MIT License</tt> — and getting them into something tidy and machine-readable?
+That's exactly what <strong>licence-normaliser</strong> does, and honestly, it's a lifesaver for anyone dealing with open-source compliance or metadata.</p>
+<p>Check out the repo here: <a class="reference external" href="https://github.com/barseghyanartur/licence-normaliser">licence-normaliser</a>.
+It's a lightweight Python library that turns chaos into order using a neat three-level system:
+<strong>family</strong> → <strong>licence</strong> → <strong>version</strong>. Think <tt class="docutils literal">cc</tt> → <tt class="docutils literal"><span class="pre">cc-by-nc-nd</span></tt> → <tt class="docutils literal"><span class="pre">cc-by-nc-nd-4.0</span></tt>.</p>
+<p>Here's a quick demo — imagine you're scraping papers or repos and licenses come in every flavor:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">licence_normaliser</span> <span class="kn">import</span> <span class="n">normalise_licence</span>
 
-<span class="c">/* Always show horizontal scrollbar */</span>
-<span class="nt">html</span><span class="o">,</span><span class="w"> </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">overflow-x</span><span class="p">:</span><span class="w"> </span><span class="kc">scroll</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c">/* Force scrollbar visibility for all elements */</span>
-<span class="o">*</span><span class="p">::</span><span class="nd">-webkit-scrollbar</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="kt">px</span><span class="p">;</span><span class="w">  </span><span class="c">/* Set the width for vertical scrollbars */</span>
-<span class="w">    </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="c">/* Set the height for horizontal scrollbars */</span>
-<span class="w">    </span><span class="kp">-webkit-</span><span class="k">appearance</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="o">*</span><span class="p">::</span><span class="nd">-webkit-scrollbar-thumb</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">);</span><span class="w"> </span><span class="c">/* Customize the color of the scrollbar thumb */</span>
-<span class="w">    </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="c">/* Customize the radius */</span>
-<span class="w">    </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c">/* Adjust border if needed */</span>
-<span class="p">}</span>
-
-<span class="o">*</span><span class="p">::</span><span class="nd">-webkit-scrollbar-track</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">);</span><span class="w"> </span><span class="c">/* Customize the background of the scrollbar track */</span>
-<span class="p">}</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">normalise_licence</span><span class="p">(</span><span class="s2">&quot;CC BY-NC-ND 4.0&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>           <span class="c1"># → cc-by-nc-nd-4.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">licence</span><span class="p">)</span>       <span class="c1"># → cc-by-nc-nd</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">licence</span><span class="o">.</span><span class="n">family</span><span class="p">)</span>  <span class="c1"># → cc</span>
 </pre></div>
-</li>
-</ul>
-</li>
-<li><p class="first">Save and Apply the Style:</p>
-<ul class="simple">
-<li>Give your style a name, for example, <cite>Always Show Scrollbars</cite>.</li>
-<li>Save and enable the style.</li>
-</ul>
-</li>
-</ol>
-<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/b957e6e87d2f544054f402957d03bf7a" target="_blank" rel="noopener">GitHub Gist #b957e6e87d2f544054f402957d03bf7a</a></p>                    </article>
+<p>Super clean, right? It handles SPDX codes (<tt class="docutils literal"><span class="pre">Apache-2.0</span></tt>), full URLs, even sloppy prose like
+&quot;creative commons attribution non-commercial no derivatives&quot;. And for Creative Commons fans — yes,
+it knows all the variants, including the weird IGO ones.</p>
+<p>Look at these badges to see what it normalizes:</p>
+<img alt="Creative Commons license badges showing the normalized family and variant icons" class="align-center" src="https://github.com/barseghyanartur/gist-blog-images/blob/main/images/creative-commons-783531_1280.webp?raw=true" style="width: 100%;" />
+<p>Or the compatibility chart if you're remixing stuff:</p>
+<img alt="License compatibility chart with checkmarks and crosses for remixing different licenses" class="align-center" src="https://github.com/barseghyanartur/gist-blog-images/blob/main/images/CC_License_Compatibility_Chart.png?raw=true" style="width: 100%;" />
+<p>What makes it robust? Everything's file-driven — aliases, patterns, URLs live in JSON, so you add new
+synonyms without touching code. Want strictness? Pass <tt class="docutils literal">strict=True</tt> and it'll raise an error if it
+can't match. Debugging? Use <tt class="docutils literal"><span class="pre">--explain</span></tt> or <tt class="docutils literal">trace=True</tt> to see the whole resolution path.</p>
+<p>Install's dead simple:</p>
+<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>licence-normaliser
+</pre></div>
+<p>(or <tt class="docutils literal">uv pip install</tt> if you're fancy).</p>
+<p>CLI's handy too:</p>
+<div class="highlight"><pre><span></span>licence-normaliser<span class="w"> </span>normalise<span class="w"> </span><span class="s2">&quot;MIT&quot;</span><span class="w">          </span><span class="c1"># → mit</span>
+licence-normaliser<span class="w"> </span>batch<span class="w"> </span><span class="s2">&quot;Apache-2.0&quot;</span><span class="w"> </span><span class="s2">&quot;CC BY 4.0&quot;</span>
+</pre></div>
+<p>It's got only two stars right now — probably because it's niche — but if you're building anything
+with license detection (think ScanCode integration, repo crawlers, academic tools), this quietly
+solves a headache. It gets updated via CLI data pulls from SPDX, OSI, Creative Commons...
+no manual hassle.</p>
+<p>Bottom line: if licenses are your mess, normalise them. This tool just works.</p>
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/93cafc05616758479eed6377f6593246" target="_blank" rel="noopener">GitHub Gist #93cafc05616758479eed6377f6593246</a></p>                    </article>
                 </aside><!-- /#featured -->
                     <section id="content" class="body">
                         <h1>Other articles</h1>

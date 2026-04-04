@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                        <meta charset="utf-8" />
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                        <meta name="generator" content="Pelican" />
+                        <title>licence-normaliser: Taming licence chaos in Python</title>
+                        <link rel="stylesheet" href="/gist-blog/theme/css/main.css" />
+                                <link href="/gist-blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dev Notes Atom Feed" />
+    <meta name="description" content="This text appears only in the post listings (homepage, archives, etc.)." />
+        </head>
+
+        <body id="index" class="home">
+                <header id="banner" class="body">
+                        <h1><a href="/gist-blog/">Dev Notes</a></h1>
+                        <nav><ul>
+                                        <li><a href="/gist-blog">Home</a></li>
+                                        <li><a href="/pages/search/">Search</a></li>
+                                                <li class="active"><a href="/gist-blog/category/tech.html">Tech</a></li>
+                        </ul></nav>
+                </header><!-- /#banner -->
+  <section id="content" class="body">
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/gist-blog/posts/2026/04/licence-normaliser-taming-licence-chaos-in-python/" rel="bookmark"
+             title="Permalink to licence-normaliser: Taming licence chaos in Python">licence-normaliser: Taming licence chaos in Python</a></h1>
+      </header>
+
+      <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2026-04-04T14:00:00+00:00">
+                Published: Sat 04 April 2026
+        </abbr>
+                <br />
+                <abbr class="modified" title="2026-04-04T00:23:55.001931+00:00">
+                        Updated: Sat 04 April 2026
+                </abbr>
+
+                <address class="vcard author">
+                        By                                 <a class="url fn" href="/gist-blog/author/artur-barseghyan.html">Artur Barseghyan</a>
+                </address>
+        <p>In <a href="/gist-blog/category/tech.html">Tech</a>.</p>
+<p>tags: <a href="/gist-blog/tag/python.html">python</a> <a href="/gist-blog/tag/licence.html">licence</a> </p>        
+</footer><!-- /.post-info -->        <p>Hey, ever tried cleaning up messy license strings — like <tt class="docutils literal">CC <span class="pre">BY-NC-ND</span> 4.0</tt> or <tt class="docutils literal">MIT License</tt> — and getting them into something tidy and machine-readable?
+That's exactly what <strong>licence-normaliser</strong> does, and honestly, it's a lifesaver for anyone dealing with open-source compliance or metadata.</p>
+<p>Check out the repo here: <a class="reference external" href="https://github.com/barseghyanartur/licence-normaliser">licence-normaliser</a>.
+It's a lightweight Python library that turns chaos into order using a neat three-level system:
+<strong>family</strong> → <strong>licence</strong> → <strong>version</strong>. Think <tt class="docutils literal">cc</tt> → <tt class="docutils literal"><span class="pre">cc-by-nc-nd</span></tt> → <tt class="docutils literal"><span class="pre">cc-by-nc-nd-4.0</span></tt>.</p>
+<p>Here's a quick demo — imagine you're scraping papers or repos and licenses come in every flavor:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">licence_normaliser</span> <span class="kn">import</span> <span class="n">normalise_licence</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">normalise_licence</span><span class="p">(</span><span class="s2">&quot;CC BY-NC-ND 4.0&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>           <span class="c1"># → cc-by-nc-nd-4.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">licence</span><span class="p">)</span>       <span class="c1"># → cc-by-nc-nd</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">licence</span><span class="o">.</span><span class="n">family</span><span class="p">)</span>  <span class="c1"># → cc</span>
+</pre></div>
+<p>Super clean, right? It handles SPDX codes (<tt class="docutils literal"><span class="pre">Apache-2.0</span></tt>), full URLs, even sloppy prose like
+&quot;creative commons attribution non-commercial no derivatives&quot;. And for Creative Commons fans — yes,
+it knows all the variants, including the weird IGO ones.</p>
+<p>Look at these badges to see what it normalizes:</p>
+<img alt="Creative Commons license badges showing the normalized family and variant icons" class="align-center" src="https://github.com/barseghyanartur/gist-blog-images/blob/main/images/creative-commons-783531_1280.webp?raw=true" style="width: 100%;" />
+<p>Or the compatibility chart if you're remixing stuff:</p>
+<img alt="License compatibility chart with checkmarks and crosses for remixing different licenses" class="align-center" src="https://github.com/barseghyanartur/gist-blog-images/blob/main/images/CC_License_Compatibility_Chart.png?raw=true" style="width: 100%;" />
+<p>What makes it robust? Everything's file-driven — aliases, patterns, URLs live in JSON, so you add new
+synonyms without touching code. Want strictness? Pass <tt class="docutils literal">strict=True</tt> and it'll raise an error if it
+can't match. Debugging? Use <tt class="docutils literal"><span class="pre">--explain</span></tt> or <tt class="docutils literal">trace=True</tt> to see the whole resolution path.</p>
+<p>Install's dead simple:</p>
+<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>licence-normaliser
+</pre></div>
+<p>(or <tt class="docutils literal">uv pip install</tt> if you're fancy).</p>
+<p>CLI's handy too:</p>
+<div class="highlight"><pre><span></span>licence-normaliser<span class="w"> </span>normalise<span class="w"> </span><span class="s2">&quot;MIT&quot;</span><span class="w">          </span><span class="c1"># → mit</span>
+licence-normaliser<span class="w"> </span>batch<span class="w"> </span><span class="s2">&quot;Apache-2.0&quot;</span><span class="w"> </span><span class="s2">&quot;CC BY 4.0&quot;</span>
+</pre></div>
+<p>It's got only two stars right now — probably because it's niche — but if you're building anything
+with license detection (think ScanCode integration, repo crawlers, academic tools), this quietly
+solves a headache. It gets updated via CLI data pulls from SPDX, OSI, Creative Commons...
+no manual hassle.</p>
+<p>Bottom line: if licenses are your mess, normalise them. This tool just works.</p>
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/93cafc05616758479eed6377f6593246" target="_blank" rel="noopener">GitHub Gist #93cafc05616758479eed6377f6593246</a></p>
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+                <section id="extras" class="body">
+                                <div class="social">
+                                        <h2>social</h2>
+                                        <ul>
+                                                        <li><a href="/gist-blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                                        </ul>
+                                </div><!-- /.social -->
+                </section><!-- /#extras -->
+
+                <footer id="contentinfo" class="body">
+                        <address id="about" class="vcard body">
+                                Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                        </address><!-- /#about -->
+
+                        <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+                </footer><!-- /#contentinfo -->
+
+        </body>
+</html>
