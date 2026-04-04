@@ -2,23 +2,31 @@
   {
     "title": "Hide ``*.py,cover`` files from IDE",
     "url": "posts/2026/04/hide-pycover-files-from-ide/",
-    "date": "2026-04-03",
+    "date": "2026-04-04",
     "category": "Uncategorized",
     "tags": [],
-    "content": "Hide ``*.py,cover`` files from IDE ================================== :date: 2026-04-02 14:00 :category: Tech :tags: python, vs-code, pycharm :summary: Clean up your workspace by hiding those pesky *.py,cover files from your IDE. Whether you're using VS Code or PyCharm, this quick setting change keeps your file tree focused on your actual source code by filtering out coverage reports. Just a few clicks in your editor's \"Excluded\" or \"Ignored\" file settings, and those clutter-causing files disappear from view while remaining safe on your disk.  VSCode ====== Settings -> Text Editor -> Files -> Add Pattern: Add ``**/*.py,cover``  PyCharm ======= Editor -> File Types -> Ignored Files and Folders : Add ``*.py,cover``"
+    "content": "Hide ``*.py,cover`` files from IDE ================================== :date: 2026-04-02 14:00 :category: Tech :tags: python, vs-code, pycharm :summary: Clean up your workspace by hiding those pesky ``*.py,cover`` files from your IDE. Whether you're using VS Code or PyCharm, this quick setting change keeps your file tree focused on your actual source code by filtering out coverage reports. Just a few clicks in your editor's \"Excluded\" or \"Ignored\" file settings, and those clutter-causing files disappear from view while remaining safe on your disk.  VSCode ====== Settings -> Text Editor -> Files -> Add Pattern: Add ``**/*.py,cover``  PyCharm ======= Editor -> File Types -> Ignored Files and Folders : Add ``*.py,cover``"
   },
   {
     "title": "open-webui setup on macOS",
     "url": "posts/2026/04/open-webui-setup-on-macos/",
-    "date": "2026-04-03",
+    "date": "2026-04-04",
     "category": "Uncategorized",
     "tags": [],
     "content": "open-webui setup on macOS ========================= :date: 2026-04-03 00:21 :category: Tech :tags: python, open-webui, macos :summary: Want to run Open WebUI as a seamless background service on your Mac? This guide walks you through setting it up with launchd, so it starts automatically every time you log in. Using uv for a clean install and a simple .plist configuration, you'll get persistent hosting, automatic crash recovery, and easy log management. No more manual terminal commands—just a reliable local AI interface ready whenever you need it.      Here’s how to set up Open WebUI as a launchd service on macOS.  ----  Prerequisites -------------  First, install Open WebUI via uv if you haven’t already:  .. code:: bash     uv tool install open-webui  ----  1. Create the plist file -------..."
   },
   {
+    "title": "licence-normaliser: Taming licence chaos in Python",
+    "url": "posts/2026/04/licence-normaliser-taming-licence-chaos-in-python/",
+    "date": "2026-04-04",
+    "category": "Uncategorized",
+    "tags": [],
+    "content": "licence-normaliser: Taming licence chaos in Python ================================================== :date: 2026-04-04 14:00 :category: Tech :tags: python, licence :summary: Tired of wrestling with messy license strings like \"MIT License\" vs. \"The MIT License\" or cryptic URLs? licence-normaliser is a lightweight Python tool that tames the chaos. It maps inconsistent metadata into a clean, machine-readable hierarchy (Family → License → Version), turning strings like CC BY-NC-ND 4.0 into a tidy cc-by-nc-nd-4.0 automatically. Whether you're scraping repos or managing compliance, it handles SPDX codes, prose, and even complex Creative Commons variants with ease—giving you a single source of truth for your legal metadata. :image: https://raw.githubusercontent.com/barseghyanartur/licence-normal..."
+  },
+  {
     "title": "Useful plugins for VSCode",
     "url": "posts/2026/04/useful-plugins-for-vscode/",
-    "date": "2026-04-03",
+    "date": "2026-04-04",
     "category": "Uncategorized",
     "tags": [],
     "content": "Useful plugins for VSCode ========================= :date: 2026-04-03 01:02 :category: Tech :tags: python, vs-code, vs-code-plugins :summary: Supercharge your VS Code setup with this curated list of essential plugins! Whether you're a Python pro needing Pylance and Makefile support, or a documentation stickler looking for Markdown and reStructuredText tools, these extensions bridge the gap between a basic editor and a powerhouse IDE. Plus, grab the PyCharm Theme to get that classic JetBrains look without sacrificing VS Code's lightweight speed.  .. References:  .. _Sort lines: https://marketplace.visualstudio.com/items?itemName=Tyriar.sort-lines .. _PyCharm Theme: https://marketplace.visualstudio.com/items?itemName=nicohlr.pycharm .. _MarkdownLint: https://marketplace.visualstudio.com/item..."
@@ -26,7 +34,7 @@
   {
     "title": "Safezip - zero-dependency wrapper for secure ZIP extraction",
     "url": "posts/2026/04/safezip-zero-dependency-wrapper-for-secure-zip-extraction/",
-    "date": "2026-04-03",
+    "date": "2026-04-04",
     "category": "Uncategorized",
     "tags": [],
     "content": "Safezip - zero-dependency wrapper for secure ZIP extraction =========================================================== :date: 2026-02-25 13:00 :category: Tech :tags: python, zip, security :summary: `Safezip` is a zero-dependency Python wrapper for zipfile that makes secure extraction the default. It provides essential protections against ZipSlip, ZIP bombs, and inconsistent ZIP64 headers—security features missing from the standard library. With support for atomic writes and environment-based configuration, it is an ideal drop-in solution for safely handling untrusted user uploads in production. :image: https://raw.githubusercontent.com/barseghyanartur/safezip/main/docs/_static/safezip_logo.webp  .. image:: https://raw.githubusercontent.com/barseghyanartur/safezip/main/docs/_static/safezip..."
@@ -34,7 +42,7 @@
   {
     "title": "CudaText installation and config for SublimeText users",
     "url": "posts/2026/04/cudatext-installation-and-config-for-sublimetext-users/",
-    "date": "2026-04-03",
+    "date": "2026-04-04",
     "category": "Uncategorized",
     "tags": [],
     "content": "CudaText installation and config for SublimeText users ====================================================== :date: 2026-04-03 01:08 :category: Tech :tags: IDE, text-editor, CudaText :summary: Switching from Sublime Text to CudaText? This guide gets you up and running on macOS with zero friction. It covers everything from bypassing security warnings and setting up a terminal alias to a curated list of essential plugins like Python IntelliSense and Markdown Preview. Plus, there's a ready-to-go user.json config to keep your UI clean and your indentation consistent—perfect for those who want that familiar, lightning-fast editor feel without the bloat.  https://github.com/Alexey-T/CudaText  macOS releases -------------- *Go for aarch64 releases*  https://github.com/Alexey-T/CudaText/discussio..."
@@ -42,23 +50,15 @@
   {
     "title": "How to debug Python applications",
     "url": "posts/2026/04/how-to-debug-python-applications/",
-    "date": "2026-04-03",
+    "date": "2026-04-04",
     "category": "Uncategorized",
     "tags": [],
     "content": "How to debug Python applications ================================ :date: 2022-06-21 11:00 :category: Tech :tags: python, debugging :summary: In software development, testing is an essential part of ensuring that code works as intended. One critical aspect of testing is debugging, which involves finding and fixing errors or bugs in a program. In this article, we’ll explore how to debug Python applications and highlight some of the most commonly used methods for debugging Python code. :image: https://i.postimg.cc/rp4SskQv/rp-L4mz-N2-ZJ0-Pnopju2da-1-kguub.jpg  .. image:: https://i.postimg.cc/rp4SskQv/rp-L4mz-N2-ZJ0-Pnopju2da-1-kguub.jpg    :target: https://postimg.cc/XZVZ1TM8    :alt: How to debug Python applications  Introduction ------------  In software development, testing is an essential..."
   },
   {
-    "title": "Make scrollbars always visible in Vivaldi browser using Stylus",
-    "url": "posts/2026/04/make-scrollbars-always-visible-in-vivaldi-browser-using-stylus/",
-    "date": "2026-04-03",
-    "category": "Uncategorized",
-    "tags": [],
-    "content": "Make scrollbars always visible in Vivaldi browser using Stylus ==============================================================  :date: 2026-04-03 01:42  :category: Tech  :tags: vivaldi, browsers, tweaks  :summary: Tired of scrollbars playing hide-and-seek? This quick guide shows you how to use the Stylus extension to force scrollbars to stay visible in Vivaldi. With a simple CSS snippet, you can reclaim your navigation bars and even give them a custom look so they never disappear on you again.  .. References  .. _Stylus: https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne  #. Install `Stylus`_ Extension:     - Go to the Chrome Web Store and search for `Stylus`_.    - Install the `Stylus`_ extension.  #. Create a New Style in `Stylus`_:     - Click on the `Stylus..."
-  },
-  {
     "title": "Log4Brains images support",
     "url": "posts/2026/04/log4brains-images-support/",
-    "date": "2026-04-03",
+    "date": "2026-04-04",
     "category": "Uncategorized",
     "tags": [],
     "content": "Log4Brains images support ========================= :date: 2026-04-03 14:00 :category: Tech :tags: ADRs, log4brains :summary: Tired of broken images in your Architecture Decision Records? This quick fix shows you how to add static image support to Log4brains. By setting up a docs/l4b-static folder and adding a simple copy command to your Build script or GitHub Action, you can finally use local icons and diagrams directly in your ADRs. Perfect for keeping your architecture docs visual and professional without the hosting headaches.  https://github.com/thomvaill/log4brains  Directory structure -------------------  ::     docs    ├── adr    │   ├── 20240416-architecture-v2.md    │   ├── 20240916-llm-choice.md    │   ├── 20240916-rag-framework-choice.md    │   ├── index.md    │   └── template...."
@@ -66,7 +66,7 @@
   {
     "title": "Why is Vivaldi browser a great companion?",
     "url": "posts/2026/04/why-is-vivaldi-browser-a-great-companion/",
-    "date": "2026-04-03",
+    "date": "2026-04-04",
     "category": "Uncategorized",
     "tags": [],
     "content": "Why is Vivaldi browser a great companion? ========================================= :date: 2025-03-12 14:03 :category: Tech :tags: vivaldi, browsers, progressive-web-apps :summary: While most browsers treat websites as simple tabs, Vivaldi wins by letting you turn any site—even those without official support—into a standalone Progressive Web App (PWA). This guide explores how a single right-click can transform utility sites like Google Translate or JSON tools into clean, independent windows that live on your dock or taskbar, helping you declutter your browser and turn the web into a personalized app library.  .. References:  .. _Firefox: https://mozilla.org/firefox/ .. _Vivaldi: https://vivaldi.com/ .. _Edge: https://microsoft.com/edge/ .. _Google Chrome: https://google.com/chrome/ .. _Chr..."
