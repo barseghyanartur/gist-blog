@@ -44,243 +44,55 @@
 
                 <aside id="featured" class="body">
                     <article>
-                        <h1 class="entry-title"><a href="/gistblog/posts/2026/04/pytest-codeblock-a-pytest-plugin-for-testing-code-examples-in-markdown-and-restructuredtext-files/">pytest-codeblock - A pytest plugin for testing code examples in Markdown and reStructuredText files</a></h1>
+                        <h1 class="entry-title"><a href="/gistblog/posts/2026/05/avoid-risky-python-updates-the-7-day-safety-buffer/">Avoid risky Python updates: The 7-day safety buffer</a></h1>
 <footer class="post-info minimal">
-        <span class="post-date">2026-04-12</span>
-<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/pytest.html">pytest</a></span></footer><p><strong>I wrote a small pytest plugin that tests code blocks in your docs.</strong></p>
-<p><a class="reference external" href="https://github.com/barseghyanartur/pytest-codeblock">https://github.com/barseghyanartur/pytest-codeblock</a></p>
-<p><strong>What My Project Does</strong></p>
-<p><tt class="docutils literal"><span class="pre">pytest-codeblock</span></tt> is a minimal pytest plugin that finds Python code
-examples in your <tt class="docutils literal">.rst</tt> and <tt class="docutils literal">.md</tt> files and runs them as regular
-pytest tests. No dependencies beyond pytest itself (plus <tt class="docutils literal">tomli</tt> on
-Python 3.10).</p>
-<p>It handles:</p>
-<ul class="simple">
-<li><strong>reStructuredText and Markdown</strong> — <tt class="docutils literal">.. <span class="pre">code-block::</span> python</tt>,
-<tt class="docutils literal">.. code:: python</tt>, <tt class="docutils literal">.. literalinclude::</tt>, literal blocks, and
-fenced <tt class="docutils literal"><span class="pre">```python</span></tt> blocks</li>
-<li><strong>Grouping</strong> — split one logical example across several blocks using
-<tt class="docutils literal">.. continue:</tt> or <tt class="docutils literal"><span class="pre">&lt;!--</span> continue: <span class="pre">--&gt;</span></tt> and they run as a single
-test, or as cumulative incremental steps if each continuation has its
-own name</li>
-<li><strong>pytest markers and fixtures</strong> — <tt class="docutils literal">.. pytestmark: django_db</tt>,
-<tt class="docutils literal"><span class="pre">&lt;!--</span> pytestmark: skip <span class="pre">--&gt;</span></tt>, fixture injection via
-<tt class="docutils literal">.. pytestfixture: tmp_path</tt>; custom fixtures from <tt class="docutils literal">conftest.py</tt>
-work too</li>
-<li><strong>``pytestrun`` marker</strong> — run full pytest-style suites (test classes,
-fixtures, parametrize, setup/teardown) inside a single doc block</li>
-<li><strong>Async support</strong> — top-level <tt class="docutils literal">await</tt> is automatically wrapped, no
-config needed</li>
-<li><strong>Nameless code blocks</strong> — opt-in via <tt class="docutils literal">pyproject.toml</tt>; off by
-default, only <tt class="docutils literal">test_*</tt>-named blocks run unless you enable it</li>
-<li><strong>Custom languages and extensions</strong> — configurable if your docs use
-non-standard identifiers</li>
-</ul>
-<hr class="docutils" />
-<p><strong>Feature comparison</strong></p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="22%" />
-<col width="20%" />
-<col width="12%" />
-<col width="13%" />
-<col width="21%" />
-<col width="12%" />
-</colgroup>
-<thead valign="bottom">
-<tr><th class="head">Feature</th>
-<th class="head">pytest-codeblock</th>
-<th class="head">Sybil</th>
-<th class="head">phmdoctest</th>
-<th class="head">pytest-codeblocks</th>
-<th class="head">doctest</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr><td>RST support</td>
-<td>✅</td>
-<td>✅</td>
-<td>❌</td>
-<td>❌</td>
-<td>✅</td>
-</tr>
-<tr><td>Markdown support</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>❌</td>
-</tr>
-<tr><td>Both RST + MD</td>
-<td>✅</td>
-<td>✅</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-</tr>
-<tr><td>Native pytest
-collector</td>
-<td>✅</td>
-<td>✅</td>
-<td>❌</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-<tr><td>Fixture injection
-in docs</td>
-<td>✅</td>
-<td>⚠️
-conftest
-only</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-</tr>
-<tr><td>pytest markers in
-docs</td>
-<td>✅</td>
-<td>⚠️
-conftest
-only</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-</tr>
-<tr><td>Block grouping /
-continuation</td>
-<td>✅</td>
-<td>✅</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-</tr>
-<tr><td>Incremental
-grouping</td>
-<td>✅</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-</tr>
-<tr><td>Async support</td>
-<td>✅</td>
-<td>⚠️ manual</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-</tr>
-<tr><td>Test classes in
-doc blocks</td>
-<td>✅
-(<tt class="docutils literal">pytestrun</tt>)</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-</tr>
-<tr><td><tt class="docutils literal">literalinclude</tt>
-support</td>
-<td>✅</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-</tr>
-<tr><td>Nameless block
-testing</td>
-<td>✅ opt-in</td>
-<td>❌</td>
-<td>✅</td>
-<td>✅</td>
-<td>❌</td>
-</tr>
-<tr><td>Zero config to
-start</td>
-<td>✅</td>
-<td>❌</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-<tr><td>No generated files
-on disk</td>
-<td>✅</td>
-<td>✅</td>
-<td>❌</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-<tr><td>Zero extra
-dependencies</td>
-<td>✅</td>
-<td>❌</td>
-<td>❌</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-</tbody>
-</table>
-<p>⚠️ = supported but requires extra wiring outside the doc file</p>
-<hr class="docutils" />
-<p>Zero config to start. Install it, run <tt class="docutils literal">pytest</tt>. Any block named
-<tt class="docutils literal">test_*</tt> becomes a test.</p>
-<pre class="code sh literal-block">
-pip<span class="w"> </span>install<span class="w"> </span>pytest-codeblock
-</pre>
-<p><strong>reStructuredText:</strong></p>
-<pre class="code rst literal-block">
-<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> python<span class="w">
-</span>   <span class="nc">:name:</span> test_basic_example<span class="w">
+        <span class="post-date">2026-05-03</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/security.html">security</a></span></footer><p>In the last two months, the Python community has seen serious supply chain attacks.</p>
+<p>In March, <strong>LiteLLM</strong> was compromised to steal credentials.
+Last week, <strong>PyTorch Lightning</strong> suffered a similar attack where malicious versions
+tried to steal cloud secrets and SSH keys.</p>
+<p>In both cases, the bad code was found and removed quickly.
+However, anyone who updated their packages during those few hours was at risk.</p>
+<p>You can protect your project by using a &quot;time-gate&quot;.
+This tells your tools to ignore any package released in the last week.</p>
+<div class="highlight"><pre><span></span><span class="c1"># uv: Ignore any package versions released in the last 7 days</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">UV_EXCLUDE_NEWER</span><span class="o">=</span><span class="s2">&quot;7 days&quot;</span>
 
-</span>   import math<span class="w">
-</span>   result = math.pow(3, 2)<span class="w">
-</span>   assert result == 9
-</pre>
-<p><strong>Markdown:</strong></p>
-<pre class="code markdown literal-block">
-<span class="sb">```python</span><span class="w"> </span>name=test_basic_example<span class="w">
-</span><span class="kn">import</span> <span class="nn">math</span><span class="w">
-</span><span class="n">result</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="w">
-</span><span class="k">assert</span> <span class="n">result</span> <span class="o">==</span> <span class="mi">9</span><span class="w">
-</span><span class="sb">```</span>
-</pre>
-<p><strong>Target Audience</strong></p>
-<p>Library authors and anyone who has shipped broken doc examples and only
-found out from a user bug report. If you're already running pytest, the
-cost to add doc block testing is close to zero.</p>
-<p><strong>Comparison</strong></p>
-<ul class="simple">
-<li><strong>vs.&nbsp;doctest</strong>: <tt class="docutils literal">doctest</tt> is built for REPL-style <tt class="docutils literal">&gt;&gt;&gt;</tt> examples.
-It works fine for trivial cases but gets awkward fast — multiline
-logic, fixtures, and async are all painful. <tt class="docutils literal"><span class="pre">pytest-codeblock</span></tt> lets
-you write plain Python with <tt class="docutils literal">assert</tt> statements, so your examples
-look like real code rather than a terminal session.</li>
-<li><strong>vs.&nbsp;Sybil</strong>: Sybil is the most capable alternative and worth
-considering for complex setups. The tradeoff is configuration
-overhead: fixtures and regions need manual wiring in <tt class="docutils literal">conftest.py</tt>.
-<tt class="docutils literal"><span class="pre">pytest-codeblock</span></tt> keeps fixture requests in the doc file itself
-(<tt class="docutils literal">.. pytestfixture: tmp_path</tt>) and works with existing
-<tt class="docutils literal">conftest.py</tt> fixtures without extra setup. If Sybil's power is more
-than you need, <tt class="docutils literal"><span class="pre">pytest-codeblock</span></tt> is lighter.</li>
-<li><strong>vs.&nbsp;phmdoctest</strong>: <tt class="docutils literal">phmdoctest</tt> transpiles Markdown into <tt class="docutils literal">.py</tt>
-files on disk and runs those. <tt class="docutils literal"><span class="pre">pytest-codeblock</span></tt> is a native pytest
-collector — no generated files, nothing to add to <tt class="docutils literal">.gitignore</tt>, no
-intermediate artifacts.</li>
-<li><strong>vs.&nbsp;pytest-codeblocks (plural)</strong>: Similar name, different scope.
-<tt class="docutils literal"><span class="pre">pytest-codeblock</span></tt> adds fixture injection, grouping, async wrapping,
-and the <tt class="docutils literal">pytestrun</tt> marker for full test-class support inside doc
-blocks.</li>
-</ul>
-<p>The plugin is in beta. It's been used in a few projects for about a year
-and the core behavior is stable, but edge cases and feedback are welcome.</p>
-<p>Documentation: <a class="reference external" href="https://pytest-codeblock.readthedocs.io/en/latest/">https://pytest-codeblock.readthedocs.io/en/latest/</a></p>
-<p>Repository: <a class="reference external" href="https://github.com/barseghyanartur/pytest-codeblock">https://github.com/barseghyanartur/pytest-codeblock</a></p>
-<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/c48b645466bbd5d071e82588364f8123" target="_blank" rel="noopener">GitHub Gist #c48b645466bbd5d071e82588364f8123</a></p>                    </article>
+<span class="c1"># pip: Ignore any package versions uploaded in the last 7 days</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PIP_UPLOADED_PRIOR_TO</span><span class="o">=</span>P7D
+</pre></div>
+<div class="section" id="why-this-improves-security">
+<h2>Why this improves security</h2>
+<dl class="docutils">
+<dt>The &quot;Cooling Off&quot; Period</dt>
+<dd>Most malicious packages are caught by security experts within 48 hours. A seven-day delay ensures that any code you download has been checked by the public for a full week.</dd>
+<dt>Stopping &quot;Fast&quot; Attacks</dt>
+<dd>The PyTorch Lightning attack lasted less than one hour. A one-week buffer makes these short-lived, poisoned releases invisible to your build system.</dd>
+<dt>Reliable Defence</dt>
+<dd>This prevents your update commands from accidentally grabbing a &quot;bleeding edge&quot; version that might be compromised.</dd>
+</dl>
+<p>By waiting seven days, you lose nothing important but gain a massive increase in security.</p>
+</div>
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/04733e7a00f94c7cc505f145154cd48a" target="_blank" rel="noopener">GitHub Gist #04733e7a00f94c7cc505f145154cd48a</a></p>                    </article>
                 </aside><!-- /#featured -->
                     <section id="content" class="body">
                         <h1>Other articles</h1>
                         <hr />
                         <ol id="posts-list" class="hfeed">
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/gistblog/posts/2026/04/pytest-codeblock-a-pytest-plugin-for-testing-code-examples-in-markdown-and-restructuredtext-files/" rel="bookmark"
+                               title="Permalink to pytest-codeblock - A pytest plugin for testing code examples in Markdown and reStructuredText files">pytest-codeblock - A pytest plugin for testing code examples in Markdown and reStructuredText files</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+                        <p class="first last">Tired of broken code snippets in your documentation? Try <cite>pytest-codeblock</cite>, a zero-config plugin that supports both <cite>Markdown</cite> and <cite>reStructuredText</cite>. It brings the full power of pytest—including fixtures, markers, and native async support—directly into your docs without any boilerplate or manual wiring. Just name your block <cite>test_name_of_your_block</cite> and stop relying on users to find your documentation bugs.</p>
+<footer class="post-info minimal">
+        <span class="post-date">2026-04-12</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/pytest.html">pytest</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/04/pytest-codeblock-a-pytest-plugin-for-testing-code-examples-in-markdown-and-restructuredtext-files/">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
 
                 <li><article class="hentry">
                     <header>

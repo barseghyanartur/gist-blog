@@ -44,66 +44,57 @@
 
                 <aside id="featured" class="body">
                     <article>
-                        <h1 class="entry-title"><a href="/gistblog/posts/2026/02/safezip-zero-dependency-wrapper-for-secure-zip-extraction/">Safezip - zero-dependency wrapper for secure ZIP extraction</a></h1>
+                        <h1 class="entry-title"><a href="/gistblog/posts/2026/05/avoid-risky-python-updates-the-7-day-safety-buffer/">Avoid risky Python updates: The 7-day safety buffer</a></h1>
+<footer class="post-info minimal">
+        <span class="post-date">2026-05-03</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/security.html">security</a></span></footer><p>In the last two months, the Python community has seen serious supply chain attacks.</p>
+<p>In March, <strong>LiteLLM</strong> was compromised to steal credentials.
+Last week, <strong>PyTorch Lightning</strong> suffered a similar attack where malicious versions
+tried to steal cloud secrets and SSH keys.</p>
+<p>In both cases, the bad code was found and removed quickly.
+However, anyone who updated their packages during those few hours was at risk.</p>
+<p>You can protect your project by using a &quot;time-gate&quot;.
+This tells your tools to ignore any package released in the last week.</p>
+<div class="highlight"><pre><span></span><span class="c1"># uv: Ignore any package versions released in the last 7 days</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">UV_EXCLUDE_NEWER</span><span class="o">=</span><span class="s2">&quot;7 days&quot;</span>
+
+<span class="c1"># pip: Ignore any package versions uploaded in the last 7 days</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PIP_UPLOADED_PRIOR_TO</span><span class="o">=</span>P7D
+</pre></div>
+<div class="section" id="why-this-improves-security">
+<h2>Why this improves security</h2>
+<dl class="docutils">
+<dt>The &quot;Cooling Off&quot; Period</dt>
+<dd>Most malicious packages are caught by security experts within 48 hours. A seven-day delay ensures that any code you download has been checked by the public for a full week.</dd>
+<dt>Stopping &quot;Fast&quot; Attacks</dt>
+<dd>The PyTorch Lightning attack lasted less than one hour. A one-week buffer makes these short-lived, poisoned releases invisible to your build system.</dd>
+<dt>Reliable Defence</dt>
+<dd>This prevents your update commands from accidentally grabbing a &quot;bleeding edge&quot; version that might be compromised.</dd>
+</dl>
+<p>By waiting seven days, you lose nothing important but gain a massive increase in security.</p>
+</div>
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/04733e7a00f94c7cc505f145154cd48a" target="_blank" rel="noopener">GitHub Gist #04733e7a00f94c7cc505f145154cd48a</a></p>                    </article>
+                </aside><!-- /#featured -->
+                    <section id="content" class="body">
+                        <h1>Other articles</h1>
+                        <hr />
+                        <ol id="posts-list" class="hfeed">
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/gistblog/posts/2026/02/safezip-zero-dependency-wrapper-for-secure-zip-extraction/" rel="bookmark"
+                               title="Permalink to Safezip - zero-dependency wrapper for secure ZIP extraction">Safezip - zero-dependency wrapper for secure ZIP extraction</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+                        <img src="https://raw.githubusercontent.com/barseghyanartur/safezip/main/docs/_static/safezip_logo.webp" alt="Preview" class="preview-image" style="max-width:100%; height:auto; border-radius:8px; margin-bottom:1.5rem; display:block;"><p class="first last"><cite>Safezip</cite> is a zero-dependency Python wrapper for zipfile that makes secure extraction the default. It provides essential protections against ZipSlip, ZIP bombs, and inconsistent ZIP64 headers—security features missing from the standard library. With support for atomic writes and environment-based configuration, it is an ideal drop-in solution for safely handling untrusted user uploads in production.</p>
 <footer class="post-info minimal">
         <span class="post-date">2026-02-25</span>
-<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/zip.html">zip</a>, <a href="/gistblog/tag/security.html">security</a></span></footer><a class="reference external image-reference" href="https://github.com/barseghyanartur/safezip">
-<img alt="Safezip" src="https://raw.githubusercontent.com/barseghyanartur/safezip/main/docs/_static/safezip_logo.webp" />
-</a>
-<p>I wrote a small, zero-dependency wrapper for secure ZIP extraction.</p>
-<p><a class="reference external" href="https://github.com/barseghyanartur/safezip">https://github.com/barseghyanartur/safezip</a></p>
-<p><strong>What My Project Does</strong></p>
-<p><tt class="docutils literal">safezip</tt> is a zero-dependency wrapper around Python’s <tt class="docutils literal">zipfile</tt>
-module that makes secure ZIP extraction the default. It protects
-against:</p>
-<ul class="simple">
-<li><strong>ZipSlip protection</strong>: Blocks relative paths, absolute paths, Windows
-UNC paths, Unicode lookalike attacks, and null bytes in filenames.</li>
-<li><strong>ZIP bomb prevention</strong>: Enforces per-member and cumulative
-decompression ratio limits at stream time — not based on untrusted
-header values.</li>
-<li><strong>ZIP64 consistency checks</strong>: Crafted archives with inconsistent ZIP64
-extra fields are rejected before decompression begins.</li>
-<li><strong>Symlink policy</strong> — configurable: <tt class="docutils literal">REJECT</tt> (default), <tt class="docutils literal">IGNORE</tt>,
-or <tt class="docutils literal">RESOLVE_INTERNAL</tt>.</li>
-<li><strong>Atomic writes</strong>: Extracts to a temp file first and only moves it to
-the destination if all checks pass. If something fails, you don’t end
-up with half-extracted junk on your disk.</li>
-<li><strong>Environment variable overrides</strong>: All numeric limits can be set via
-<tt class="docutils literal">SAFEZIP_*</tt> environment variables for containerised deployments.</li>
-</ul>
-<p>It’s meant to be an almost drop-in replacement. You can just do:</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safezip</span> <span class="kn">import</span> <span class="n">safe_extract</span>
-
-<span class="n">safe_extract</span><span class="p">(</span><span class="s2">&quot;path/to/file.zip&quot;</span><span class="p">,</span> <span class="s2">&quot;/var/files/extracted/&quot;</span><span class="p">)</span>
-</pre></div>
-<p>If you need more control, there’s a <tt class="docutils literal">SafeZipFile</tt> context manager that
-lets you tweak limits or monitor security events.</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">safezip</span> <span class="kn">import</span> <span class="n">SafeZipFile</span>
-
-<span class="k">with</span> <span class="n">SafeZipFile</span><span class="p">(</span><span class="s2">&quot;path/to/file.zip&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zf</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">zf</span><span class="o">.</span><span class="n">namelist</span><span class="p">())</span>
-    <span class="n">zf</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="s2">&quot;/var/files/extracted/&quot;</span><span class="p">)</span>
-</pre></div>
-<p><strong>Target Audience</strong></p>
-<p>If you’re handling user uploads or processing ZIP files from untrusted
-sources, this might save you some headache. It’s production-oriented but
-currently in beta, so feedback and edge cases are very welcome.</p>
-<p><strong>Comparison</strong></p>
-<p>The standard library’s <tt class="docutils literal">zipfile</tt> module historically wasn’t safe to
-use on untrusted files. Even the official docs warn against
-<tt class="docutils literal">extractall()</tt> because of ZipSlip risks, and it doesn’t do much to
-stop ZIP bombs from eating up your disk or memory. Python 3.12 did
-address some of this — <tt class="docutils literal">extractall()</tt> now strips path components that
-would escape the target directory — but it still leaves meaningful gaps:
-no ZIP bomb protection, no stream-time size enforcement, no symlink
-policy, no ZIP64 consistency checks, and no atomic writes. <tt class="docutils literal">safezip</tt>
-fills all of those. I got tired of writing the same boilerplate every
-time, so I packaged it up.</p>
-<p>-—</p>
-<p>Documentation: <a class="reference external" href="https://safezip.readthedocs.io/en/latest/">https://safezip.readthedocs.io/en/latest/</a></p>
-<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/160a1cd9c12448447882f12b16e14d35" target="_blank" rel="noopener">GitHub Gist #160a1cd9c12448447882f12b16e14d35</a></p>                    </article>
-                </aside><!-- /#featured -->
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/zip.html">zip</a>, <a href="/gistblog/tag/security.html">security</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/02/safezip-zero-dependency-wrapper-for-secure-zip-extraction/">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
+                    </ol><!-- /#posts-list -->
+                    </section><!-- /#content -->
                 <section id="extras" class="body">
                                 <div class="social">
                                         <h2>social</h2>
