@@ -56,7 +56,7 @@
                 Published: Sun 03 May 2026
         </abbr>
                 <br />
-                <abbr class="modified" title="2026-05-03T22:38:30.039342+00:00">
+                <abbr class="modified" title="2026-05-03T23:15:29.699944+00:00">
                         Updated: Sun 03 May 2026
                 </abbr>
 
@@ -65,12 +65,17 @@
                 </address>
         <p>In <a href="/gistblog/category/tech.html">Tech</a>.</p>
 <p>tags: <a href="/gistblog/tag/python.html">python</a> <a href="/gistblog/tag/security.html">security</a> </p>        
-</footer><!-- /.post-info -->        <p>In the last two months, the Python community has seen serious supply chain attacks.</p>
+</footer><!-- /.post-info -->        <div class="section" id="the-problem">
+<h2>The problem</h2>
+<p>In the last two months, the Python community has seen serious supply chain attacks.</p>
 <p>In March, <strong>LiteLLM</strong> was compromised to steal credentials.
 Last week, <strong>PyTorch Lightning</strong> suffered a similar attack where malicious versions
 tried to steal cloud secrets and SSH keys.</p>
 <p>In both cases, the bad code was found and removed quickly.
 However, anyone who updated their packages during those few hours was at risk.</p>
+</div>
+<div class="section" id="the-imperfect-solution">
+<h2>The (imperfect) solution</h2>
 <p>To protect yourself, add these lines to your <tt class="docutils literal"><span class="pre">~/.bashrc</span></tt> or <tt class="docutils literal"><span class="pre">~/.zshrc</span></tt> file.
 This tells your tools to ignore any package released in the last week.</p>
 <div class="highlight"><pre><span></span><span class="c1"># uv: Ignore any package versions released in the last 7 days</span>
@@ -79,6 +84,7 @@ This tells your tools to ignore any package released in the last week.</p>
 <span class="c1"># pip: Ignore any package versions uploaded in the last 7 days</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">PIP_UPLOADED_PRIOR_TO</span><span class="o">=</span>P7D
 </pre></div>
+</div>
 <div class="section" id="why-this-improves-security">
 <h2>Why this improves security</h2>
 <dl class="docutils">
@@ -90,6 +96,10 @@ This tells your tools to ignore any package released in the last week.</p>
 <dd>This prevents your update commands from accidentally grabbing a &quot;bleeding edge&quot; version that might be compromised.</dd>
 </dl>
 <p>By waiting seven days, you lose nothing important but gain a massive increase in security.</p>
+</div>
+<div class="section" id="the-perfect-solution-that-does-not-yet-exist">
+<h2>The perfect solution that does not yet exist</h2>
+<p>If only PyPI (and other registries, such as NPM) would start doing preventive scanning of uploaded packages, and only offer scanned/secure packages for download...</p>
 </div>
 <p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/04733e7a00f94c7cc505f145154cd48a" target="_blank" rel="noopener">GitHub Gist #04733e7a00f94c7cc505f145154cd48a</a></p>
       </div><!-- /.entry-content -->
