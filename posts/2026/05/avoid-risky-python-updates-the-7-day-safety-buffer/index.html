@@ -56,7 +56,7 @@
                 Published: Sun 03 May 2026
         </abbr>
                 <br />
-                <abbr class="modified" title="2026-05-03T20:47:38.255148+00:00">
+                <abbr class="modified" title="2026-05-03T20:53:34.272998+00:00">
                         Updated: Sun 03 May 2026
                 </abbr>
 
@@ -71,7 +71,7 @@ Last week, <strong>PyTorch Lightning</strong> suffered a similar attack where ma
 tried to steal cloud secrets and SSH keys.</p>
 <p>In both cases, the bad code was found and removed quickly.
 However, anyone who updated their packages during those few hours was at risk.</p>
-<p>You can protect your project by using a &quot;time-gate&quot;.
+<p>To protect yourself, add these lines to your <tt class="docutils literal"><span class="pre">~/.bashrc</span></tt> or <tt class="docutils literal"><span class="pre">~/.zshrc</span></tt> file.
 This tells your tools to ignore any package released in the last week.</p>
 <div class="highlight"><pre><span></span><span class="c1"># uv: Ignore any package versions released in the last 7 days</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">UV_EXCLUDE_NEWER</span><span class="o">=</span><span class="s2">&quot;7 days&quot;</span>
