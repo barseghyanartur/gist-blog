@@ -1,5 +1,18 @@
 [
   {
+    "title": "Managing Homebrew upgrades: The selective lazy method",
+    "url": "posts/2026/05/managing-homebrew-upgrades-the-selective-lazy-method/",
+    "date": "2026-05-07",
+    "category": "Tech",
+    "tags": [
+      "macos",
+      "homebrew",
+      "productivity"
+    ],
+    "summary": "Automated upgrade scripts are great until a critical tool breaks. Learn how to pin specific packages and use filtered commands to keep your environment stable without losing your \"lazy\" workflow.",
+    "content": "The problem Automating package updates is the dream for any developer who values their time. However, the \"bleeding edge\" can sometimes cut you. Recently, my preferred terminal, Tabby, broke following a series of macOS updates. When a core tool in your workflow fails after an unattended upgrade, it halts productivity. While Homebrew allows you to \"pin\" standard formulae to prevent them from updating, there is currently no native \"pin\" or \"hold\" feature for Homebrew Casks. This means a blanket upgrade command will always try to pull the latest (and potentially broken) version of your GUI applications. The (imperfect) solution To keep using a specific version of a Cask while still upgrading everything else, you can use a filtered command. Instead of a blind global upgrade, you can list outdated casks and exclude the problematic one using grep. For Tabby, the following command ensures everything else moves forward while the terminal remains untouched: # Upgrade all casks except Tabby brew..."
+  },
+  {
     "title": "Avoid risky Python updates: The 7-day safety buffer",
     "url": "posts/2026/05/avoid-risky-python-updates-the-7-day-safety-buffer/",
     "date": "2026-05-03",

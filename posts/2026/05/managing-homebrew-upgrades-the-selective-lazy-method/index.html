@@ -11,9 +11,10 @@
                         <meta charset="utf-8" />
                         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                         <meta name="generator" content="Pelican" />
-                        <title>Dev Notes - macos</title>
+                        <title>Managing Homebrew upgrades: The selective lazy method</title>
                         <link rel="stylesheet" href="/gistblog/theme/css/main.css" />
                                 <link href="/gistblog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dev Notes Atom Feed" />
+    <meta name="description" content="Automated upgrade scripts are great until a critical tool breaks. Learn how to pin specific packages and use filtered commands to keep your..." />
         </head>
 
         <body id="index" class="home">
@@ -27,7 +28,7 @@
                                                 <li><a href="/gistblog">Home</a></li>
                                                 <li id="nav-search"><a href="/gistblog/search.html" id="nav-search-link">Search</a></li>
                                                 <li><a href="/gistblog/category/art.html">Art</a></li>
-                                                <li><a href="/gistblog/category/tech.html">Tech</a></li>
+                                                <li class="active"><a href="/gistblog/category/tech.html">Tech</a></li>
                         </ul></nav>
                         <div id="search-dropdown" class="search-dropdown">
                                 <div class="search-dropdown-input-wrap">
@@ -41,13 +42,30 @@
                                 </div>
                         </div>
                 </header><!-- /#banner -->
+  <section id="content" class="body">
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/gistblog/posts/2026/05/managing-homebrew-upgrades-the-selective-lazy-method/" rel="bookmark"
+             title="Permalink to Managing Homebrew upgrades: The selective lazy method">Managing Homebrew upgrades: The selective lazy method</a></h1>
+      </header>
 
-                <aside id="featured" class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="/gistblog/posts/2026/05/managing-homebrew-upgrades-the-selective-lazy-method/">Managing Homebrew upgrades: The selective lazy method</a></h1>
-<footer class="post-info minimal">
-        <span class="post-date">2026-05-07</span>
-<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/macos.html">macos</a>, <a href="/gistblog/tag/homebrew.html">homebrew</a>, <a href="/gistblog/tag/productivity.html">productivity</a></span></footer><div class="section" id="the-problem">
+      <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2026-05-07T09:46:00+00:00">
+                Published: Thu 07 May 2026
+        </abbr>
+                <br />
+                <abbr class="modified" title="2026-05-07T07:50:28.631857+00:00">
+                        Updated: Thu 07 May 2026
+                </abbr>
+
+                <address class="vcard author">
+                        By                                 <a class="url fn" href="/gistblog/author/artur-barseghyan.html">Artur Barseghyan</a>
+                </address>
+        <p>In <a href="/gistblog/category/tech.html">Tech</a>.</p>
+<p>tags: <a href="/gistblog/tag/macos.html">macos</a> <a href="/gistblog/tag/homebrew.html">homebrew</a> <a href="/gistblog/tag/productivity.html">productivity</a> </p>        
+</footer><!-- /.post-info -->        <div class="section" id="the-problem">
 <h2>The problem</h2>
 <p>Automating package updates is the dream for any developer who values their time. However, the &quot;bleeding edge&quot; can sometimes cut you. Recently, my preferred terminal, <strong>Tabby</strong>, broke following a series of macOS updates.</p>
 <p>When a core tool in your workflow fails after an unattended upgrade, it halts productivity. While Homebrew allows you to &quot;pin&quot; standard formulae to prevent them from updating, there is currently no native &quot;pin&quot; or &quot;hold&quot; feature for Homebrew Casks. This means a blanket upgrade command will always try to pull the latest (and potentially broken) version of your GUI applications.</p>
@@ -82,28 +100,11 @@ brew<span class="w"> </span>pin<span class="w"> </span>&lt;package_name&gt;
 <h2>The perfect solution that does not yet exist</h2>
 <p>If only the Homebrew maintainers would implement a native <tt class="docutils literal">brew cask pin</tt> command. Having a unified way to freeze versions for both command-line tools and applications would eliminate the need for complex bash one-liners and custom grep filters.</p>
 </div>
-<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/02ac4c3c2b2bd1dd0d896f9c8e13b9bd" target="_blank" rel="noopener">GitHub Gist #02ac4c3c2b2bd1dd0d896f9c8e13b9bd</a></p>                    </article>
-                </aside><!-- /#featured -->
-                    <section id="content" class="body">
-                        <h1>Other articles</h1>
-                        <hr />
-                        <ol id="posts-list" class="hfeed">
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/02ac4c3c2b2bd1dd0d896f9c8e13b9bd" target="_blank" rel="noopener">GitHub Gist #02ac4c3c2b2bd1dd0d896f9c8e13b9bd</a></p>
+      </div><!-- /.entry-content -->
 
-                <li><article class="hentry">
-                    <header>
-                        <h1><a href="/gistblog/posts/2026/04/open-webui-setup-on-macos/" rel="bookmark"
-                               title="Permalink to open-webui setup on macOS">open-webui setup on macOS</a></h1>
-                    </header>
-
-                    <div class="entry-content">
-                        <p class="first last">Want to run Open WebUI as a seamless background service on your Mac? This guide walks you through setting it up with launchd, so it starts automatically every time you log in. Using uv for a clean install and a simple .plist configuration, you'll get persistent hosting, automatic crash recovery, and easy log management. No more manual terminal commands—just a reliable local AI interface ready whenever you need it.</p>
-<footer class="post-info minimal">
-        <span class="post-date">2026-04-03</span>
-<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/open-webui.html">open-webui</a>, <a href="/gistblog/tag/macos.html">macos</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/04/open-webui-setup-on-macos/">read more</a>
-                    </div><!-- /.entry-content -->
-                </article></li>
-                    </ol><!-- /#posts-list -->
-                    </section><!-- /#content -->
+    </article>
+  </section>
                 <section id="extras" class="body">
                                 <div class="social">
                                         <h2>social</h2>
