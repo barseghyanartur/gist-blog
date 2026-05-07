@@ -50,6 +50,20 @@
     "content": ":target: https://github.com/barseghyanartur/safezip :alt: Safezip I wrote a small, zero-dependency wrapper for secure ZIP extraction. https://github.com/barseghyanartur/safezip What My Project Does safezip is a zero-dependency wrapper around Python’s zipfile module that makes secure ZIP extraction the default. It protects against: ZipSlip protection: Blocks relative paths, absolute paths, Windows UNC paths, Unicode lookalike attacks, and null bytes in filenames. ZIP bomb prevention: Enforces per-member and cumulative decompression ratio limits at stream time — not based on untrusted header values. ZIP64 consistency checks: Crafted archives with inconsistent ZIP64 extra fields are rejected before decompression begins. Symlink policy — configurable: REJECT (default), IGNORE, or RESOLVE_INTERNAL. Atomic writes: Extracts to a temp file first and only moves it to the destination if all checks pass. If something fails, you don’t end up with half-extracted junk on your disk. Environment varia..."
   },
   {
+    "title": "PyGrunn 2026 talk: Agentic Engineering",
+    "url": "posts/2026/05/pygrunn-2026-talk-agentic-engineering/",
+    "date": "2026-05-08",
+    "category": "Tech",
+    "tags": [
+      "python",
+      "agentic-engineering",
+      "pygrunn",
+      "pygrunn-2026"
+    ],
+    "summary": "My talk at PyGrunn 2026 about Agentic Engineering.",
+    "content": "Link to the slides will be posted here..."
+  },
+  {
     "title": "bat is cat with extras",
     "url": "posts/2026/04/bat-is-cat-with-extras/",
     "date": "2026-04-21",
