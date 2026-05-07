@@ -56,7 +56,7 @@
                 Published: Sun 03 May 2026
         </abbr>
                 <br />
-                <abbr class="modified" title="2026-05-07T09:29:52.292154+00:00">
+                <abbr class="modified" title="2026-05-07T11:45:34.947901+00:00">
                         Updated: Thu 07 May 2026
                 </abbr>
 
@@ -84,6 +84,12 @@ This tells your tools to ignore any package released in the last week.</p>
 <span class="c1"># pip: Ignore any package versions uploaded in the last 7 days</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">PIP_UPLOADED_PRIOR_TO</span><span class="o">=</span>P7D
 </pre></div>
+<p>For per-project constains, update <cite>pyproject.toml</cite> in the following way:</p>
+<div class="highlight"><pre><span></span><span class="k">[tool.uv]</span>
+<span class="n">exclude-newer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1 week&quot;</span>
+<span class="n">exclude-newer-package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;safezip&quot;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;0 days&quot;</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+<p>In the example below, the <cite>safezip</cite> package is excluded from overal project exclude-newer containts of <cite>1 week</cite>.</p>
 </div>
 <div class="section" id="why-this-improves-security">
 <h2>Why this improves security</h2>
