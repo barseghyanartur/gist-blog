@@ -76,7 +76,7 @@
       "pygrunn-2026"
     ],
     "summary": "My talk at PyGrunn 2026 about Agentic Engineering.",
-    "content": "Link to the slides will be posted here... Click here to download the slides in PDF format: agentic-engineering-pygrunn-2026.pdf <https://raw.githubusercontent.com/barseghyanartur/gist-blog-images/main/images/agentic-engineering-pygrunn-2026.pdf>_ https://barseghyanartur.github.io/agentic-engineering-talk/ <embed src=\"https://raw.githubusercontent.com/barseghyanartur/gist-blog-images/main/images/agentic-engineering-pygrunn-2026.pdf\" type=\"application/pdf\" width=\"100%\" height=\"600px\" /> :alt: PyGrunn 2026"
+    "content": "Link to the slides will be posted here... Slides in HTML format: https://barseghyanartur.github.io/agentic-engineering-talk/ Slides in PDF-like HTML format: https://barseghyanartur.github.io/agentic-engineering-talk/?print-pdf Slides in PDF format: agentic-engineering-pygrunn-2026.pdf <https://raw.githubusercontent.com/barseghyanartur/gist-blog-images/main/images/agentic-engineering-pygrunn-2026.pdf>_ :alt: PyGrunn 2026"
   },
   {
     "title": "bat is cat with extras",
