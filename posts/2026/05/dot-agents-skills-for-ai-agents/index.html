@@ -14,7 +14,7 @@
                         <title>dot-agents: Skills for AI Agents</title>
                         <link rel="stylesheet" href="/gistblog/theme/css/main.css" />
                                 <link href="/gistblog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dev Notes Atom Feed" />
-    <meta name="description" content="A collection of structured SKILL.md files that tell AI agents exactly how to govern repos, validate docs, and manage Python projects — no guessing..." />
+    <meta name="description" content="A collection of SKILL.md files that tell AI agents how to manage repos, validate docs, and handle Python projects." />
         </head>
 
         <body id="index" class="home">
@@ -56,7 +56,7 @@
                 Published: Fri 08 May 2026
         </abbr>
                 <br />
-                <abbr class="modified" title="2026-05-08T21:30:19.341736+00:00">
+                <abbr class="modified" title="2026-05-08T21:41:19.325296+00:00">
                         Updated: Fri 08 May 2026
                 </abbr>
 
@@ -65,17 +65,16 @@
                 </address>
         <p>In <a href="/gistblog/category/tech.html">Tech</a>.</p>
 <p>tags: <a href="/gistblog/tag/python.html">python</a> <a href="/gistblog/tag/ai.html">ai</a> <a href="/gistblog/tag/agents.html">agents</a> <a href="/gistblog/tag/tooling.html">tooling</a> <a href="/gistblog/tag/open-source.html">open-source</a> </p>        
-</footer><!-- /.post-info -->        <p>AI agents are only as good as the instructions they are given. <tt class="docutils literal"><span class="pre">dot-agents</span></tt>
-is a public repository containing a set of <tt class="docutils literal">SKILL.md</tt> files — structured,
-authoritative procedures that agents like Claude Code or Amazon Q Developer
-can follow to do real work on a codebase.</p>
-<p>Each skill has one job and does it well.</p>
+</footer><!-- /.post-info -->        <p>AI agents do what you tell them. <tt class="docutils literal"><span class="pre">dot-agents</span></tt> is a public repository of
+<tt class="docutils literal">SKILL.md</tt> files — plain-language procedures that agents like Claude Code or
+Amazon Q Developer can follow to do real work on a codebase.</p>
+<p>Each skill has one job.</p>
 <div class="section" id="what-is-a-skill-md">
 <h2>What is a SKILL.md?</h2>
-<p>A <tt class="docutils literal">SKILL.md</tt> file is a Markdown document with a small YAML header. It defines
-a policy or procedure in plain, unambiguous language: what the agent MUST do,
-what it MUST NOT do, and how to verify it is done correctly. No vague
-suggestions — just enforceable rules.</p>
+<p>A <tt class="docutils literal">SKILL.md</tt> file is a Markdown document with a small YAML header. It
+defines a procedure in clear language: what the agent must do, what it must
+not do, and how to check the result. No vague suggestions — just concrete
+rules.</p>
 <p>Skills are invoked by name:</p>
 <pre class="literal-block">
 &#64;skill migrate-to-uv
@@ -84,28 +83,28 @@ suggestions — just enforceable rules.</p>
 </div>
 <div class="section" id="what-skills-are-included">
 <h2>What skills are included?</h2>
-<p>The repository currently ships six skills across three areas:</p>
+<p>The repository ships six skills across three areas:</p>
 <p><strong>Repository governance</strong></p>
 <ul class="simple">
 <li><tt class="docutils literal"><span class="pre">repo-bootstrap</span></tt> — creates <tt class="docutils literal">AGENTS.md</tt> and the initial skill structure
-in a fresh repository.</li>
-<li><tt class="docutils literal"><span class="pre">skill-authoring</span></tt> — rules for writing new skills that do not contradict
+in a new repository.</li>
+<li><tt class="docutils literal"><span class="pre">skill-authoring</span></tt> — rules for writing new skills that don't conflict with
 existing ones.</li>
 </ul>
 <p><strong>Development workflow</strong></p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">update-documentation</span></tt> — detects and fixes mismatches between code and
-docs, treating code as the source of truth.</li>
-<li><tt class="docutils literal"><span class="pre">doc-codeblock-tests</span></tt> — validates Python code blocks in Markdown files by
-running them through <tt class="docutils literal"><span class="pre">pytest-codeblock</span></tt>. If a user can copy it, it must run.</li>
+<li><tt class="docutils literal"><span class="pre">update-documentation</span></tt> — finds and fixes mismatches between code and docs,
+treating code as the source of truth.</li>
+<li><tt class="docutils literal"><span class="pre">doc-codeblock-tests</span></tt> — runs Python code blocks in Markdown files through
+<tt class="docutils literal"><span class="pre">pytest-codeblock</span></tt>. If it's copyable, it must work.</li>
 </ul>
 <p><strong>Python project management</strong></p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">migrate-to-uv</span></tt> — full migration from <tt class="docutils literal">pip</tt>, <tt class="docutils literal">setup.py</tt>, or
-<tt class="docutils literal">requirements</tt> files to a <tt class="docutils literal">uv</tt>-managed <tt class="docutils literal">pyproject.toml</tt> workflow,
-including Makefile and pre-commit templates.</li>
+<li><tt class="docutils literal"><span class="pre">migrate-to-uv</span></tt> — migrates from <tt class="docutils literal">pip</tt>, <tt class="docutils literal">setup.py</tt>, or
+<tt class="docutils literal">requirements</tt> files to a <tt class="docutils literal">uv</tt>-managed <tt class="docutils literal">pyproject.toml</tt>, including
+Makefile and pre-commit templates.</li>
 <li><tt class="docutils literal"><span class="pre">migrate-from-mypy-to-ty</span></tt> — replaces <tt class="docutils literal">mypy</tt> with Astral's <tt class="docutils literal">ty</tt> across
-all project surfaces: dependencies, config, CI, pre-commit hooks, and docs.</li>
+dependencies, config, CI, pre-commit hooks, and docs.</li>
 </ul>
 </div>
 <div class="section" id="the-authority-hierarchy">
@@ -114,17 +113,16 @@ all project surfaces: dependencies, config, CI, pre-commit hooks, and docs.</li>
 <pre class="literal-block">
 AGENTS.md  →  existing SKILL.md files  →  new skills
 </pre>
-<p>A new skill MUST NOT contradict what is above it. This keeps agent behaviour
-consistent across a codebase even as the skill set grows.</p>
+<p>A new skill must not contradict what is above it. This keeps agent behaviour
+consistent as the skill set grows.</p>
 </div>
 <div class="section" id="why-i-built-it">
 <h2>Why I built it</h2>
-<p>Every project I maintain accumulates the same governance needs: keep docs in
-sync, enforce test coverage of code examples, migrate tooling as the ecosystem
-moves. Writing the same instructions in each repo's <tt class="docutils literal">AGENTS.md</tt> is
-copy-paste maintenance waiting to rot.</p>
-<p><tt class="docutils literal"><span class="pre">dot-agents</span></tt> centralises those instructions into reusable, versioned skills
-that any agent — and any developer — can read and trust.</p>
+<p>Every project I maintain has the same recurring needs: keep docs in sync,
+test code examples, migrate tooling. Writing the same instructions in each
+repo's <tt class="docutils literal">AGENTS.md</tt> is copy-paste work that eventually gets out of date.</p>
+<p><tt class="docutils literal"><span class="pre">dot-agents</span></tt> puts those instructions in one place — versioned, reusable, and
+readable by both agents and humans.</p>
 <p>The repository is at
 <a class="reference external" href="https://github.com/barseghyanartur/dot-agents">github.com/barseghyanartur/dot-agents</a>.
 MIT licensed.</p>
