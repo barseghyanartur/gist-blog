@@ -25,6 +25,21 @@
     "content": "The problem In the last two months, the Python community has seen serious supply chain attacks. In March, LiteLLM was compromised to steal credentials. Last week, PyTorch Lightning suffered a similar attack where malicious versions tried to steal cloud secrets and SSH keys. In both cases, the bad code was found and removed quickly. However, anyone who updated their packages during those few hours was at risk. The (imperfect) solution To protect yourself, add these lines to your ~/.bashrc or ~/.zshrc file. This tells your tools to ignore any package released in the last week. # uv: Ignore any package versions released in the last 7 days export UV_EXCLUDE_NEWER=\"7 days\" # pip: Ignore any package versions uploaded in the last 7 days export PIP_UPLOADED_PRIOR_TO=P7D For per-project constains, update pyproject.toml in the following way: [tool.uv] exclude-newer = \"1 week\" exclude-newer-package = { \"safezip\" = \"0 days\" } In the example below, the safezip package is excluded from overal projec..."
   },
   {
+    "title": "dot-agents: Skills for AI Agents",
+    "url": "posts/2026/05/dot-agents-skills-for-ai-agents/",
+    "date": "2026-05-08",
+    "category": "Tech",
+    "tags": [
+      "python",
+      "ai",
+      "agents",
+      "tooling",
+      "open-source"
+    ],
+    "summary": "A collection of structured SKILL.md files that tell AI agents exactly how to govern repos, validate docs, and manage Python projects — no guessing required.",
+    "content": "AI agents are only as good as the instructions they are given. dot-agents is a public repository containing a set of SKILL.md files — structured, authoritative procedures that agents like Claude Code or Amazon Q Developer can follow to do real work on a codebase. Each skill has one job and does it well. What is a SKILL.md? A SKILL.md file is a Markdown document with a small YAML header. It defines a policy or procedure in plain, unambiguous language: what the agent MUST do, what it MUST NOT do, and how to verify it is done correctly. No vague suggestions — just enforceable rules. Skills are invoked by name:: @skill migrate-to-uv /migrate-to-uv What skills are included? The repository currently ships six skills across three areas: Repository governance repo-bootstrap — creates AGENTS.md and the initial skill structure in a fresh repository. skill-authoring — rules for writing new skills that do not contradict existing ones. Development workflow update-documentation — detects and fixes m..."
+  },
+  {
     "title": "A small selection of photographs I took before 2012",
     "url": "posts/2026/04/a-small-selection-of-photographs-i-took-before-2012/",
     "date": "2026-04-14",

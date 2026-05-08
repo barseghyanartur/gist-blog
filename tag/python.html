@@ -44,21 +44,93 @@
 
                 <aside id="featured" class="body">
                     <article>
-                        <h1 class="entry-title"><a href="/gistblog/posts/2026/05/pygrunn-2026-talk-agentic-engineering/">PyGrunn 2026 talk: Agentic Engineering</a></h1>
+                        <h1 class="entry-title"><a href="/gistblog/posts/2026/05/dot-agents-skills-for-ai-agents/">dot-agents: Skills for AI Agents</a></h1>
 <footer class="post-info minimal">
         <span class="post-date">2026-05-08</span>
-<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/agentic-engineering.html">agentic-engineering</a>, <a href="/gistblog/tag/pygrunn.html">pygrunn</a>, <a href="/gistblog/tag/pygrunn-2026.html">pygrunn-2026</a></span></footer><div class="section" id="link-to-the-slides-will-be-posted-here">
-<h2>Link to the slides will be posted here...</h2>
-<div class="figure">
-<img alt="PyGrunn 2026" src="https://pygrunn.org/wp-content/uploads/2026/03/pygrunn-26-header.png" />
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/ai.html">ai</a>, <a href="/gistblog/tag/agents.html">agents</a>, <a href="/gistblog/tag/tooling.html">tooling</a>, <a href="/gistblog/tag/open-source.html">open-source</a></span></footer><p>AI agents are only as good as the instructions they are given. <tt class="docutils literal"><span class="pre">dot-agents</span></tt>
+is a public repository containing a set of <tt class="docutils literal">SKILL.md</tt> files — structured,
+authoritative procedures that agents like Claude Code or Amazon Q Developer
+can follow to do real work on a codebase.</p>
+<p>Each skill has one job and does it well.</p>
+<div class="section" id="what-is-a-skill-md">
+<h2>What is a SKILL.md?</h2>
+<p>A <tt class="docutils literal">SKILL.md</tt> file is a Markdown document with a small YAML header. It defines
+a policy or procedure in plain, unambiguous language: what the agent MUST do,
+what it MUST NOT do, and how to verify it is done correctly. No vague
+suggestions — just enforceable rules.</p>
+<p>Skills are invoked by name:</p>
+<pre class="literal-block">
+&#64;skill migrate-to-uv
+/migrate-to-uv
+</pre>
 </div>
+<div class="section" id="what-skills-are-included">
+<h2>What skills are included?</h2>
+<p>The repository currently ships six skills across three areas:</p>
+<p><strong>Repository governance</strong></p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">repo-bootstrap</span></tt> — creates <tt class="docutils literal">AGENTS.md</tt> and the initial skill structure
+in a fresh repository.</li>
+<li><tt class="docutils literal"><span class="pre">skill-authoring</span></tt> — rules for writing new skills that do not contradict
+existing ones.</li>
+</ul>
+<p><strong>Development workflow</strong></p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">update-documentation</span></tt> — detects and fixes mismatches between code and
+docs, treating code as the source of truth.</li>
+<li><tt class="docutils literal"><span class="pre">doc-codeblock-tests</span></tt> — validates Python code blocks in Markdown files by
+running them through <tt class="docutils literal"><span class="pre">pytest-codeblock</span></tt>. If a user can copy it, it must run.</li>
+</ul>
+<p><strong>Python project management</strong></p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">migrate-to-uv</span></tt> — full migration from <tt class="docutils literal">pip</tt>, <tt class="docutils literal">setup.py</tt>, or
+<tt class="docutils literal">requirements</tt> files to a <tt class="docutils literal">uv</tt>-managed <tt class="docutils literal">pyproject.toml</tt> workflow,
+including Makefile and pre-commit templates.</li>
+<li><tt class="docutils literal"><span class="pre">migrate-from-mypy-to-ty</span></tt> — replaces <tt class="docutils literal">mypy</tt> with Astral's <tt class="docutils literal">ty</tt> across
+all project surfaces: dependencies, config, CI, pre-commit hooks, and docs.</li>
+</ul>
 </div>
-<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/17f574a665810fe438f06a445149bb11" target="_blank" rel="noopener">GitHub Gist #17f574a665810fe438f06a445149bb11</a></p>                    </article>
+<div class="section" id="the-authority-hierarchy">
+<h2>The authority hierarchy</h2>
+<p>Skills are not all equal. Authority flows top-down:</p>
+<pre class="literal-block">
+AGENTS.md  →  existing SKILL.md files  →  new skills
+</pre>
+<p>A new skill MUST NOT contradict what is above it. This keeps agent behaviour
+consistent across a codebase even as the skill set grows.</p>
+</div>
+<div class="section" id="why-i-built-it">
+<h2>Why I built it</h2>
+<p>Every project I maintain accumulates the same governance needs: keep docs in
+sync, enforce test coverage of code examples, migrate tooling as the ecosystem
+moves. Writing the same instructions in each repo's <tt class="docutils literal">AGENTS.md</tt> is
+copy-paste maintenance waiting to rot.</p>
+<p><tt class="docutils literal"><span class="pre">dot-agents</span></tt> centralises those instructions into reusable, versioned skills
+that any agent — and any developer — can read and trust.</p>
+<p>The repository is at
+<a class="reference external" href="https://github.com/barseghyanartur/dot-agents">github.com/barseghyanartur/dot-agents</a>.
+MIT licensed.</p>
+</div>
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/05fb8bd50969dde04c45794ede03ea05" target="_blank" rel="noopener">GitHub Gist #05fb8bd50969dde04c45794ede03ea05</a></p>                    </article>
                 </aside><!-- /#featured -->
                     <section id="content" class="body">
                         <h1>Other articles</h1>
                         <hr />
                         <ol id="posts-list" class="hfeed">
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/gistblog/posts/2026/05/pygrunn-2026-talk-agentic-engineering/" rel="bookmark"
+                               title="Permalink to PyGrunn 2026 talk: Agentic Engineering">PyGrunn 2026 talk: Agentic Engineering</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+                        <img src="https://pygrunn.org/wp-content/uploads/2026/03/pygrunn-26-header.png" alt="Preview" class="preview-image" style="max-width:100%; height:auto; border-radius:8px; margin-bottom:1.5rem; display:block;"><p class="first last">My talk at PyGrunn 2026 about Agentic Engineering.</p>
+<footer class="post-info minimal">
+        <span class="post-date">2026-05-08</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/agentic-engineering.html">agentic-engineering</a>, <a href="/gistblog/tag/pygrunn.html">pygrunn</a>, <a href="/gistblog/tag/pygrunn-2026.html">pygrunn-2026</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/05/pygrunn-2026-talk-agentic-engineering/">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
 
                 <li><article class="hentry">
                     <header>
