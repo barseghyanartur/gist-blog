@@ -30,21 +30,17 @@
         {% include 'article_infos.html' %}
         {{ article.content }}
       </div><!-- /.entry-content -->
-      {% if DISQUS_SITENAME and SITEURL and article.status != "draft" %}
+      {% if article.status != "draft" %}
         <div class="comments">
-          <h2>Comments !</h2>
-          <div id="disqus_thread"></div>
-          <script type="text/javascript">
-            var disqus_shortname = '{{ DISQUS_SITENAME }}';
-            var disqus_identifier = '{{ article.url }}';
-            var disqus_url = '{{ SITEURL }}/{{ article.url }}';
-            (function() {
-              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-              dsq.src = '//{{ DISQUS_SITENAME }}.disqus.com/embed.js';
-              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-            })();
-          </script>
-          <noscript>Please enable JavaScript to view the comments.</noscript>
+          <h2>Comments</h2>
+          <div id="cusdis_thread"
+            data-host="https://cusdis.com"
+            data-app-id="a4b8dce4-dafd-4806-8dd6-5183f084f8dc"
+            data-page-id="{{ article.slug }}"
+            data-page-url="{{ SITEURL }}/{{ article.url }}"
+            data-page-title="{{ article.title|striptags }}"
+          ></div>
+          <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
         </div>
       {% endif %}
 
