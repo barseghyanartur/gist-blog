@@ -439,13 +439,27 @@ li:first-child .hentry, #content > .hentry {border: 0; margin: 0;}
 #add-comment * {margin-bottom: .5em;}
 
 /* Cusdis comments */
-#cusdis_thread {
-    min-height: 600px;
+.comments {
+    border-top: 2px solid #EEEEEE;
     margin-top: 2em;
+    padding-top: 1em;
+}
+.comments h2 {
+    color: #888;
+    font-family: 'Trebuchet MS', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 0.857em;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+#cusdis_thread {
+    min-height: 370px;
+    margin-top: 1em;
 }
 #cusdis_thread iframe {
     width: 100%;
-    min-height: 600px;
+    min-height: 370px;
 }
 
 /* Custom minimal metadata for list views */
