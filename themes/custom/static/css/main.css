@@ -438,6 +438,16 @@ li:first-child .hentry, #content > .hentry {border: 0; margin: 0;}
 #add-comment input[type='submit'] {float: right; margin: 0 .5em;}
 #add-comment * {margin-bottom: .5em;}
 
+/* Cusdis comments */
+#cusdis_thread {
+    min-height: 600px;
+    margin-top: 2em;
+}
+#cusdis_thread iframe {
+    width: 100%;
+    min-height: 600px;
+}
+
 /* Custom minimal metadata for list views */
 .post-meta {
     font-size: 0.75rem;
