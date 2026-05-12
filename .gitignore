@@ -10,3 +10,4 @@ builddocs
 src/gistblog.egg-info
 builddocs.zip
 dist/
+.claude/
