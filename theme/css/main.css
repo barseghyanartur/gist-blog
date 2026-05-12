@@ -438,6 +438,30 @@ li:first-child .hentry, #content > .hentry {border: 0; margin: 0;}
 #add-comment input[type='submit'] {float: right; margin: 0 .5em;}
 #add-comment * {margin-bottom: .5em;}
 
+/* Cusdis comments */
+.comments {
+    border-top: 2px solid #EEEEEE;
+    margin-top: 2em;
+    padding-top: 1em;
+}
+.comments h2 {
+    color: #888;
+    font-family: 'Trebuchet MS', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 0.857em;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+#cusdis_thread {
+    min-height: 370px;
+    margin-top: 1em;
+}
+#cusdis_thread iframe {
+    width: 100%;
+    min-height: 370px;
+}
+
 /* Custom minimal metadata for list views */
 .post-meta {
     font-size: 0.75rem;
