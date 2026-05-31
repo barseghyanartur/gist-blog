@@ -129,7 +129,7 @@
     "content": "VSCode Settings -> Text Editor -> Files -> Add Pattern: Add */.py,cover PyCharm Editor -> File Types -> Ignored Files and Folders : Add *.py,cover"
   },
   {
-    "title": "Grab YouTube Subtitles with yt-dlp",
+    "title": "Grab YouTube subtitles with `yt-dlp`",
     "url": "posts/2026/06/grab-youtube-subtitles-with-yt-dlp/",
     "date": "2026-06-01",
     "category": "Tech",
