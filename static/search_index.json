@@ -129,6 +129,20 @@
     "content": "VSCode Settings -> Text Editor -> Files -> Add Pattern: Add */.py,cover PyCharm Editor -> File Types -> Ignored Files and Folders : Add *.py,cover"
   },
   {
+    "title": "Grab YouTube Subtitles with yt-dlp",
+    "url": "posts/2026/06/grab-youtube-subtitles-with-yt-dlp/",
+    "date": "2026-06-01",
+    "category": "Tech",
+    "tags": [
+      "yt-dlp",
+      "youtube",
+      "subtitles",
+      "cli"
+    ],
+    "summary": "A one-liner to download auto-generated subtitles from YouTube as SRT files without touching the video.",
+    "content": "Sometimes you need subtitles — for a transcript, for translation, for feeding into some other tool — but you don't want the video itself. yt-dlp handles this cleanly. One command does it:: yt-dlp --write-auto-sub --convert-subs=srt --skip-download 'https://www.youtube.com/watch?v=uniqueVideoID' What each flag does: --write-auto-sub — fetch the auto-generated subtitle track (the one YouTube generates automatically, not the manually uploaded captions) --convert-subs=srt — convert whatever format YouTube spits out (usually VTT) into the widely-supported SRT format --skip-download — don't download the video, just the subtitles The result is a .srt file sitting next to where you ran the command, named after the video title. If the video has manually uploaded captions instead of auto-generated ones, swap --write-auto-sub for --write-sub. You can also pass --sub-lang en to pin a specific language when multiple tracks are available."
+  },
+  {
     "title": "VS Code for Pycharm users",
     "url": "posts/2026/01/vs-code-for-pycharm-users/",
     "date": "2026-01-12",

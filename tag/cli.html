@@ -4,10 +4,9 @@
                         <meta charset="utf-8" />
                         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                         <meta name="generator" content="Pelican" />
-                        <title>How to uninstall Progressive Web App installed with Vivaldi</title>
+                        <title>Dev Notes - cli</title>
                         <link rel="stylesheet" href="/gistblog/theme/css/main.css" />
                                 <link href="/gistblog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dev Notes Atom Feed" />
-    <meta name="description" content="How to uninstall Progressive Web App installed with Vivaldi" />
         </head>
 
         <body id="index" class="home">
@@ -17,7 +16,7 @@
                                                 <li><a href="/gistblog">Home</a></li>
                                                 <li id="nav-search"><a href="/gistblog/search.html" id="nav-search-link">Search</a></li>
                                                 <li><a href="/gistblog/category/art.html">Art</a></li>
-                                                <li class="active"><a href="/gistblog/category/tech.html">Tech</a></li>
+                                                <li><a href="/gistblog/category/tech.html">Tech</a></li>
                         </ul></nav>
                         <div id="search-dropdown" class="search-dropdown">
                                 <div class="search-dropdown-input-wrap">
@@ -31,50 +30,27 @@
                                 </div>
                         </div>
                 </header><!-- /#banner -->
-  <section id="content" class="body">
-    <article>
-      <header>
-        <h1 class="entry-title">
-          <a href="/gistblog/posts/2024/10/how-to-uninstall-progressive-web-app-installed-with-vivaldi/" rel="bookmark"
-             title="Permalink to How to uninstall Progressive Web App installed with Vivaldi">How to uninstall Progressive Web App installed with Vivaldi</a></h1>
-      </header>
 
-      <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2024-10-30T19:00:00+00:00">
-                Published: Wed 30 October 2024
-        </abbr>
-                <br />
-                <abbr class="modified" title="2026-05-31T23:13:21.811530+00:00">
-                        Updated: Sun 31 May 2026
-                </abbr>
-
-                <address class="vcard author">
-                        By                                 <a class="url fn" href="/gistblog/author/artur-barseghyan.html">Artur Barseghyan</a>
-                </address>
-        <p>In <a href="/gistblog/category/tech.html">Tech</a>.</p>
-<p>tags: <a href="/gistblog/tag/vivaldi.html">vivaldi</a> </p>        
-</footer><!-- /.post-info -->        <ol class="arabic simple">
-<li>Open the progresssive-web-app/shortcut.</li>
-<li>Navigate to the top-right menu, expand the menu and click on &quot;Uninstall {app-name}&quot;.</li>
-</ol>
-<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/b48103b4e8091150654373280e09ac90" target="_blank" rel="noopener">GitHub Gist #b48103b4e8091150654373280e09ac90</a></p>
-      </div><!-- /.entry-content -->
-        <div class="comments">
-          <h2>Comments</h2>
-          <div id="cusdis_thread"
-            data-host="https://cusdis.com"
-            data-app-id="a4b8dce4-dafd-4806-8dd6-5183f084f8dc"
-            data-page-id="how-to-uninstall-progressive-web-app-installed-with-vivaldi"
-            data-page-url="/gistblog/posts/2024/10/how-to-uninstall-progressive-web-app-installed-with-vivaldi/"
-            data-page-title="How to uninstall Progressive Web App installed with Vivaldi"
-          ></div>
-          <script src="/gistblog/theme/js/cusdis-style.js"></script>
-          <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
-        </div>
-
-    </article>
-  </section>
+                <aside id="featured" class="body">
+                    <article>
+                        <h1 class="entry-title"><a href="/gistblog/posts/2026/06/grab-youtube-subtitles-with-yt-dlp/">Grab YouTube Subtitles with yt-dlp</a></h1>
+<footer class="post-info minimal">
+        <span class="post-date">2026-06-01</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/yt-dlp.html">yt-dlp</a>, <a href="/gistblog/tag/youtube.html">youtube</a>, <a href="/gistblog/tag/subtitles.html">subtitles</a>, <a href="/gistblog/tag/cli.html">cli</a></span></footer><p>Sometimes you need subtitles — for a transcript, for translation, for feeding into some other tool — but you don't want the video itself. <tt class="docutils literal"><span class="pre">yt-dlp</span></tt> handles this cleanly.</p>
+<p>One command does it:</p>
+<pre class="literal-block">
+yt-dlp --write-auto-sub --convert-subs=srt --skip-download 'https://www.youtube.com/watch?v=uniqueVideoID'
+</pre>
+<p>What each flag does:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">--write-auto-sub</span></tt> — fetch the auto-generated subtitle track (the one YouTube generates automatically, not the manually uploaded captions)</li>
+<li><tt class="docutils literal"><span class="pre">--convert-subs=srt</span></tt> — convert whatever format YouTube spits out (usually VTT) into the widely-supported SRT format</li>
+<li><tt class="docutils literal"><span class="pre">--skip-download</span></tt> — don't download the video, just the subtitles</li>
+</ul>
+<p>The result is a <tt class="docutils literal">.srt</tt> file sitting next to where you ran the command, named after the video title.</p>
+<p>If the video has manually uploaded captions instead of auto-generated ones, swap <tt class="docutils literal"><span class="pre">--write-auto-sub</span></tt> for <tt class="docutils literal"><span class="pre">--write-sub</span></tt>. You can also pass <tt class="docutils literal"><span class="pre">--sub-lang</span> en</tt> to pin a specific language when multiple tracks are available.</p>
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/43ac4b08ecc729cda15f7d4487241efd" target="_blank" rel="noopener">GitHub Gist #43ac4b08ecc729cda15f7d4487241efd</a></p>                    </article>
+                </aside><!-- /#featured -->
                 <section id="extras" class="body">
                                 <div class="social">
                                         <h2>social</h2>
