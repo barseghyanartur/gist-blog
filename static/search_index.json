@@ -306,7 +306,7 @@
       "pydantic"
     ],
     "summary": "`httpx` is no longer actively maintained. Pydantic has picked up stewardship under the name `httpx2` — a drop-in continuation with the same API, same design, and a reliable team behind it.",
-    "content": "httpx <https://github.com/encode/httpx> is no longer actively maintained. httpx2 <https://github.com/pydantic/httpx2>, maintained by Pydantic Services, is its direct continuation — same API, same design philosophy, same everything. Only the package name changes. Migrating is a one-liner:: pip install httpx2 And a global find-and-replace in your codebase:: import httpx  →  import httpx2 That's the entire migration. No architectural changes, no new concepts to learn. Pydantic Services uses httpx2 in their own AI products, which gives the project a concrete reason to stay healthy and receive timely security updates — particularly important for a library that sits in the request path of so many production systems."
+    "content": "httpx <https://github.com/encode/httpx> is no longer actively maintained. httpx2 <https://github.com/pydantic/httpx2>, maintained by Pydantic, is its direct continuation — same API, same design philosophy, same everything. Only the package name changes. Migrating is a one-liner:: pip install httpx2 And a global find-and-replace in your codebase:: import httpx  →  import httpx2 That's the entire migration. No architectural changes, no new concepts to learn. Pydantic uses httpx2 in their own AI products, which gives the project a concrete reason to stay healthy and receive timely security updates — particularly important for a library that sits in the request path of so many production systems."
   },
   {
     "title": "Log4Brains images support",

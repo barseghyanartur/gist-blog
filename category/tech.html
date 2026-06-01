@@ -37,7 +37,7 @@
 <footer class="post-info minimal">
         <span class="post-date">2026-06-02</span>
 <span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/httpx.html">httpx</a>, <a href="/gistblog/tag/httpx2.html">httpx2</a>, <a href="/gistblog/tag/pydantic.html">pydantic</a></span></footer><p><a class="reference external" href="https://github.com/encode/httpx">httpx</a> is no longer actively maintained.
-<a class="reference external" href="https://github.com/pydantic/httpx2">httpx2</a>, maintained by Pydantic Services,
+<a class="reference external" href="https://github.com/pydantic/httpx2">httpx2</a>, maintained by Pydantic,
 is its direct continuation — same API, same design philosophy, same everything.
 Only the package name changes.</p>
 <p>Migrating is a one-liner:</p>
@@ -49,7 +49,7 @@ pip install httpx2
 import httpx  →  import httpx2
 </pre>
 <p>That's the entire migration. No architectural changes, no new concepts to learn.</p>
-<p>Pydantic Services uses httpx2 in their own AI products, which gives the
+<p>Pydantic uses <cite>httpx2</cite> in their own AI products, which gives the
 project a concrete reason to stay healthy and receive timely security updates —
 particularly important for a library that sits in the request path of so many
 production systems.</p>
