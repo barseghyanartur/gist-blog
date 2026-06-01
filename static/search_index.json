@@ -295,7 +295,7 @@
     "content": "#. Sort lines: Sort lines of text for VS Code #. PyCharm Theme: PyCharm Theme for VS Code #. MarkdownLint: Markdown/CommonMark linting and style checking for VS Code #. Makefile Tools: Enhancing Makefile development in VS Code #. Pylance: A performant, feature-rich language server for Python in VS Code #. Even better TOML: A TOML language support for VS Code #. reStructuredText Syntax highlighting: Syntax highlighting and non-intrusive section navigation for reStructuredText."
   },
   {
-    "title": "httpx2: Pydantic Takes Over Stewardship of `httpx`",
+    "title": "httpx2: Pydantic takes over stewardship of `httpx`",
     "url": "posts/2026/06/httpx2-pydantic-takes-over-stewardship-of-httpx/",
     "date": "2026-06-02",
     "category": "Tech",
