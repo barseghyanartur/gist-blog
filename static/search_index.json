@@ -220,8 +220,8 @@
     "content": "Hey, ever tried cleaning up messy license strings — like CC BY-NC-ND 4.0 or MIT License — and getting them into something tidy and machine-readable? That's exactly what licence-normaliser does, and honestly, it's a lifesaver for anyone dealing with open-source compliance or metadata. :align: center :alt: licence-normaliser :width: 100% Check out the repo here: licence-normaliser <https://github.com/barseghyanartur/licence-normaliser>. It's a lightweight Python library that turns chaos into order using a neat three-level system: family → licence → version. Think cc → cc-by-nc-nd → cc-by-nc-nd-4.0. Here's a quick demo — imagine you're scraping papers or repos and licenses come in every flavor: from licence_normaliser import normalise_licence result = normalise_licence(\"CC BY-NC-ND 4.0\") print(result.key)           # → cc-by-nc-nd-4.0 print(result.licence)       # → cc-by-nc-nd print(result.licence.family)  # → cc Super clean, right? It handles SPDX codes (Apache-2.0), full URLs, even slo..."
   },
   {
-    "title": "ProperDocs: Maintained alternatives of MkDocs",
-    "url": "posts/2026/06/properdocs-maintained-alternatives-of-mkdocs/",
+    "title": "Maintained alternatives of MkDocs: ProperDocs and Zensical",
+    "url": "posts/2026/06/maintained-alternatives-of-mkdocs-properdocs-and-zensical/",
     "date": "2026-06-02",
     "category": "Tech",
     "tags": [
