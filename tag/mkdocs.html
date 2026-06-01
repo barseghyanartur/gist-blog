@@ -4,7 +4,7 @@
                         <meta charset="utf-8" />
                         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                         <meta name="generator" content="Pelican" />
-                        <title>Dev Notes - Authors</title>
+                        <title>Dev Notes - mkdocs</title>
                         <link rel="stylesheet" href="/gistblog/theme/css/main.css" />
                                 <link href="/gistblog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dev Notes Atom Feed" />
         </head>
@@ -31,13 +31,29 @@
                         </div>
                 </header><!-- /#banner -->
 
-    <section id="content" class="body">
-        <h1>Authors on Dev Notes</h1>
-        <ul>
-                <li><a href="/gistblog/author/artur-barseghyan.html">Artur Barseghyan</a> (25)</li>
-        </ul>
-    </section>
-
+                <aside id="featured" class="body">
+                    <article>
+                        <h1 class="entry-title"><a href="/gistblog/posts/2026/06/properdocs-maintained-alternatives-of-mkdocs/">ProperDocs: Maintained alternatives of MkDocs</a></h1>
+<footer class="post-info minimal">
+        <span class="post-date">2026-06-02</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/documentation.html">documentation</a>, <a href="/gistblog/tag/mkdocs.html">mkdocs</a>, <a href="/gistblog/tag/static-site-generator.html">static-site-generator</a></span></footer><p>MkDocs is no longer actively maintained. Two successors have emerged from the
+community: <a class="reference external" href="https://github.com/zensical/zensical">Zensical</a>, a full rewrite
+with its own architecture and philosophy, and
+<a class="reference external" href="https://github.com/ProperDocs/properdocs">ProperDocs</a>, a conservative fork
+that picks up exactly where MkDocs left off.</p>
+<p>If Zensical's migration cost isn't worth it yet, ProperDocs is the answer.
+Your <tt class="docutils literal">mkdocs.yml</tt>, plugins, and themes all work without modification.
+Switching is a two-step drop-in:</p>
+<pre class="literal-block">
+pip uninstall mkdocs
+pip install properdocs
+</pre>
+<p>Then replace <tt class="docutils literal">mkdocs build</tt> / <tt class="docutils literal">mkdocs serve</tt> with <tt class="docutils literal">properdocs build</tt> /
+<tt class="docutils literal">properdocs serve</tt>. Done.</p>
+<p>ProperDocs stays focused on bug fixes, dependency maintenance, and backward
+compatibility — no surprises, no breaking changes.</p>
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/9db6c291cbe3c5980bdc5afcbae218a4" target="_blank" rel="noopener">GitHub Gist #9db6c291cbe3c5980bdc5afcbae218a4</a></p>                    </article>
+                </aside><!-- /#featured -->
                 <section id="extras" class="body">
                                 <div class="social">
                                         <h2>social</h2>

@@ -4,7 +4,7 @@
                         <meta charset="utf-8" />
                         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                         <meta name="generator" content="Pelican" />
-                        <title>Dev Notes - Authors</title>
+                        <title>Dev Notes - httpx2</title>
                         <link rel="stylesheet" href="/gistblog/theme/css/main.css" />
                                 <link href="/gistblog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dev Notes Atom Feed" />
         </head>
@@ -31,13 +31,30 @@
                         </div>
                 </header><!-- /#banner -->
 
-    <section id="content" class="body">
-        <h1>Authors on Dev Notes</h1>
-        <ul>
-                <li><a href="/gistblog/author/artur-barseghyan.html">Artur Barseghyan</a> (25)</li>
-        </ul>
-    </section>
-
+                <aside id="featured" class="body">
+                    <article>
+                        <h1 class="entry-title"><a href="/gistblog/posts/2026/06/httpx2-pydantic-takes-over-stewardship-of-httpx/">httpx2: Pydantic Takes Over Stewardship of <cite>httpx</cite></a></h1>
+<footer class="post-info minimal">
+        <span class="post-date">2026-06-02</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/httpx.html">httpx</a>, <a href="/gistblog/tag/httpx2.html">httpx2</a>, <a href="/gistblog/tag/pydantic.html">pydantic</a></span></footer><p><a class="reference external" href="https://github.com/encode/httpx">httpx</a> is no longer actively maintained.
+<a class="reference external" href="https://github.com/pydantic/httpx2">httpx2</a>, maintained by Pydantic Services,
+is its direct continuation — same API, same design philosophy, same everything.
+Only the package name changes.</p>
+<p>Migrating is a one-liner:</p>
+<pre class="literal-block">
+pip install httpx2
+</pre>
+<p>And a global find-and-replace in your codebase:</p>
+<pre class="literal-block">
+import httpx  →  import httpx2
+</pre>
+<p>That's the entire migration. No architectural changes, no new concepts to learn.</p>
+<p>Pydantic Services uses httpx2 in their own AI products, which gives the
+project a concrete reason to stay healthy and receive timely security updates —
+particularly important for a library that sits in the request path of so many
+production systems.</p>
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/d02b6384b401b7d0f3a421075abfbf6f" target="_blank" rel="noopener">GitHub Gist #d02b6384b401b7d0f3a421075abfbf6f</a></p>                    </article>
+                </aside><!-- /#featured -->
                 <section id="extras" class="body">
                                 <div class="social">
                                         <h2>social</h2>

@@ -33,77 +33,60 @@
 
                 <aside id="featured" class="body">
                     <article>
-                        <h1 class="entry-title"><a href="/gistblog/posts/2026/05/dot-agents-skills-for-ai-agents/">dot-agents: Skills for AI Agents</a></h1>
+                        <h1 class="entry-title"><a href="/gistblog/posts/2026/06/httpx2-pydantic-takes-over-stewardship-of-httpx/">httpx2: Pydantic Takes Over Stewardship of <cite>httpx</cite></a></h1>
 <footer class="post-info minimal">
-        <span class="post-date">2026-05-08</span>
-<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/ai.html">ai</a>, <a href="/gistblog/tag/agents.html">agents</a>, <a href="/gistblog/tag/tooling.html">tooling</a>, <a href="/gistblog/tag/open-source.html">open-source</a></span></footer><p>AI agents do what you tell them. <tt class="docutils literal"><span class="pre">dot-agents</span></tt> is a public repository of
-<tt class="docutils literal">SKILL.md</tt> files — plain-language procedures that agents like Claude Code or
-OpenCode can follow to do real work on a codebase.</p>
-<p>Each skill has one job.</p>
-<div class="section" id="what-is-a-skill-md">
-<h2>What is a SKILL.md?</h2>
-<p>A <tt class="docutils literal">SKILL.md</tt> file is a Markdown document with a small YAML header. It
-defines a procedure in clear language: what the agent must do, what it must
-not do, and how to check the result. No vague suggestions — just concrete
-rules.</p>
-<p>Skills are invoked by name:</p>
+        <span class="post-date">2026-06-02</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/httpx.html">httpx</a>, <a href="/gistblog/tag/httpx2.html">httpx2</a>, <a href="/gistblog/tag/pydantic.html">pydantic</a></span></footer><p><a class="reference external" href="https://github.com/encode/httpx">httpx</a> is no longer actively maintained.
+<a class="reference external" href="https://github.com/pydantic/httpx2">httpx2</a>, maintained by Pydantic Services,
+is its direct continuation — same API, same design philosophy, same everything.
+Only the package name changes.</p>
+<p>Migrating is a one-liner:</p>
 <pre class="literal-block">
-&#64;skill migrate-to-uv
-/migrate-to-uv
+pip install httpx2
 </pre>
-</div>
-<div class="section" id="what-skills-are-included">
-<h2>What skills are included?</h2>
-<p>The repository ships six skills across three areas:</p>
-<p><strong>Repository governance</strong></p>
-<ul class="simple">
-<li><tt class="docutils literal"><span class="pre">repo-bootstrap</span></tt> — creates <tt class="docutils literal">AGENTS.md</tt> and the initial skill structure
-in a new repository.</li>
-<li><tt class="docutils literal"><span class="pre">skill-authoring</span></tt> — rules for writing new skills that don't conflict with
-existing ones.</li>
-</ul>
-<p><strong>Development workflow</strong></p>
-<ul class="simple">
-<li><tt class="docutils literal"><span class="pre">update-documentation</span></tt> — finds and fixes mismatches between code and docs,
-treating code as the source of truth.</li>
-<li><tt class="docutils literal"><span class="pre">doc-codeblock-tests</span></tt> — runs Python code blocks in Markdown files through
-<tt class="docutils literal"><span class="pre">pytest-codeblock</span></tt>. If it's copyable, it must work.</li>
-</ul>
-<p><strong>Python project management</strong></p>
-<ul class="simple">
-<li><tt class="docutils literal"><span class="pre">migrate-to-uv</span></tt> — migrates from <tt class="docutils literal">pip</tt>, <tt class="docutils literal">setup.py</tt>, or
-<tt class="docutils literal">requirements</tt> files to a <tt class="docutils literal">uv</tt>-managed <tt class="docutils literal">pyproject.toml</tt>, including
-Makefile and pre-commit templates.</li>
-<li><tt class="docutils literal"><span class="pre">migrate-from-mypy-to-ty</span></tt> — replaces <tt class="docutils literal">mypy</tt> with Astral's <tt class="docutils literal">ty</tt> across
-dependencies, config, CI, pre-commit hooks, and docs.</li>
-</ul>
-</div>
-<div class="section" id="the-authority-hierarchy">
-<h2>The authority hierarchy</h2>
-<p>Skills are not all equal. Authority flows top-down:</p>
+<p>And a global find-and-replace in your codebase:</p>
 <pre class="literal-block">
-AGENTS.md  →  existing SKILL.md files  →  new skills
+import httpx  →  import httpx2
 </pre>
-<p>A new skill must not contradict what is above it. This keeps agent behaviour
-consistent as the skill set grows.</p>
-</div>
-<div class="section" id="why-i-built-it">
-<h2>Why I built it</h2>
-<p>Every project I maintain has the same recurring needs: keep docs in sync,
-test code examples, migrate tooling. Writing the same instructions in each
-repo's <tt class="docutils literal">AGENTS.md</tt> is copy-paste work that eventually gets out of date.</p>
-<p><tt class="docutils literal"><span class="pre">dot-agents</span></tt> puts those instructions in one place — versioned, reusable, and
-readable by both agents and humans.</p>
-<p>The repository is at
-<a class="reference external" href="https://github.com/barseghyanartur/dot-agents">github.com/barseghyanartur/dot-agents</a>.
-MIT licensed.</p>
-</div>
-<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/05fb8bd50969dde04c45794ede03ea05" target="_blank" rel="noopener">GitHub Gist #05fb8bd50969dde04c45794ede03ea05</a></p>                    </article>
+<p>That's the entire migration. No architectural changes, no new concepts to learn.</p>
+<p>Pydantic Services uses httpx2 in their own AI products, which gives the
+project a concrete reason to stay healthy and receive timely security updates —
+particularly important for a library that sits in the request path of so many
+production systems.</p>
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/d02b6384b401b7d0f3a421075abfbf6f" target="_blank" rel="noopener">GitHub Gist #d02b6384b401b7d0f3a421075abfbf6f</a></p>                    </article>
                 </aside><!-- /#featured -->
                     <section id="content" class="body">
                         <h1>Other articles</h1>
                         <hr />
                         <ol id="posts-list" class="hfeed">
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/gistblog/posts/2026/06/properdocs-maintained-alternatives-of-mkdocs/" rel="bookmark"
+                               title="Permalink to ProperDocs: Maintained alternatives of MkDocs">ProperDocs: Maintained alternatives of MkDocs</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+                        <p class="first last">MkDocs is no longer actively maintained. ProperDocs is the drop-in replacement community fork. Zensical is a new project with the same goal.</p>
+<footer class="post-info minimal">
+        <span class="post-date">2026-06-02</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/documentation.html">documentation</a>, <a href="/gistblog/tag/mkdocs.html">mkdocs</a>, <a href="/gistblog/tag/static-site-generator.html">static-site-generator</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/06/properdocs-maintained-alternatives-of-mkdocs/">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/gistblog/posts/2026/05/dot-agents-skills-for-ai-agents/" rel="bookmark"
+                               title="Permalink to dot-agents: Skills for AI Agents">dot-agents: Skills for AI Agents</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+                        <p class="first last">A collection of SKILL.md files that tell AI agents how to manage repos, validate docs, and handle Python projects.</p>
+<footer class="post-info minimal">
+        <span class="post-date">2026-05-08</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/ai.html">ai</a>, <a href="/gistblog/tag/agents.html">agents</a>, <a href="/gistblog/tag/tooling.html">tooling</a>, <a href="/gistblog/tag/open-source.html">open-source</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/05/dot-agents-skills-for-ai-agents/">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
 
                 <li><article class="hentry">
                     <header>

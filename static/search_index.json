@@ -220,6 +220,20 @@
     "content": "Hey, ever tried cleaning up messy license strings — like CC BY-NC-ND 4.0 or MIT License — and getting them into something tidy and machine-readable? That's exactly what licence-normaliser does, and honestly, it's a lifesaver for anyone dealing with open-source compliance or metadata. :align: center :alt: licence-normaliser :width: 100% Check out the repo here: licence-normaliser <https://github.com/barseghyanartur/licence-normaliser>. It's a lightweight Python library that turns chaos into order using a neat three-level system: family → licence → version. Think cc → cc-by-nc-nd → cc-by-nc-nd-4.0. Here's a quick demo — imagine you're scraping papers or repos and licenses come in every flavor: from licence_normaliser import normalise_licence result = normalise_licence(\"CC BY-NC-ND 4.0\") print(result.key)           # → cc-by-nc-nd-4.0 print(result.licence)       # → cc-by-nc-nd print(result.licence.family)  # → cc Super clean, right? It handles SPDX codes (Apache-2.0), full URLs, even slo..."
   },
   {
+    "title": "ProperDocs: Maintained alternatives of MkDocs",
+    "url": "posts/2026/06/properdocs-maintained-alternatives-of-mkdocs/",
+    "date": "2026-06-02",
+    "category": "Tech",
+    "tags": [
+      "python",
+      "documentation",
+      "mkdocs",
+      "static-site-generator"
+    ],
+    "summary": "MkDocs is no longer actively maintained. ProperDocs is the drop-in replacement community fork. Zensical is a new project with the same goal.",
+    "content": "MkDocs is no longer actively maintained. Two successors have emerged from the community: Zensical <https://github.com/zensical/zensical>, a full rewrite with its own architecture and philosophy, and ProperDocs <https://github.com/ProperDocs/properdocs>, a conservative fork that picks up exactly where MkDocs left off. If Zensical's migration cost isn't worth it yet, ProperDocs is the answer. Your mkdocs.yml, plugins, and themes all work without modification. Switching is a two-step drop-in:: pip uninstall mkdocs pip install properdocs Then replace mkdocs build / mkdocs serve with properdocs build / properdocs serve. Done. ProperDocs stays focused on bug fixes, dependency maintenance, and backward compatibility — no surprises, no breaking changes."
+  },
+  {
     "title": "How to uninstall Progressive Web App installed with Vivaldi",
     "url": "posts/2024/10/how-to-uninstall-progressive-web-app-installed-with-vivaldi/",
     "date": "2024-10-30",
@@ -279,6 +293,20 @@
     ],
     "summary": "Supercharge your VS Code setup with this curated list of essential plugins! Whether you're a Python pro needing Pylance and Makefile support, or a documentation stickler looking for Markdown and reStructuredText tools, these extensions bridge the gap between a basic editor and a powerhouse IDE. Plus, grab the PyCharm Theme to get that classic JetBrains look without sacrificing VS Code's lightweight speed.",
     "content": "#. Sort lines: Sort lines of text for VS Code #. PyCharm Theme: PyCharm Theme for VS Code #. MarkdownLint: Markdown/CommonMark linting and style checking for VS Code #. Makefile Tools: Enhancing Makefile development in VS Code #. Pylance: A performant, feature-rich language server for Python in VS Code #. Even better TOML: A TOML language support for VS Code #. reStructuredText Syntax highlighting: Syntax highlighting and non-intrusive section navigation for reStructuredText."
+  },
+  {
+    "title": "httpx2: Pydantic Takes Over Stewardship of `httpx`",
+    "url": "posts/2026/06/httpx2-pydantic-takes-over-stewardship-of-httpx/",
+    "date": "2026-06-02",
+    "category": "Tech",
+    "tags": [
+      "python",
+      "httpx",
+      "httpx2",
+      "pydantic"
+    ],
+    "summary": "`httpx` is no longer actively maintained. Pydantic has picked up stewardship under the name `httpx2` — a drop-in continuation with the same API, same design, and a reliable team behind it.",
+    "content": "httpx <https://github.com/encode/httpx> is no longer actively maintained. httpx2 <https://github.com/pydantic/httpx2>, maintained by Pydantic Services, is its direct continuation — same API, same design philosophy, same everything. Only the package name changes. Migrating is a one-liner:: pip install httpx2 And a global find-and-replace in your codebase:: import httpx  →  import httpx2 That's the entire migration. No architectural changes, no new concepts to learn. Pydantic Services uses httpx2 in their own AI products, which gives the project a concrete reason to stay healthy and receive timely security updates — particularly important for a library that sits in the request path of so many production systems."
   },
   {
     "title": "Log4Brains images support",

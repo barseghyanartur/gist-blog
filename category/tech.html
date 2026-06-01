@@ -33,28 +33,60 @@
 
                 <aside id="featured" class="body">
                     <article>
-                        <h1 class="entry-title"><a href="/gistblog/posts/2026/06/grab-youtube-subtitles-with-yt-dlp/">Grab YouTube subtitles with <cite>yt-dlp</cite></a></h1>
+                        <h1 class="entry-title"><a href="/gistblog/posts/2026/06/httpx2-pydantic-takes-over-stewardship-of-httpx/">httpx2: Pydantic Takes Over Stewardship of <cite>httpx</cite></a></h1>
 <footer class="post-info minimal">
-        <span class="post-date">2026-06-01</span>
-<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/yt-dlp.html">yt-dlp</a>, <a href="/gistblog/tag/youtube.html">youtube</a>, <a href="/gistblog/tag/subtitles.html">subtitles</a>, <a href="/gistblog/tag/cli.html">cli</a></span></footer><p>Sometimes you need subtitles — for a transcript, for translation, for feeding into some other tool — but you don't want the video itself. <tt class="docutils literal"><span class="pre">yt-dlp</span></tt> handles this cleanly.</p>
-<p>One command does it:</p>
+        <span class="post-date">2026-06-02</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/httpx.html">httpx</a>, <a href="/gistblog/tag/httpx2.html">httpx2</a>, <a href="/gistblog/tag/pydantic.html">pydantic</a></span></footer><p><a class="reference external" href="https://github.com/encode/httpx">httpx</a> is no longer actively maintained.
+<a class="reference external" href="https://github.com/pydantic/httpx2">httpx2</a>, maintained by Pydantic Services,
+is its direct continuation — same API, same design philosophy, same everything.
+Only the package name changes.</p>
+<p>Migrating is a one-liner:</p>
 <pre class="literal-block">
-yt-dlp --write-auto-sub --convert-subs=srt --skip-download 'https://www.youtube.com/watch?v=uniqueVideoID'
+pip install httpx2
 </pre>
-<p>What each flag does:</p>
-<ul class="simple">
-<li><tt class="docutils literal"><span class="pre">--write-auto-sub</span></tt> — fetch the auto-generated subtitle track (the one YouTube generates automatically, not the manually uploaded captions)</li>
-<li><tt class="docutils literal"><span class="pre">--convert-subs=srt</span></tt> — convert whatever format YouTube spits out (usually VTT) into the widely-supported SRT format</li>
-<li><tt class="docutils literal"><span class="pre">--skip-download</span></tt> — don't download the video, just the subtitles</li>
-</ul>
-<p>The result is a <tt class="docutils literal">.srt</tt> file sitting next to where you ran the command, named after the video title.</p>
-<p>If the video has manually uploaded captions instead of auto-generated ones, swap <tt class="docutils literal"><span class="pre">--write-auto-sub</span></tt> for <tt class="docutils literal"><span class="pre">--write-sub</span></tt>. You can also pass <tt class="docutils literal"><span class="pre">--sub-lang</span> en</tt> to pin a specific language when multiple tracks are available.</p>
-<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/43ac4b08ecc729cda15f7d4487241efd" target="_blank" rel="noopener">GitHub Gist #43ac4b08ecc729cda15f7d4487241efd</a></p>                    </article>
+<p>And a global find-and-replace in your codebase:</p>
+<pre class="literal-block">
+import httpx  →  import httpx2
+</pre>
+<p>That's the entire migration. No architectural changes, no new concepts to learn.</p>
+<p>Pydantic Services uses httpx2 in their own AI products, which gives the
+project a concrete reason to stay healthy and receive timely security updates —
+particularly important for a library that sits in the request path of so many
+production systems.</p>
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/d02b6384b401b7d0f3a421075abfbf6f" target="_blank" rel="noopener">GitHub Gist #d02b6384b401b7d0f3a421075abfbf6f</a></p>                    </article>
                 </aside><!-- /#featured -->
                     <section id="content" class="body">
                         <h1>Other articles</h1>
                         <hr />
                         <ol id="posts-list" class="hfeed">
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/gistblog/posts/2026/06/properdocs-maintained-alternatives-of-mkdocs/" rel="bookmark"
+                               title="Permalink to ProperDocs: Maintained alternatives of MkDocs">ProperDocs: Maintained alternatives of MkDocs</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+                        <p class="first last">MkDocs is no longer actively maintained. ProperDocs is the drop-in replacement community fork. Zensical is a new project with the same goal.</p>
+<footer class="post-info minimal">
+        <span class="post-date">2026-06-02</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/documentation.html">documentation</a>, <a href="/gistblog/tag/mkdocs.html">mkdocs</a>, <a href="/gistblog/tag/static-site-generator.html">static-site-generator</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/06/properdocs-maintained-alternatives-of-mkdocs/">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/gistblog/posts/2026/06/grab-youtube-subtitles-with-yt-dlp/" rel="bookmark"
+                               title="Permalink to Grab YouTube subtitles with yt-dlp">Grab YouTube subtitles with <cite>yt-dlp</cite></a></h1>
+                    </header>
+
+                    <div class="entry-content">
+                        <p class="first last">A one-liner to download auto-generated subtitles from YouTube as SRT files without touching the video.</p>
+<footer class="post-info minimal">
+        <span class="post-date">2026-06-01</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/yt-dlp.html">yt-dlp</a>, <a href="/gistblog/tag/youtube.html">youtube</a>, <a href="/gistblog/tag/subtitles.html">subtitles</a>, <a href="/gistblog/tag/cli.html">cli</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/06/grab-youtube-subtitles-with-yt-dlp/">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
 
                 <li><article class="hentry">
                     <header>
