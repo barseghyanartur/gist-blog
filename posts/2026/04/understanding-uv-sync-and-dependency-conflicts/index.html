@@ -4,10 +4,10 @@
                         <meta charset="utf-8" />
                         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                         <meta name="generator" content="Pelican" />
-                        <title>Maintained alternatives of MkDocs: ProperDocs and Zensical</title>
+                        <title>Understanding uv sync and dependency conflicts</title>
                         <link rel="stylesheet" href="/gistblog/theme/css/main.css" />
                                 <link href="/gistblog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dev Notes Atom Feed" />
-    <meta name="description" content="MkDocs is no longer actively maintained. ProperDocs is the drop-in replacement community fork. Zensical is a new project with the same goal." />
+    <meta name="description" content="While uv pip compile only resolves what you specifically request, uv sync attempts to resolve every optional dependency in your project..." />
         </head>
 
         <body id="index" class="home">
@@ -35,17 +35,17 @@
     <article>
       <header>
         <h1 class="entry-title">
-          <a href="/gistblog/posts/2026/06/maintained-alternatives-of-mkdocs-properdocs-and-zensical/" rel="bookmark"
-             title="Permalink to Maintained alternatives of MkDocs: ProperDocs and Zensical">Maintained alternatives of MkDocs: ProperDocs and Zensical</a></h1>
+          <a href="/gistblog/posts/2026/04/understanding-uv-sync-and-dependency-conflicts/" rel="bookmark"
+             title="Permalink to Understanding uv sync and dependency conflicts">Understanding <cite>uv sync</cite> and dependency conflicts</a></h1>
       </header>
 
       <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2026-06-02T00:33:00+00:00">
-                Published: Tue 02 June 2026
+        <abbr class="published" title="2026-04-07T23:00:00+00:00">
+                Published: Tue 07 April 2026
         </abbr>
                 <br />
-                <abbr class="modified" title="2026-07-06T16:18:16.888596+00:00">
+                <abbr class="modified" title="2026-07-06T16:18:20.802046+00:00">
                         Updated: Mon 06 July 2026
                 </abbr>
 
@@ -53,33 +53,40 @@
                         By                                 <a class="url fn" href="/gistblog/author/artur-barseghyan.html">Artur Barseghyan</a>
                 </address>
         <p>In <a href="/gistblog/category/tech.html">Tech</a>.</p>
-<p>tags: <a href="/gistblog/tag/python.html">python</a> <a href="/gistblog/tag/documentation.html">documentation</a> <a href="/gistblog/tag/mkdocs.html">mkdocs</a> <a href="/gistblog/tag/static-site-generator.html">static-site-generator</a> </p>        
-</footer><!-- /.post-info -->        <p>MkDocs is no longer actively maintained. Two successors have emerged from the
-community: <a class="reference external" href="https://github.com/zensical/zensical">Zensical</a>, a full rewrite
-with its own architecture and philosophy, and
-<a class="reference external" href="https://github.com/ProperDocs/properdocs">ProperDocs</a>, a conservative fork
-that picks up exactly where MkDocs left off.</p>
-<p>If Zensical's migration cost isn't worth it yet, ProperDocs is the answer.
-Your <tt class="docutils literal">mkdocs.yml</tt>, plugins, and themes all work without modification.
-Switching is a two-step drop-in:</p>
-<pre class="literal-block">
-pip uninstall mkdocs
-pip install properdocs
-</pre>
-<p>Then replace <tt class="docutils literal">mkdocs build</tt> / <tt class="docutils literal">mkdocs serve</tt> with <tt class="docutils literal">properdocs build</tt> /
-<tt class="docutils literal">properdocs serve</tt>. Done.</p>
-<p>ProperDocs stays focused on bug fixes, dependency maintenance, and backward
-compatibility — no surprises, no breaking changes.</p>
-<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/9db6c291cbe3c5980bdc5afcbae218a4" target="_blank" rel="noopener">GitHub Gist #9db6c291cbe3c5980bdc5afcbae218a4</a></p>
+<p>tags: <a href="/gistblog/tag/python.html">python</a> <a href="/gistblog/tag/uv.html">uv</a> </p>        
+</footer><!-- /.post-info -->        <p>If you're switching to <tt class="docutils literal">uv sync</tt>, keep in mind that it behaves differently than the standard <tt class="docutils literal">uv pip</tt> workflow. Here is a quick breakdown of what to expect and how to fix common issues.</p>
+<div class="section" id="the-trap-uv-sync-resolves-everything">
+<h2>The Trap: uv sync Resolves Everything</h2>
+<p>Unlike <tt class="docutils literal">uv pip compile</tt>, which only looks at what you ask for, <strong>uv sync attempts to resolve every dependency in your project</strong>, including all optional &quot;extras.&quot;</p>
+<p>Even if you only request specific extras (e.g., <tt class="docutils literal">uv sync <span class="pre">--extra</span> api</tt>), <tt class="docutils literal">uv</tt> still checks if the rest of your extras (like <tt class="docutils literal">deploy</tt>) are compatible with your environment. If they conflict, the command will fail.</p>
+</div>
+<div class="section" id="the-solution-declaring-conflicts">
+<h2>The Solution: Declaring Conflicts</h2>
+<p>If you have optional dependencies that are fundamentally incompatible—meaning they aren't meant to be installed together—you can tell <tt class="docutils literal">uv</tt> to ignore those conflicts during the sync process.</p>
+<p>Add a <tt class="docutils literal">conflicts</tt> section to your <tt class="docutils literal">pyproject.toml</tt>:</p>
+<div class="highlight"><pre><span></span><span class="k">[tool.uv]</span>
+<span class="n">conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">extra</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;ai&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">extra</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;deploy&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="the-result">
+<h2>The Result</h2>
+<p>By explicitly declaring that <tt class="docutils literal">ai</tt> and <tt class="docutils literal">deploy</tt> are mutually exclusive, <tt class="docutils literal">uv sync <span class="pre">--extra</span> api <span class="pre">--extra</span> ai</tt> will now work perfectly. It effectively tells the resolver, &quot;I know these two don't get along; just focus on the ones I actually requested.&quot;</p>
+</div>
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/51837dab7bb02c9b5b1c9509693c7d92" target="_blank" rel="noopener">GitHub Gist #51837dab7bb02c9b5b1c9509693c7d92</a></p>
       </div><!-- /.entry-content -->
         <div class="comments">
           <h2>Comments</h2>
           <div id="cusdis_thread"
             data-host="https://cusdis.com"
             data-app-id="a4b8dce4-dafd-4806-8dd6-5183f084f8dc"
-            data-page-id="maintained-alternatives-of-mkdocs-properdocs-and-zensical"
-            data-page-url="/gistblog/posts/2026/06/maintained-alternatives-of-mkdocs-properdocs-and-zensical/"
-            data-page-title="Maintained alternatives of MkDocs: ProperDocs and Zensical"
+            data-page-id="understanding-uv-sync-and-dependency-conflicts"
+            data-page-url="/gistblog/posts/2026/04/understanding-uv-sync-and-dependency-conflicts/"
+            data-page-title="Understanding uv sync and dependency conflicts"
           ></div>
           <script src="/gistblog/theme/js/cusdis-style.js"></script>
           <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
