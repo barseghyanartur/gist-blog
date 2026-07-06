@@ -157,18 +157,6 @@
     "content": "1. Install PyCharm theme Choose from PyCharm Dark+ Theme or Darcula PyCharm Theme. 2. Adjust user settings Command Palette (Cmd+Shift+P) -> type: settings json Paste the following: { \"telemetry.telemetryLevel\": \"off\", \"python.createEnvironment.trigger\": \"off\", \"workbench.startupEditor\": \"none\", \"makefile.configureOnOpen\": true, \"editor.rulers\": [80, 120], \"files.exclude\": { \"**/__pycache__\": true, \"**/.idea\": true, \"**/.mypy_cache\": true, \"**/.pytest_cache\": true, \"**/.ruff_cache\": true, \"**/.venv\": true, \"**/.vscode\": true, \"*/.py,cover\": true, \"**/htmlcov\": true, \"*/.egg-info\": true }, \"workbench.colorTheme\": \"PyCharm Dark+ Theme\", \"github.copilot.nextEditSuggestions.enabled\": true, \"git.enableSmartCommit\": true, \"workbench.tree.indent\": 20, \"workbench.tree.renderIndentGuides\": \"always\", \"editor.fontSize\": 14, \"containers.containerClient\": \"com.microsoft.visualstudio.containers.docker\", \"containers.orchestratorClient\": \"com.microsoft.visualstudio.orchestrators.dockercompose\", \"makefi..."
   },
   {
-    "title": "Understanding `uv sync` and dependency conflicts",
-    "url": "posts/2026/04/understanding-uv-sync-and-dependency-conflicts/",
-    "date": "2026-04-07",
-    "category": "Tech",
-    "tags": [
-      "python",
-      "uv"
-    ],
-    "summary": "While `uv pip compile` only resolves what you specifically request, `uv sync` attempts to resolve every optional dependency in your project simultaneously. This can lead to unexpected failures if different \"extras,\" such as ai and deploy, have conflicting requirements. You can fix this by explicitly declaring these incompatible extras in your `pyproject.toml` file to guide the resolver correctly.",
-    "content": "If you're switching to uv sync, keep in mind that it behaves differently than the standard uv pip workflow. Here is a quick breakdown of what to expect and how to fix common issues. The Trap: uv sync Resolves Everything Unlike uv pip compile, which only looks at what you ask for, uv sync attempts to resolve every dependency in your project, including all optional \"extras.\" Even if you only request specific extras (e.g., uv sync --extra api), uv still checks if the rest of your extras (like deploy) are compatible with your environment. If they conflict, the command will fail. The Solution: Declaring Conflicts If you have optional dependencies that are fundamentally incompatible—meaning they aren't meant to be installed together—you can tell uv to ignore those conflicts during the sync process. Add a conflicts section to your pyproject.toml: [tool.uv] conflicts = [ [ { extra = \"ai\" }, { extra = \"deploy\" }, ], ] The Result By explicitly declaring that ai and deploy are mutually exclusive,..."
-  },
-  {
     "title": "CudaText installation and config for SublimeText users",
     "url": "posts/2026/04/cudatext-installation-and-config-for-sublimetext-users/",
     "date": "2026-04-03",
@@ -232,17 +220,6 @@
     ],
     "summary": "MkDocs is no longer actively maintained. ProperDocs is the drop-in replacement community fork. Zensical is a new project with the same goal.",
     "content": "MkDocs is no longer actively maintained. Two successors have emerged from the community: Zensical <https://github.com/zensical/zensical>, a full rewrite with its own architecture and philosophy, and ProperDocs <https://github.com/ProperDocs/properdocs>, a conservative fork that picks up exactly where MkDocs left off. If Zensical's migration cost isn't worth it yet, ProperDocs is the answer. Your mkdocs.yml, plugins, and themes all work without modification. Switching is a two-step drop-in:: pip uninstall mkdocs pip install properdocs Then replace mkdocs build / mkdocs serve with properdocs build / properdocs serve. Done. ProperDocs stays focused on bug fixes, dependency maintenance, and backward compatibility — no surprises, no breaking changes."
-  },
-  {
-    "title": "How to uninstall Progressive Web App installed with Vivaldi",
-    "url": "posts/2024/10/how-to-uninstall-progressive-web-app-installed-with-vivaldi/",
-    "date": "2024-10-30",
-    "category": "Tech",
-    "tags": [
-      "vivaldi"
-    ],
-    "summary": "How to uninstall Progressive Web App installed with Vivaldi",
-    "content": "#. Open the progresssive-web-app/shortcut. #. Navigate to the top-right menu, expand the menu and click on \"Uninstall {app-name}\"."
   },
   {
     "title": "Make scrollbars always visible in Vivaldi browser using Stylus",
