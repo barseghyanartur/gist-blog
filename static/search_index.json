@@ -295,6 +295,20 @@
     "content": "#. Sort lines: Sort lines of text for VS Code #. PyCharm Theme: PyCharm Theme for VS Code #. MarkdownLint: Markdown/CommonMark linting and style checking for VS Code #. Makefile Tools: Enhancing Makefile development in VS Code #. Pylance: A performant, feature-rich language server for Python in VS Code #. Even better TOML: A TOML language support for VS Code #. reStructuredText Syntax highlighting: Syntax highlighting and non-intrusive section navigation for reStructuredText."
   },
   {
+    "title": "httpx2: Pydantic takes over stewardship of `httpx`",
+    "url": "posts/2026/06/httpx2-pydantic-takes-over-stewardship-of-httpx/",
+    "date": "2026-06-02",
+    "category": "Tech",
+    "tags": [
+      "python",
+      "httpx",
+      "httpx2",
+      "pydantic"
+    ],
+    "summary": "`httpx` is no longer actively maintained. Pydantic has picked up stewardship under the name `httpx2` — a drop-in continuation with the same API, same design, and a reliable team behind it.",
+    "content": "httpx <https://github.com/encode/httpx> is no longer actively maintained. httpx2 <https://github.com/pydantic/httpx2>, maintained by Pydantic, is its direct continuation — same API, same design philosophy, same everything. Only the package name changes. Migrating is a one-liner:: pip install httpx2 And a global find-and-replace in your codebase:: import httpx  →  import httpx2 That's the entire migration. No architectural changes, no new concepts to learn. Pydantic uses httpx2 in their own AI products, which gives the project a concrete reason to stay healthy and receive timely security updates — particularly important for a library that sits in the request path of so many production systems."
+  },
+  {
     "title": "Log4Brains images support",
     "url": "posts/2026/04/log4brains-images-support/",
     "date": "2026-04-03",

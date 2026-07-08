@@ -33,31 +33,46 @@
 
                 <aside id="featured" class="body">
                     <article>
-                        <h1 class="entry-title"><a href="/gistblog/posts/2026/06/maintained-alternatives-of-mkdocs-properdocs-and-zensical/">Maintained alternatives of MkDocs: ProperDocs and Zensical</a></h1>
+                        <h1 class="entry-title"><a href="/gistblog/posts/2026/06/httpx2-pydantic-takes-over-stewardship-of-httpx/">httpx2: Pydantic takes over stewardship of <cite>httpx</cite></a></h1>
 <footer class="post-info minimal">
         <span class="post-date">2026-06-02</span>
-<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/documentation.html">documentation</a>, <a href="/gistblog/tag/mkdocs.html">mkdocs</a>, <a href="/gistblog/tag/static-site-generator.html">static-site-generator</a></span></footer><p>MkDocs is no longer actively maintained. Two successors have emerged from the
-community: <a class="reference external" href="https://github.com/zensical/zensical">Zensical</a>, a full rewrite
-with its own architecture and philosophy, and
-<a class="reference external" href="https://github.com/ProperDocs/properdocs">ProperDocs</a>, a conservative fork
-that picks up exactly where MkDocs left off.</p>
-<p>If Zensical's migration cost isn't worth it yet, ProperDocs is the answer.
-Your <tt class="docutils literal">mkdocs.yml</tt>, plugins, and themes all work without modification.
-Switching is a two-step drop-in:</p>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/httpx.html">httpx</a>, <a href="/gistblog/tag/httpx2.html">httpx2</a>, <a href="/gistblog/tag/pydantic.html">pydantic</a></span></footer><p><a class="reference external" href="https://github.com/encode/httpx">httpx</a> is no longer actively maintained.
+<a class="reference external" href="https://github.com/pydantic/httpx2">httpx2</a>, maintained by Pydantic,
+is its direct continuation — same API, same design philosophy, same everything.
+Only the package name changes.</p>
+<p>Migrating is a one-liner:</p>
 <pre class="literal-block">
-pip uninstall mkdocs
-pip install properdocs
+pip install httpx2
 </pre>
-<p>Then replace <tt class="docutils literal">mkdocs build</tt> / <tt class="docutils literal">mkdocs serve</tt> with <tt class="docutils literal">properdocs build</tt> /
-<tt class="docutils literal">properdocs serve</tt>. Done.</p>
-<p>ProperDocs stays focused on bug fixes, dependency maintenance, and backward
-compatibility — no surprises, no breaking changes.</p>
-<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/9db6c291cbe3c5980bdc5afcbae218a4" target="_blank" rel="noopener">GitHub Gist #9db6c291cbe3c5980bdc5afcbae218a4</a></p>                    </article>
+<p>And a global find-and-replace in your codebase:</p>
+<pre class="literal-block">
+import httpx  →  import httpx2
+</pre>
+<p>That's the entire migration. No architectural changes, no new concepts to learn.</p>
+<p>Pydantic uses <cite>httpx2</cite> in their own AI products, which gives the
+project a concrete reason to stay healthy and receive timely security updates —
+particularly important for a library that sits in the request path of so many
+production systems.</p>
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/d02b6384b401b7d0f3a421075abfbf6f" target="_blank" rel="noopener">GitHub Gist #d02b6384b401b7d0f3a421075abfbf6f</a></p>                    </article>
                 </aside><!-- /#featured -->
                     <section id="content" class="body">
                         <h1>Other articles</h1>
                         <hr />
                         <ol id="posts-list" class="hfeed">
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/gistblog/posts/2026/06/maintained-alternatives-of-mkdocs-properdocs-and-zensical/" rel="bookmark"
+                               title="Permalink to Maintained alternatives of MkDocs: ProperDocs and Zensical">Maintained alternatives of MkDocs: ProperDocs and Zensical</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+                        <p class="first last">MkDocs is no longer actively maintained. ProperDocs is the drop-in replacement community fork. Zensical is a new project with the same goal.</p>
+<footer class="post-info minimal">
+        <span class="post-date">2026-06-02</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/documentation.html">documentation</a>, <a href="/gistblog/tag/mkdocs.html">mkdocs</a>, <a href="/gistblog/tag/static-site-generator.html">static-site-generator</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/06/maintained-alternatives-of-mkdocs-properdocs-and-zensical/">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
 
                 <li><article class="hentry">
                     <header>
