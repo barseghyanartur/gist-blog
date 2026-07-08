@@ -33,66 +33,145 @@
 
                 <aside id="featured" class="body">
                     <article>
-                        <h1 class="entry-title"><a href="/gistblog/posts/2026/05/managing-homebrew-upgrades-the-selective-lazy-method/">Managing Homebrew upgrades: the selective lazy method</a></h1>
-<footer class="post-info minimal">
-        <span class="post-date">2026-05-07</span>
-<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/macos.html">macos</a>, <a href="/gistblog/tag/homebrew.html">homebrew</a>, <a href="/gistblog/tag/productivity.html">productivity</a></span></footer><div class="section" id="the-problem">
-<h2>The problem</h2>
-<p>Automating package updates is the dream for any developer who values their time. However, the &quot;bleeding edge&quot; can sometimes cut you. Recently, my preferred terminal, <strong>Tabby</strong>, broke following a series of macOS updates.</p>
-<p>When a core tool in your workflow fails after an unattended upgrade, it halts productivity. While Homebrew allows you to &quot;pin&quot; standard formulae to prevent them from updating, there is currently no native &quot;pin&quot; or &quot;hold&quot; feature for Homebrew Casks. This means a blanket upgrade command will always try to pull the latest (and potentially broken) version of your GUI applications.</p>
-</div>
-<div class="section" id="the-imperfect-solution">
-<h2>The (imperfect) solution</h2>
-<p>To keep using a specific version of a Cask while still upgrading everything else, you can use a filtered command. Instead of a blind global upgrade, you can list outdated casks and exclude the problematic one using <tt class="docutils literal">grep</tt>.</p>
-<p>For <strong>Tabby</strong>, the following command ensures everything else moves forward while the terminal remains untouched:</p>
-<div class="highlight"><pre><span></span><span class="c1"># Upgrade all casks except Tabby</span>
-brew<span class="w"> </span>upgrade<span class="w"> </span>--cask<span class="w"> </span>--greedy<span class="w"> </span><span class="k">$(</span>brew<span class="w"> </span>outdated<span class="w"> </span>--cask<span class="w"> </span>--greedy<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;tabby&quot;</span><span class="k">)</span>
-</pre></div>
-<p>For standard CLI tools (formulae), you should use the built-in pinning mechanism:</p>
-<div class="highlight"><pre><span></span><span class="c1"># Prevent a formula from being upgraded</span>
-brew<span class="w"> </span>pin<span class="w"> </span>&lt;package_name&gt;
-</pre></div>
-</div>
-<div class="section" id="why-this-improves-stability">
-<h2>Why this improves stability</h2>
-<dl class="docutils">
-<dt>The &quot;stay lazy&quot; workflow</dt>
-<dd><p class="first">Most of us use a &quot;one-liner&quot; to keep our systems current. My personal &quot;lazy&quot; script handles Homebrew, Python tools, and specific app fixes in one go:</p>
-<div class="last"><div class="highlight"><pre><span></span>brew<span class="w"> </span>update<span class="w"> </span><span class="o">||</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span>brew<span class="w"> </span>upgrade<span class="w"> </span><span class="o">||</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span>brew<span class="w"> </span>upgrade<span class="w"> </span>--cask<span class="w"> </span>--greedy<span class="w"> </span><span class="k">$(</span>brew<span class="w"> </span>outdated<span class="w"> </span>--cask<span class="w"> </span>--greedy<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;tabby&quot;</span><span class="k">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span>brew<span class="w"> </span>cleanup<span class="w"> </span>-s<span class="w"> </span><span class="o">||</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span>uv<span class="w"> </span>tool<span class="w"> </span>upgrade<span class="w"> </span>--all<span class="w"> </span><span class="o">||</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span>xattr<span class="w"> </span>-cr<span class="w"> </span>/Applications/Chromium.app
-</pre></div>
-</div></dd>
-<dt>Targeted exclusion</dt>
-<dd>By adding the <tt class="docutils literal">grep <span class="pre">-v</span></tt> logic to the middle of the chain, you maintain the automation. You don't have to remember to skip Tabby manually; the script handles the logic for you.</dd>
-<dt>Granular control</dt>
-<dd>This approach bridges the gap between the robust <tt class="docutils literal">pin</tt> feature available for formulae and the lack of such a feature for Casks. It ensures that known-stable versions of GUI apps stay put until you are ready to manually verify a fix.</dd>
-</dl>
-</div>
-<div class="section" id="the-perfect-solution-that-does-not-yet-exist">
-<h2>The perfect solution that does not yet exist</h2>
-<p>If only the Homebrew maintainers would implement a native <tt class="docutils literal">brew cask pin</tt> command. Having a unified way to freeze versions for both command-line tools and applications would eliminate the need for complex bash one-liners and custom grep filters.</p>
-</div>
-<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/02ac4c3c2b2bd1dd0d896f9c8e13b9bd" target="_blank" rel="noopener">GitHub Gist #02ac4c3c2b2bd1dd0d896f9c8e13b9bd</a></p>                    </article>
-                </aside><!-- /#featured -->
-                    <section id="content" class="body">
-                        <h1>Other articles</h1>
-                        <hr />
-                        <ol id="posts-list" class="hfeed">
-
-                <li><article class="hentry">
-                    <header>
-                        <h1><a href="/gistblog/posts/2026/04/open-webui-setup-on-macos/" rel="bookmark"
-                               title="Permalink to open-webui setup on macOS">open-webui setup on macOS</a></h1>
-                    </header>
-
-                    <div class="entry-content">
-                        <p class="first last">Want to run Open WebUI as a seamless background service on your Mac? This guide walks you through setting it up with launchd, so it starts automatically every time you log in. Using uv for a clean install and a simple .plist configuration, you'll get persistent hosting, automatic crash recovery, and easy log management. No more manual terminal commands—just a reliable local AI interface ready whenever you need it.</p>
+                        <h1 class="entry-title"><a href="/gistblog/posts/2026/04/open-webui-setup-on-macos/">open-webui setup on macOS</a></h1>
 <footer class="post-info minimal">
         <span class="post-date">2026-04-03</span>
-<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/open-webui.html">open-webui</a>, <a href="/gistblog/tag/macos.html">macos</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/04/open-webui-setup-on-macos/">read more</a>
-                    </div><!-- /.entry-content -->
-                </article></li>
-                    </ol><!-- /#posts-list -->
-                    </section><!-- /#content -->
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/open-webui.html">open-webui</a>, <a href="/gistblog/tag/macos.html">macos</a></span></footer><p>Here’s how to set up Open WebUI as a launchd service on macOS.</p>
+<hr class="docutils" />
+<div class="section" id="prerequisites">
+<h2>Prerequisites</h2>
+<p>First, install Open WebUI via uv if you haven’t already:</p>
+<pre class="code bash literal-block">
+uv<span class="w"> </span>tool<span class="w"> </span>install<span class="w"> </span>open-webui
+</pre>
+</div>
+<hr class="docutils" />
+<div class="section" id="create-the-plist-file">
+<h2>1. Create the plist file</h2>
+<pre class="code sh literal-block">
+cat<span class="w"> </span>&gt;<span class="w"> </span>~/Library/LaunchAgents/com.user.openwebui.plist<span class="w"> </span><span class="s">&lt;&lt; EOF
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
+&lt;plist version=&quot;1.0&quot;&gt;&lt;dict&gt;
+  &lt;key&gt;Label&lt;/key&gt;&lt;string&gt;com.user.openwebui&lt;/string&gt;
+  &lt;key&gt;ProgramArguments&lt;/key&gt;&lt;array&gt;
+    &lt;string&gt;$HOME/.local/share/uv/tools/open-webui/bin/open-webui&lt;/string&gt;
+    &lt;string&gt;serve&lt;/string&gt;
+    &lt;string&gt;--port&lt;/string&gt;
+    &lt;string&gt;8081&lt;/string&gt;
+  &lt;/array&gt;
+  &lt;key&gt;WorkingDirectory&lt;/key&gt;&lt;string&gt;$HOME&lt;/string&gt;
+  &lt;key&gt;EnvironmentVariables&lt;/key&gt;&lt;dict&gt;
+    &lt;key&gt;HOME&lt;/key&gt;&lt;string&gt;$HOME&lt;/string&gt;
+    &lt;key&gt;WEBUI_SECRET_KEY_FILE&lt;/key&gt;&lt;string&gt;$HOME/.webui_secret_key&lt;/string&gt;
+  &lt;/dict&gt;
+  &lt;key&gt;RunAtLoad&lt;/key&gt;&lt;true/&gt;
+  &lt;key&gt;KeepAlive&lt;/key&gt;&lt;true/&gt;
+  &lt;key&gt;StandardOutPath&lt;/key&gt;&lt;string&gt;$HOME/Library/Logs/openwebui.log&lt;/string&gt;
+  &lt;key&gt;StandardErrorPath&lt;/key&gt;&lt;string&gt;$HOME/Library/Logs/openwebui.err&lt;/string&gt;
+&lt;/dict&gt;&lt;/plist&gt;
+EOF</span>
+</pre>
+<p>Save the plist to <tt class="docutils literal">~/Library/LaunchAgents/com.user.openwebui.plist</tt>.
+Before doing so, verify the binary path matches your actual
+installation:</p>
+<pre class="code bash literal-block">
+which<span class="w"> </span>open-webui<span class="w">
+</span><span class="c1"># or
+</span>ls<span class="w"> </span>~/.local/share/uv/tools/open-webui/bin/open-webui
+</pre>
+<p>If the path differs, update the <tt class="docutils literal">ProgramArguments</tt> string in the plist
+accordingly.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="set-the-secret-key-optional-but-recommended">
+<h2>2. Set the secret key (optional but recommended)</h2>
+<p>The plist references a secret key file. Create it:</p>
+<pre class="code bash literal-block">
+openssl<span class="w"> </span>rand<span class="w"> </span>-hex<span class="w"> </span><span class="m">32</span><span class="w"> </span>&gt;<span class="w"> </span>~/.webui_secret_key<span class="w">
+</span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>~/.webui_secret_key
+</pre>
+<p>If you don’t want to use a secret key file, remove the
+<tt class="docutils literal">WEBUI_SECRET_KEY_FILE</tt> entry from <tt class="docutils literal">EnvironmentVariables</tt> in the
+plist.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="load-the-service">
+<h2>3. Load the service</h2>
+<pre class="code bash literal-block">
+launchctl<span class="w"> </span>load<span class="w"> </span>~/Library/LaunchAgents/com.user.openwebui.plist
+</pre>
+<p>This registers the service and starts it immediately (because
+<tt class="docutils literal">RunAtLoad</tt> is <tt class="docutils literal">true</tt>). It will also restart automatically on crash
+(<tt class="docutils literal">KeepAlive</tt> is <tt class="docutils literal">true</tt>) and run on every login.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="verify-it-s-running">
+<h2>4. Verify it's running</h2>
+<pre class="code bash literal-block">
+<span class="c1"># Check the process is up
+</span>launchctl<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>openwebui<span class="w">
+
+</span><span class="c1"># Tail the logs
+</span>tail<span class="w"> </span>-f<span class="w"> </span>~/Library/Logs/openwebui.log<span class="w">
+</span>tail<span class="w"> </span>-f<span class="w"> </span>~/Library/Logs/openwebui.err
+</pre>
+<p>Then visit <tt class="docutils literal"><span class="pre">http://localhost:8081</span></tt> in your browser.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="common-management-commands">
+<h2>5. Common management commands</h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Action</th>
+<th class="head">Command</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>Stop the service</td>
+<td><tt class="docutils literal">launchctl unload ~/Library/LaunchAgents/com.user.openwebui.plist</tt></td>
+</tr>
+<tr><td>Start it again</td>
+<td><tt class="docutils literal">launchctl load ~/Library/LaunchAgents/com.user.openwebui.plist</tt></td>
+</tr>
+<tr><td>Restart</td>
+<td>unload, then load</td>
+</tr>
+<tr><td>Disable autostart</td>
+<td>unload + delete the plist file</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="after-editing-the-plist">
+<h2>6. After editing the plist</h2>
+<p>If you ever modify the plist, you must reload it for changes to take
+effect:</p>
+<pre class="code bash literal-block">
+launchctl<span class="w"> </span>unload<span class="w"> </span>~/Library/LaunchAgents/com.user.openwebui.plist<span class="w">
+</span>launchctl<span class="w"> </span>load<span class="w"> </span>~/Library/LaunchAgents/com.user.openwebui.plist
+</pre>
+<hr class="docutils" />
+<p>That’s it — after step 3, Open WebUI will start automatically on every
+login without any further action needed.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="web-app">
+<h2>7. Web-app</h2>
+<ol class="arabic simple">
+<li>Open your browser and navigate to <a class="reference external" href="http://localhost:8081/">http://localhost:8081/</a>.</li>
+<li>Firefox and Chromium-based browsers (like Chrome or Edge) support
+Progressive Web Apps. Click the <tt class="docutils literal">Install</tt> icon in the address bar
+to run Open WebUI as a standalone application.</li>
+</ol>
+</div>
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/916b8911e29ba9e5ee9b14916834d031" target="_blank" rel="noopener">GitHub Gist #916b8911e29ba9e5ee9b14916834d031</a></p>                    </article>
+                </aside><!-- /#featured -->
                 <section id="extras" class="body">
                                 <div class="social">
                                         <h2>social</h2>
