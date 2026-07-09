@@ -104,6 +104,31 @@
     "content": ":target: https://postimg.cc/XZVZ1TM8 :alt: How to debug Python applications Introduction In software development, testing is an essential part of ensuring that code works as intended. One critical aspect of testing is debugging, which involves finding and fixing errors or bugs in a program. In this article, we’ll explore how to debug Python applications and highlight some of the most commonly used methods for debugging Python code. Debugging options When it comes to debugging Python, there are multiple options available, and you should consider which one suits your needs best. Two popular options are IDE debugging tools and package debugging tools. IDE Debugging Tools IDEs like PyCharm and VSCode offer debugging tools that allow you to set breakpoints in your code and run it in debug mode. This allows you to step through your code line by line, inspect variables, and evaluate expressions. Here are some resources for learning how to use the debugging tools in PyCharm and VSCode: `Debugg..."
   },
   {
+    "title": "PyData Amsterdam 2025 notes",
+    "url": "posts/2025/09/pydata-amsterdam-2025-notes/",
+    "date": "2025-09-26",
+    "category": "Tech",
+    "tags": [
+      "python",
+      "pydata-amsterdam"
+    ],
+    "summary": "PyData Amsterdam 2025 highlighted the latest advancements in data engineering and AI, focusing on efficiency, performance, and modern development tools. Key trends included automated prompt optimization, zero-copy data sharing, and the rise of next-generation notebook environments. The event also showcased the growing maturity of the LLM ecosystem through improved RAG architectures and lightweight models for faster development.",
+    "content": "Prompts Use DSpy https://dspy.ai/ for automatic prompt optimisation. Microsoft's attempt to fix the prompt management: https://github.com/microsoft/prompty. Supported by LangChain. Zero-copy Use DLPack https://dmlc.github.io/dlpack/latest/ for zero-data-copy of tensor data between between different libs (PyTorch, NumPy, etc.). Use Apache Arrow https://arrow.apache.org/ for zero-data-copy of tabular data between different libs (Pandas, Polars, DuckDB, etc.). End-to-end GPU processing If you're using NVIDIA GPUs, use cuDF-cu12 https://docs.rapids.ai/api/cudf/stable/ Vector DBs Qdrant https://github.com/qdrant/qdrant is generally loved by many as a vector DB. Face-recognition ArcFace https://github.com/deepinsight/insightface and SigLip2 https://huggingface.co/blog/siglip2 are your best friends here. Notebooks Marimo is emerging as a Jupyter notebook replacement. LLMs Some suggest to use universal LLM proxies for corporate use. LiteLLM https://docs.litellm.ai/ is one of such. Same folks s..."
+  },
+  {
+    "title": "Hide ``*.py,cover`` files from IDE",
+    "url": "posts/2026/04/hide-pycover-files-from-ide/",
+    "date": "2026-04-02",
+    "category": "Tech",
+    "tags": [
+      "python",
+      "vscode",
+      "pycharm"
+    ],
+    "summary": "Clean up your workspace by hiding those pesky ``*.py,cover`` files from your IDE. Whether you're using VS Code or PyCharm, this quick setting change keeps your file tree focused on your actual source code by filtering out coverage reports. Just a few clicks in your editor's \"Excluded\" or \"Ignored\" file settings, and those clutter-causing files disappear from view while remaining safe on your disk.",
+    "content": "VSCode Settings -> Text Editor -> Files -> Add Pattern: Add */.py,cover PyCharm Editor -> File Types -> Ignored Files and Folders : Add *.py,cover"
+  },
+  {
     "title": "Grab YouTube subtitles with `yt-dlp`",
     "url": "posts/2026/06/grab-youtube-subtitles-with-yt-dlp/",
     "date": "2026-06-01",

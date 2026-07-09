@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                        <meta charset="utf-8" />
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                        <meta name="generator" content="Pelican" />
+                        <title>Dev Notes - pydata-amsterdam</title>
+                        <link rel="stylesheet" href="/gistblog/theme/css/main.css" />
+                                <link href="/gistblog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dev Notes Atom Feed" />
+        </head>
+
+        <body id="index" class="home">
+                <header id="banner" class="body">
+                        <h1><a href="/gistblog/">Dev Notes</a></h1>
+                        <nav><ul>
+                                                <li><a href="/gistblog">Home</a></li>
+                                                <li id="nav-search"><a href="/gistblog/search.html" id="nav-search-link">Search</a></li>
+                                                <li><a href="/gistblog/category/art.html">Art</a></li>
+                                                <li><a href="/gistblog/category/tech.html">Tech</a></li>
+                        </ul></nav>
+                        <div id="search-dropdown" class="search-dropdown">
+                                <div class="search-dropdown-input-wrap">
+                                        <input type="search" id="search-dropdown-input" placeholder="Search posts..." autocomplete="off">
+                                </div>
+                                <div id="search-dropdown-results">
+                                        <div class="search-dropdown-hint">Type to search...</div>
+                                </div>
+                                <div class="search-dropdown-footer">
+                                        <a href="/gistblog/search.html" id="search-full-link">Full search page</a>
+                                </div>
+                        </div>
+                </header><!-- /#banner -->
+
+                <aside id="featured" class="body">
+                    <article>
+                        <h1 class="entry-title"><a href="/gistblog/posts/2025/09/pydata-amsterdam-2025-notes/">PyData Amsterdam 2025 notes</a></h1>
+<footer class="post-info minimal">
+        <span class="post-date">2025-09-26</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/pydata-amsterdam.html">pydata-amsterdam</a></span></footer><div class="section" id="prompts">
+<h2>Prompts</h2>
+<ul class="simple">
+<li>Use DSpy <a class="reference external" href="https://dspy.ai/">https://dspy.ai/</a> for automatic prompt optimisation.</li>
+<li>Microsoft's attempt to fix the prompt management: <a class="reference external" href="https://github.com/microsoft/prompty">https://github.com/microsoft/prompty</a>.
+Supported by LangChain.</li>
+</ul>
+</div>
+<div class="section" id="zero-copy">
+<h2>Zero-copy</h2>
+<ul class="simple">
+<li>Use DLPack <a class="reference external" href="https://dmlc.github.io/dlpack/latest/">https://dmlc.github.io/dlpack/latest/</a> for zero-data-copy of tensor data between between different libs (PyTorch, NumPy, etc.).</li>
+<li>Use Apache Arrow <a class="reference external" href="https://arrow.apache.org/">https://arrow.apache.org/</a> for zero-data-copy of tabular data between different libs (Pandas, Polars, DuckDB, etc.).</li>
+</ul>
+</div>
+<div class="section" id="end-to-end-gpu-processing">
+<h2>End-to-end GPU processing</h2>
+<ul class="simple">
+<li>If you're using NVIDIA GPUs, use cuDF-cu12 <a class="reference external" href="https://docs.rapids.ai/api/cudf/stable/">https://docs.rapids.ai/api/cudf/stable/</a></li>
+</ul>
+</div>
+<div class="section" id="vector-dbs">
+<h2>Vector DBs</h2>
+<p>Qdrant <a class="reference external" href="https://github.com/qdrant/qdrant">https://github.com/qdrant/qdrant</a> is generally loved by many as a vector DB.</p>
+</div>
+<div class="section" id="face-recognition">
+<h2>Face-recognition</h2>
+<p>ArcFace <a class="reference external" href="https://github.com/deepinsight/insightface">https://github.com/deepinsight/insightface</a> and SigLip2 <a class="reference external" href="https://huggingface.co/blog/siglip2">https://huggingface.co/blog/siglip2</a> are your best friends here.</p>
+</div>
+<div class="section" id="notebooks">
+<h2>Notebooks</h2>
+<p>Marimo is emerging as a Jupyter notebook replacement.</p>
+</div>
+<div class="section" id="llms">
+<h2>LLMs</h2>
+<ul class="simple">
+<li>Some suggest to use universal LLM proxies for corporate use. LiteLLM <a class="reference external" href="https://docs.litellm.ai/">https://docs.litellm.ai/</a> is one of such. Same folks suggest using Open WebUI as a generally available tool for corporate use.</li>
+<li>MCP gets tremendous amount of attention.</li>
+<li>Proper (optimal) implementation of RAGs get a lot of attention too. Make sure you're familiar with pre, mid, and post optimisations.</li>
+<li>Agents get tremendous amount of attention. New frameworks like Dapr <a class="reference external" href="https://github.com/dapr/dapr">https://github.com/dapr/dapr</a> emerge.</li>
+<li>Dutch local governance is actively integrating LLMs into their processes.</li>
+<li>Some suggest to use outlines <a class="reference external" href="https://github.com/dottxt-ai/outlines">https://github.com/dottxt-ai/outlines</a> for structured output.</li>
+<li>Some suggest SmolLM <a class="reference external" href="https://github.com/huggingface/smollm">https://github.com/huggingface/smollm</a> or <a class="reference external" href="https://ollama.com/library/smollm">https://ollama.com/library/smollm</a> for development/testing, as it's extremely small and fast. There's SmolVLM too, if you need a multimodal version.</li>
+</ul>
+</div>
+<div class="section" id="engineering">
+<h2>Engineering</h2>
+<ul class="simple">
+<li>Some suggest to use DuckDB <a class="reference external" href="https://duckdb.org/why_duckdb.html">https://duckdb.org/why_duckdb.html</a> for querying extremely large datasets.</li>
+<li>Docling is generally loved by many for format conversion. Check docling-langchain <a class="reference external" href="https://github.com/docling-project/docling-langchain/">https://github.com/docling-project/docling-langchain/</a> for better LangChain integration.</li>
+</ul>
+</div>
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/2d4cdb080895d58846427c5e8eec5331" target="_blank" rel="noopener">GitHub Gist #2d4cdb080895d58846427c5e8eec5331</a></p>                    </article>
+                </aside><!-- /#featured -->
+                <section id="extras" class="body">
+                                <div class="social">
+                                        <h2>social</h2>
+                                        <ul>
+                                                        <li><a href="/gistblog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                                        </ul>
+                                </div><!-- /.social -->
+                </section><!-- /#extras -->
+
+                <footer id="contentinfo" class="body">
+                        <address id="about" class="vcard body">
+                                Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                        </address><!-- /#about -->
+
+                        <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+                </footer><!-- /#contentinfo -->
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
+                <script data-siteurl="/gistblog" src="/gistblog/theme/js/search.js"></script>
+                <!-- Cloudflare Web Analytics -->
+                 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "94bb2938c9ab42eba6b587c892a78d27"}'></script>
+                 <!-- End Cloudflare Web Analytics -->
+        </body>
+</html>
