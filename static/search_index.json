@@ -1,5 +1,57 @@
 [
   {
+    "title": "Managing Homebrew upgrades: the selective lazy method",
+    "url": "posts/2026/05/managing-homebrew-upgrades-the-selective-lazy-method/",
+    "date": "2026-05-07",
+    "category": "Tech",
+    "tags": [
+      "macos",
+      "homebrew",
+      "productivity"
+    ],
+    "summary": "Automated upgrade scripts are great until a critical tool breaks. Learn how to pin specific packages and use filtered commands to keep your environment stable without losing your \"lazy\" workflow.",
+    "content": "The problem Automating package updates is the dream for any developer who values their time. However, the \"bleeding edge\" can sometimes cut you. Recently, my preferred terminal, Tabby, broke following a series of macOS updates. When a core tool in your workflow fails after an unattended upgrade, it halts productivity. While Homebrew allows you to \"pin\" standard formulae to prevent them from updating, there is currently no native \"pin\" or \"hold\" feature for Homebrew Casks. This means a blanket upgrade command will always try to pull the latest (and potentially broken) version of your GUI applications. The (imperfect) solution To keep using a specific version of a Cask while still upgrading everything else, you can use a filtered command. Instead of a blind global upgrade, you can list outdated casks and exclude the problematic one using grep. For Tabby, the following command ensures everything else moves forward while the terminal remains untouched: # Upgrade all casks except Tabby brew..."
+  },
+  {
+    "title": "Avoid risky Python updates: The 7-day safety buffer",
+    "url": "posts/2026/05/avoid-risky-python-updates-the-7-day-safety-buffer/",
+    "date": "2026-05-03",
+    "category": "Tech",
+    "tags": [
+      "python",
+      "security"
+    ],
+    "summary": "Recent attacks on **LiteLLM** and **PyTorch Lightning** show how dangerous \"bleeding edge\" updates can be for your security. Use a seven-day time gate to ensure your packages are vetted by the community before they touch your code.",
+    "content": "The problem In the last two months, the Python community has seen serious supply chain attacks. In March, LiteLLM was compromised to steal credentials. Last week, PyTorch Lightning suffered a similar attack where malicious versions tried to steal cloud secrets and SSH keys. In both cases, the bad code was found and removed quickly. However, anyone who updated their packages during those few hours was at risk. The (imperfect) solution To protect yourself, add these lines to your ~/.bashrc or ~/.zshrc file. This tells your tools to ignore any package released in the last week. # uv: Ignore any package versions released in the last 7 days export UV_EXCLUDE_NEWER=\"7 days\" # pip: Ignore any package versions uploaded in the last 7 days export PIP_UPLOADED_PRIOR_TO=P7D For per-project constains, update pyproject.toml in the following way: [tool.uv] exclude-newer = \"1 week\" exclude-newer-package = { \"safezip\" = \"0 days\" } In the example below, the safezip package is excluded from overal projec..."
+  },
+  {
+    "title": "dot-agents: Skills for AI Agents",
+    "url": "posts/2026/05/dot-agents-skills-for-ai-agents/",
+    "date": "2026-05-08",
+    "category": "Tech",
+    "tags": [
+      "python",
+      "ai",
+      "agents",
+      "tooling",
+      "open-source"
+    ],
+    "summary": "A collection of SKILL.md files that tell AI agents how to manage repos, validate docs, and handle Python projects.",
+    "content": "AI agents do what you tell them. dot-agents is a public repository of SKILL.md files — plain-language procedures that agents like Claude Code or OpenCode can follow to do real work on a codebase. Each skill has one job. What is a SKILL.md? A SKILL.md file is a Markdown document with a small YAML header. It defines a procedure in clear language: what the agent must do, what it must not do, and how to check the result. No vague suggestions — just concrete rules. Skills are invoked by name:: @skill migrate-to-uv /migrate-to-uv What skills are included? The repository ships six skills across three areas: Repository governance repo-bootstrap — creates AGENTS.md and the initial skill structure in a new repository. skill-authoring — rules for writing new skills that don't conflict with existing ones. Development workflow update-documentation — finds and fixes mismatches between code and docs, treating code as the source of truth. doc-codeblock-tests — runs Python code blocks in Markdown files..."
+  },
+  {
+    "title": "A small selection of photographs I took before 2012",
+    "url": "posts/2026/04/a-small-selection-of-photographs-i-took-before-2012/",
+    "date": "2026-04-14",
+    "category": "Art",
+    "tags": [
+      "art",
+      "photography"
+    ],
+    "summary": "A small selection of photographs I took before 2012",
+    "content": ":alt: Model: Dagmar Lindeijer Model: Dagmar Lindeijer :alt: Model: Wendy Appelman Model: Wendy Appelman :alt: Model: Jildou Jongman Model: Jildou Jongman :alt: Model: Dagmar Lindeijer Model: Dagmar Lindeijer :alt: Model: Manon Blauw Model: Manon Blauw :alt: Model: Karima van der Voort Model: Karima van der Voort :alt: Model: Karima van der Voort Model: Karima van der Voort :alt: Model: Eva Model: Eva :alt: Model: Wendy Appelman Model: Wendy Appelman"
+  },
+  {
     "title": "Safezip - zero-dependency wrapper for secure ZIP extraction",
     "url": "posts/2026/02/safezip-zero-dependency-wrapper-for-secure-zip-extraction/",
     "date": "2026-02-25",
@@ -11,6 +63,20 @@
     ],
     "summary": "`Safezip` is a zero-dependency Python wrapper for zipfile that makes secure extraction the default. It provides essential protections against ZipSlip, ZIP bombs, and inconsistent ZIP64 headers—security features missing from the standard library. With support for atomic writes and environment-based configuration, it is an ideal drop-in solution for safely handling untrusted user uploads in production.",
     "content": ":target: https://github.com/barseghyanartur/safezip :alt: Safezip I wrote a small, zero-dependency wrapper for secure ZIP extraction. https://github.com/barseghyanartur/safezip What My Project Does safezip is a zero-dependency wrapper around Python’s zipfile module that makes secure ZIP extraction the default. It protects against: ZipSlip protection: Blocks relative paths, absolute paths, Windows UNC paths, Unicode lookalike attacks, and null bytes in filenames. ZIP bomb prevention: Enforces per-member and cumulative decompression ratio limits at stream time — not based on untrusted header values. ZIP64 consistency checks: Crafted archives with inconsistent ZIP64 extra fields are rejected before decompression begins. Symlink policy — configurable: REJECT (default), IGNORE, or RESOLVE_INTERNAL. Atomic writes: Extracts to a temp file first and only moves it to the destination if all checks pass. If something fails, you don’t end up with half-extracted junk on your disk. Environment varia..."
+  },
+  {
+    "title": "PyGrunn 2026 talk: Agentic Engineering",
+    "url": "posts/2026/05/pygrunn-2026-talk-agentic-engineering/",
+    "date": "2026-05-08",
+    "category": "Tech",
+    "tags": [
+      "python",
+      "agentic-engineering",
+      "pygrunn",
+      "pygrunn-2026"
+    ],
+    "summary": "My talk at PyGrunn 2026 about Agentic Engineering.",
+    "content": "It was a great day! Good talks, great people, and a lot of insightful conversations in between. Looking forward to catching the talks I missed once they land on the official YouTube channel <https://www.youtube.com/@pyGrunn-and-aiGrunn/videos>_. View the video of my presentation here <https://www.youtube.com/watch?v=2mrREGH2_f8>_. <iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/2mrREGH2_f8?si=mn8Cj5BEGM-fqhnF\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe> Links to the slides This year I gave a talk about Agentic Engineering. Slides in HTML format: https://barseghyanartur.github.io/agentic-engineering-talk/ Slides in PDF-like HTML format: https://barseghyanartur.github.io/agentic-engineering-talk/?print-pdf :alt: PyGrunn 2026"
   },
   {
     "title": "bat is cat with extras",
@@ -26,29 +92,16 @@
     "content": "bat <https://github.com/sharkdp/bat> is a cat clone with extras. It improves terminal output by adding line numbers, syntax highlighting for various languages, and Git-aware gutter markers to show changes. Usage example: bat path/to/file.json bat path/to/file.rst bat path/to/file.md bat path/to/file.py A useful tweak - set page really high (put somewhere in your .bashrc or .zshrc): export BAT_PAGER='less -R -z 5000'"
   },
   {
-    "title": "PyData Amsterdam 2025 notes",
-    "url": "posts/2025/09/pydata-amsterdam-2025-notes/",
-    "date": "2025-09-26",
+    "title": "How to debug Python applications",
+    "url": "posts/2022/06/how-to-debug-python-applications/",
+    "date": "2022-06-21",
     "category": "Tech",
     "tags": [
       "python",
-      "pydata-amsterdam"
+      "debugging"
     ],
-    "summary": "PyData Amsterdam 2025 highlighted the latest advancements in data engineering and AI, focusing on efficiency, performance, and modern development tools. Key trends included automated prompt optimization, zero-copy data sharing, and the rise of next-generation notebook environments. The event also showcased the growing maturity of the LLM ecosystem through improved RAG architectures and lightweight models for faster development.",
-    "content": "Prompts Use DSpy https://dspy.ai/ for automatic prompt optimisation. Microsoft's attempt to fix the prompt management: https://github.com/microsoft/prompty. Supported by LangChain. Zero-copy Use DLPack https://dmlc.github.io/dlpack/latest/ for zero-data-copy of tensor data between between different libs (PyTorch, NumPy, etc.). Use Apache Arrow https://arrow.apache.org/ for zero-data-copy of tabular data between different libs (Pandas, Polars, DuckDB, etc.). End-to-end GPU processing If you're using NVIDIA GPUs, use cuDF-cu12 https://docs.rapids.ai/api/cudf/stable/ Vector DBs Qdrant https://github.com/qdrant/qdrant is generally loved by many as a vector DB. Face-recognition ArcFace https://github.com/deepinsight/insightface and SigLip2 https://huggingface.co/blog/siglip2 are your best friends here. Notebooks Marimo is emerging as a Jupyter notebook replacement. LLMs Some suggest to use universal LLM proxies for corporate use. LiteLLM https://docs.litellm.ai/ is one of such. Same folks s..."
-  },
-  {
-    "title": "Hide ``*.py,cover`` files from IDE",
-    "url": "posts/2026/04/hide-pycover-files-from-ide/",
-    "date": "2026-04-02",
-    "category": "Tech",
-    "tags": [
-      "python",
-      "vscode",
-      "pycharm"
-    ],
-    "summary": "Clean up your workspace by hiding those pesky ``*.py,cover`` files from your IDE. Whether you're using VS Code or PyCharm, this quick setting change keeps your file tree focused on your actual source code by filtering out coverage reports. Just a few clicks in your editor's \"Excluded\" or \"Ignored\" file settings, and those clutter-causing files disappear from view while remaining safe on your disk.",
-    "content": "VSCode Settings -> Text Editor -> Files -> Add Pattern: Add */.py,cover PyCharm Editor -> File Types -> Ignored Files and Folders : Add *.py,cover"
+    "summary": "In software development, testing is an essential part of ensuring that code works as intended. One critical aspect of testing is debugging, which involves finding and fixing errors or bugs in a program. In this article, we’ll explore how to debug Python applications and highlight some of the most commonly used methods for debugging Python code.",
+    "content": ":target: https://postimg.cc/XZVZ1TM8 :alt: How to debug Python applications Introduction In software development, testing is an essential part of ensuring that code works as intended. One critical aspect of testing is debugging, which involves finding and fixing errors or bugs in a program. In this article, we’ll explore how to debug Python applications and highlight some of the most commonly used methods for debugging Python code. Debugging options When it comes to debugging Python, there are multiple options available, and you should consider which one suits your needs best. Two popular options are IDE debugging tools and package debugging tools. IDE Debugging Tools IDEs like PyCharm and VSCode offer debugging tools that allow you to set breakpoints in your code and run it in debug mode. This allows you to step through your code line by line, inspect variables, and evaluate expressions. Here are some resources for learning how to use the debugging tools in PyCharm and VSCode: `Debugg..."
   },
   {
     "title": "Grab YouTube subtitles with `yt-dlp`",
@@ -77,6 +130,18 @@
     ],
     "summary": "Switching to VS Code can be a headache if you're used to the JetBrains look. This guide helps you clone that experience in two simple steps.",
     "content": "1. Install PyCharm theme Choose from PyCharm Dark+ Theme or Darcula PyCharm Theme. 2. Adjust user settings Command Palette (Cmd+Shift+P) -> type: settings json Paste the following: { \"telemetry.telemetryLevel\": \"off\", \"python.createEnvironment.trigger\": \"off\", \"workbench.startupEditor\": \"none\", \"makefile.configureOnOpen\": true, \"editor.rulers\": [80, 120], \"files.exclude\": { \"**/__pycache__\": true, \"**/.idea\": true, \"**/.mypy_cache\": true, \"**/.pytest_cache\": true, \"**/.ruff_cache\": true, \"**/.venv\": true, \"**/.vscode\": true, \"*/.py,cover\": true, \"**/htmlcov\": true, \"*/.egg-info\": true }, \"workbench.colorTheme\": \"PyCharm Dark+ Theme\", \"github.copilot.nextEditSuggestions.enabled\": true, \"git.enableSmartCommit\": true, \"workbench.tree.indent\": 20, \"workbench.tree.renderIndentGuides\": \"always\", \"editor.fontSize\": 14, \"containers.containerClient\": \"com.microsoft.visualstudio.containers.docker\", \"containers.orchestratorClient\": \"com.microsoft.visualstudio.orchestrators.dockercompose\", \"makefi..."
+  },
+  {
+    "title": "Understanding `uv sync` and dependency conflicts",
+    "url": "posts/2026/04/understanding-uv-sync-and-dependency-conflicts/",
+    "date": "2026-04-07",
+    "category": "Tech",
+    "tags": [
+      "python",
+      "uv"
+    ],
+    "summary": "While `uv pip compile` only resolves what you specifically request, `uv sync` attempts to resolve every optional dependency in your project simultaneously. This can lead to unexpected failures if different \"extras,\" such as ai and deploy, have conflicting requirements. You can fix this by explicitly declaring these incompatible extras in your `pyproject.toml` file to guide the resolver correctly.",
+    "content": "If you're switching to uv sync, keep in mind that it behaves differently than the standard uv pip workflow. Here is a quick breakdown of what to expect and how to fix common issues. The Trap: uv sync Resolves Everything Unlike uv pip compile, which only looks at what you ask for, uv sync attempts to resolve every dependency in your project, including all optional \"extras.\" Even if you only request specific extras (e.g., uv sync --extra api), uv still checks if the rest of your extras (like deploy) are compatible with your environment. If they conflict, the command will fail. The Solution: Declaring Conflicts If you have optional dependencies that are fundamentally incompatible—meaning they aren't meant to be installed together—you can tell uv to ignore those conflicts during the sync process. Add a conflicts section to your pyproject.toml: [tool.uv] conflicts = [ [ { extra = \"ai\" }, { extra = \"deploy\" }, ], ] The Result By explicitly declaring that ai and deploy are mutually exclusive,..."
   },
   {
     "title": "CudaText installation and config for SublimeText users",
@@ -130,6 +195,20 @@
     "content": "Hey, ever tried cleaning up messy license strings — like CC BY-NC-ND 4.0 or MIT License — and getting them into something tidy and machine-readable? That's exactly what licence-normaliser does, and honestly, it's a lifesaver for anyone dealing with open-source compliance or metadata. :align: center :alt: licence-normaliser :width: 100% Check out the repo here: licence-normaliser <https://github.com/barseghyanartur/licence-normaliser>. It's a lightweight Python library that turns chaos into order using a neat three-level system: family → licence → version. Think cc → cc-by-nc-nd → cc-by-nc-nd-4.0. Here's a quick demo — imagine you're scraping papers or repos and licenses come in every flavor: from licence_normaliser import normalise_licence result = normalise_licence(\"CC BY-NC-ND 4.0\") print(result.key)           # → cc-by-nc-nd-4.0 print(result.licence)       # → cc-by-nc-nd print(result.licence.family)  # → cc Super clean, right? It handles SPDX codes (Apache-2.0), full URLs, even slo..."
   },
   {
+    "title": "Maintained alternatives of MkDocs: ProperDocs and Zensical",
+    "url": "posts/2026/06/maintained-alternatives-of-mkdocs-properdocs-and-zensical/",
+    "date": "2026-06-02",
+    "category": "Tech",
+    "tags": [
+      "python",
+      "documentation",
+      "mkdocs",
+      "static-site-generator"
+    ],
+    "summary": "MkDocs is no longer actively maintained. ProperDocs is the drop-in replacement community fork. Zensical is a new project with the same goal.",
+    "content": "MkDocs is no longer actively maintained. Two successors have emerged from the community: Zensical <https://github.com/zensical/zensical>, a full rewrite with its own architecture and philosophy, and ProperDocs <https://github.com/ProperDocs/properdocs>, a conservative fork that picks up exactly where MkDocs left off. If Zensical's migration cost isn't worth it yet, ProperDocs is the answer. Your mkdocs.yml, plugins, and themes all work without modification. Switching is a two-step drop-in:: pip uninstall mkdocs pip install properdocs Then replace mkdocs build / mkdocs serve with properdocs build / properdocs serve. Done. ProperDocs stays focused on bug fixes, dependency maintenance, and backward compatibility — no surprises, no breaking changes."
+  },
+  {
     "title": "How to uninstall Progressive Web App installed with Vivaldi",
     "url": "posts/2024/10/how-to-uninstall-progressive-web-app-installed-with-vivaldi/",
     "date": "2024-10-30",
@@ -139,6 +218,19 @@
     ],
     "summary": "How to uninstall Progressive Web App installed with Vivaldi",
     "content": "#. Open the progresssive-web-app/shortcut. #. Navigate to the top-right menu, expand the menu and click on \"Uninstall {app-name}\"."
+  },
+  {
+    "title": "Make scrollbars always visible in Vivaldi browser using Stylus",
+    "url": "posts/2026/04/make-scrollbars-always-visible-in-vivaldi-browser-using-stylus/",
+    "date": "2026-04-03",
+    "category": "Tech",
+    "tags": [
+      "vivaldi",
+      "browsers",
+      "tweaks"
+    ],
+    "summary": "Tired of scrollbars playing hide-and-seek? This quick guide shows you how to use the Stylus extension to force scrollbars to stay visible in Vivaldi. With a simple CSS snippet, you can reclaim your navigation bars and even give them a custom look so they never disappear on you again.",
+    "content": "Steps #. Install Stylus Extension: Go to the Chrome Web Store and search for Stylus. Install the Stylus extension. #. Create a New Style in Stylus: Click on the Stylus icon in your browser toolbar. Click on Manage > Write new style. Add the following CSS code to make scrollbars always visible: / Always show vertical scrollbar / html, body { overflow-y: scroll !important; } / Always show horizontal scrollbar / html, body { overflow-x: scroll !important; } / Force scrollbar visibility for all elements / *::-webkit-scrollbar { width: 16px;  / Set the width for vertical scrollbars / height: 16px; / Set the height for horizontal scrollbars / -webkit-appearance: none; } *::-webkit-scrollbar-thumb { background-color: rgba(0, 0, 0, 0.5); / Customize the color of the scrollbar thumb / border-radius: 8px; / Customize the radius / border: 3px solid rgba(0, 0, 0, 0); / Adjust border if needed / } *::-webkit-scrollbar-track { background-color: rgba(0, 0, 0, 0.1); / Customize the background of the s..."
   },
   {
     "title": "My recent sketches",
@@ -176,5 +268,31 @@
     ],
     "summary": "Supercharge your VS Code setup with this curated list of essential plugins! Whether you're a Python pro needing Pylance and Makefile support, or a documentation stickler looking for Markdown and reStructuredText tools, these extensions bridge the gap between a basic editor and a powerhouse IDE. Plus, grab the PyCharm Theme to get that classic JetBrains look without sacrificing VS Code's lightweight speed.",
     "content": "#. Sort lines: Sort lines of text for VS Code #. PyCharm Theme: PyCharm Theme for VS Code #. MarkdownLint: Markdown/CommonMark linting and style checking for VS Code #. Makefile Tools: Enhancing Makefile development in VS Code #. Pylance: A performant, feature-rich language server for Python in VS Code #. Even better TOML: A TOML language support for VS Code #. reStructuredText Syntax highlighting: Syntax highlighting and non-intrusive section navigation for reStructuredText."
+  },
+  {
+    "title": "httpx2: Pydantic takes over stewardship of `httpx`",
+    "url": "posts/2026/06/httpx2-pydantic-takes-over-stewardship-of-httpx/",
+    "date": "2026-06-02",
+    "category": "Tech",
+    "tags": [
+      "python",
+      "httpx",
+      "httpx2",
+      "pydantic"
+    ],
+    "summary": "`httpx` is no longer actively maintained. Pydantic has picked up stewardship under the name `httpx2` — a drop-in continuation with the same API, same design, and a reliable team behind it.",
+    "content": "httpx <https://github.com/encode/httpx> is no longer actively maintained. httpx2 <https://github.com/pydantic/httpx2>, maintained by Pydantic, is its direct continuation — same API, same design philosophy, same everything. Only the package name changes. Migrating is a one-liner:: pip install httpx2 And a global find-and-replace in your codebase:: import httpx  →  import httpx2 That's the entire migration. No architectural changes, no new concepts to learn. Pydantic uses httpx2 in their own AI products, which gives the project a concrete reason to stay healthy and receive timely security updates — particularly important for a library that sits in the request path of so many production systems."
+  },
+  {
+    "title": "Log4Brains images support",
+    "url": "posts/2026/04/log4brains-images-support/",
+    "date": "2026-04-03",
+    "category": "Tech",
+    "tags": [
+      "ADRs",
+      "log4brains"
+    ],
+    "summary": "Tired of broken images in your Architecture Decision Records? This quick fix shows you how to add static image support to Log4brains. By setting up a docs/l4b-static folder and adding a simple copy command to your Build script or GitHub Action, you can finally use local icons and diagrams directly in your ADRs. Perfect for keeping your architecture docs visual and professional without the hosting headaches.",
+    "content": "https://github.com/thomvaill/log4brains Directory structure :: docs ├── adr │   ├── 20240416-architecture-v2.md │   ├── 20240916-llm-choice.md │   ├── 20240916-rag-framework-choice.md │   ├── index.md │   └── template.md └── l4b-static └── images ├── favicon-16x16.png └── favicon-32x32.png Makefile Filename: Makefile :: add-adr: docker run --rm -ti -v $$(pwd):/workdir -p 4004:4004 thomvaill/log4brains adr new $(ARGS) preview: docker run --rm -ti -v $$(pwd):/workdir -p 4004:4004 thomvaill/log4brains preview $(ARGS) build: docker run --rm -ti -v $$(pwd):/workdir -p 4004:4004 thomvaill/log4brains build $(ARGS) cp -R docs/l4b-static/* .log4brains/out/l4b-static/ # Serve the built docs on port 5002 serve: cd .log4brains/out && python3 -m http.server 5002 GitHub Action Filename: .github/workflows/publish-log4brains.yml name: Publish Log4brains on: push: branches: main workflow_dispatch: {} jobs: pre-commit: runs-on: ubuntu-latest if: ${{ !github.event.pull_request.draft }} steps: uses: actio..."
   }
 ]

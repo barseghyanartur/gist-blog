@@ -33,28 +33,116 @@
 
                 <aside id="featured" class="body">
                     <article>
-                        <h1 class="entry-title"><a href="/gistblog/posts/2026/06/grab-youtube-subtitles-with-yt-dlp/">Grab YouTube subtitles with <cite>yt-dlp</cite></a></h1>
+                        <h1 class="entry-title"><a href="/gistblog/posts/2026/06/httpx2-pydantic-takes-over-stewardship-of-httpx/">httpx2: Pydantic takes over stewardship of <cite>httpx</cite></a></h1>
 <footer class="post-info minimal">
-        <span class="post-date">2026-06-01</span>
-<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/yt-dlp.html">yt-dlp</a>, <a href="/gistblog/tag/youtube.html">youtube</a>, <a href="/gistblog/tag/subtitles.html">subtitles</a>, <a href="/gistblog/tag/cli.html">cli</a></span></footer><p>Sometimes you need subtitles — for a transcript, for translation, for feeding into some other tool — but you don't want the video itself. <tt class="docutils literal"><span class="pre">yt-dlp</span></tt> handles this cleanly.</p>
-<p>One command does it:</p>
+        <span class="post-date">2026-06-02</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/httpx.html">httpx</a>, <a href="/gistblog/tag/httpx2.html">httpx2</a>, <a href="/gistblog/tag/pydantic.html">pydantic</a></span></footer><p><a class="reference external" href="https://github.com/encode/httpx">httpx</a> is no longer actively maintained.
+<a class="reference external" href="https://github.com/pydantic/httpx2">httpx2</a>, maintained by Pydantic,
+is its direct continuation — same API, same design philosophy, same everything.
+Only the package name changes.</p>
+<p>Migrating is a one-liner:</p>
 <pre class="literal-block">
-yt-dlp --write-auto-sub --convert-subs=srt --skip-download 'https://www.youtube.com/watch?v=uniqueVideoID'
+pip install httpx2
 </pre>
-<p>What each flag does:</p>
-<ul class="simple">
-<li><tt class="docutils literal"><span class="pre">--write-auto-sub</span></tt> — fetch the auto-generated subtitle track (the one YouTube generates automatically, not the manually uploaded captions)</li>
-<li><tt class="docutils literal"><span class="pre">--convert-subs=srt</span></tt> — convert whatever format YouTube spits out (usually VTT) into the widely-supported SRT format</li>
-<li><tt class="docutils literal"><span class="pre">--skip-download</span></tt> — don't download the video, just the subtitles</li>
-</ul>
-<p>The result is a <tt class="docutils literal">.srt</tt> file sitting next to where you ran the command, named after the video title.</p>
-<p>If the video has manually uploaded captions instead of auto-generated ones, swap <tt class="docutils literal"><span class="pre">--write-auto-sub</span></tt> for <tt class="docutils literal"><span class="pre">--write-sub</span></tt>. You can also pass <tt class="docutils literal"><span class="pre">--sub-lang</span> en</tt> to pin a specific language when multiple tracks are available.</p>
-<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/43ac4b08ecc729cda15f7d4487241efd" target="_blank" rel="noopener">GitHub Gist #43ac4b08ecc729cda15f7d4487241efd</a></p>                    </article>
+<p>And a global find-and-replace in your codebase:</p>
+<pre class="literal-block">
+import httpx  →  import httpx2
+</pre>
+<p>That's the entire migration. No architectural changes, no new concepts to learn.</p>
+<p>Pydantic uses <cite>httpx2</cite> in their own AI products, which gives the
+project a concrete reason to stay healthy and receive timely security updates —
+particularly important for a library that sits in the request path of so many
+production systems.</p>
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/d02b6384b401b7d0f3a421075abfbf6f" target="_blank" rel="noopener">GitHub Gist #d02b6384b401b7d0f3a421075abfbf6f</a></p>                    </article>
                 </aside><!-- /#featured -->
                     <section id="content" class="body">
                         <h1>Other articles</h1>
                         <hr />
                         <ol id="posts-list" class="hfeed">
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/gistblog/posts/2026/06/maintained-alternatives-of-mkdocs-properdocs-and-zensical/" rel="bookmark"
+                               title="Permalink to Maintained alternatives of MkDocs: ProperDocs and Zensical">Maintained alternatives of MkDocs: ProperDocs and Zensical</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+                        <p class="first last">MkDocs is no longer actively maintained. ProperDocs is the drop-in replacement community fork. Zensical is a new project with the same goal.</p>
+<footer class="post-info minimal">
+        <span class="post-date">2026-06-02</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/documentation.html">documentation</a>, <a href="/gistblog/tag/mkdocs.html">mkdocs</a>, <a href="/gistblog/tag/static-site-generator.html">static-site-generator</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/06/maintained-alternatives-of-mkdocs-properdocs-and-zensical/">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/gistblog/posts/2026/06/grab-youtube-subtitles-with-yt-dlp/" rel="bookmark"
+                               title="Permalink to Grab YouTube subtitles with yt-dlp">Grab YouTube subtitles with <cite>yt-dlp</cite></a></h1>
+                    </header>
+
+                    <div class="entry-content">
+                        <p class="first last">A one-liner to download auto-generated subtitles from YouTube as SRT files without touching the video.</p>
+<footer class="post-info minimal">
+        <span class="post-date">2026-06-01</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/yt-dlp.html">yt-dlp</a>, <a href="/gistblog/tag/youtube.html">youtube</a>, <a href="/gistblog/tag/subtitles.html">subtitles</a>, <a href="/gistblog/tag/cli.html">cli</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/06/grab-youtube-subtitles-with-yt-dlp/">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/gistblog/posts/2026/05/dot-agents-skills-for-ai-agents/" rel="bookmark"
+                               title="Permalink to dot-agents: Skills for AI Agents">dot-agents: Skills for AI Agents</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+                        <p class="first last">A collection of SKILL.md files that tell AI agents how to manage repos, validate docs, and handle Python projects.</p>
+<footer class="post-info minimal">
+        <span class="post-date">2026-05-08</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/ai.html">ai</a>, <a href="/gistblog/tag/agents.html">agents</a>, <a href="/gistblog/tag/tooling.html">tooling</a>, <a href="/gistblog/tag/open-source.html">open-source</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/05/dot-agents-skills-for-ai-agents/">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/gistblog/posts/2026/05/pygrunn-2026-talk-agentic-engineering/" rel="bookmark"
+                               title="Permalink to PyGrunn 2026 talk: Agentic Engineering">PyGrunn 2026 talk: Agentic Engineering</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+                        <img src="https://pygrunn.org/wp-content/uploads/2026/03/pygrunn-26-header.png" alt="Preview" class="preview-image" style="max-width:100%; height:auto; border-radius:8px; margin-bottom:1.5rem; display:block;"><p class="first last">My talk at PyGrunn 2026 about Agentic Engineering.</p>
+<footer class="post-info minimal">
+        <span class="post-date">2026-05-08</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/agentic-engineering.html">agentic-engineering</a>, <a href="/gistblog/tag/pygrunn.html">pygrunn</a>, <a href="/gistblog/tag/pygrunn-2026.html">pygrunn-2026</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/05/pygrunn-2026-talk-agentic-engineering/">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/gistblog/posts/2026/05/managing-homebrew-upgrades-the-selective-lazy-method/" rel="bookmark"
+                               title="Permalink to Managing Homebrew upgrades: the selective lazy method">Managing Homebrew upgrades: the selective lazy method</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+                        <p class="first last">Automated upgrade scripts are great until a critical tool breaks. Learn how to pin specific packages and use filtered commands to keep your environment stable without losing your &quot;lazy&quot; workflow.</p>
+<footer class="post-info minimal">
+        <span class="post-date">2026-05-07</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/macos.html">macos</a>, <a href="/gistblog/tag/homebrew.html">homebrew</a>, <a href="/gistblog/tag/productivity.html">productivity</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/05/managing-homebrew-upgrades-the-selective-lazy-method/">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/gistblog/posts/2026/05/avoid-risky-python-updates-the-7-day-safety-buffer/" rel="bookmark"
+                               title="Permalink to Avoid risky Python updates: The 7-day safety buffer">Avoid risky Python updates: The 7-day safety buffer</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+                        <p class="first last">Recent attacks on <strong>LiteLLM</strong> and <strong>PyTorch Lightning</strong> show how dangerous &quot;bleeding edge&quot; updates can be for your security. Use a seven-day time gate to ensure your packages are vetted by the community before they touch your code.</p>
+<footer class="post-info minimal">
+        <span class="post-date">2026-05-03</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/security.html">security</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/05/avoid-risky-python-updates-the-7-day-safety-buffer/">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
 
                 <li><article class="hentry">
                     <header>
@@ -67,6 +155,20 @@ yt-dlp --write-auto-sub --convert-subs=srt --skip-download 'https://www.youtube.
 <footer class="post-info minimal">
         <span class="post-date">2026-04-21</span>
 <span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/shell.html">shell</a>, <a href="/gistblog/tag/cat.html">cat</a>, <a href="/gistblog/tag/bat.html">bat</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/04/bat-is-cat-with-extras/">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/gistblog/posts/2026/04/a-small-selection-of-photographs-i-took-before-2012/" rel="bookmark"
+                               title="Permalink to A small selection of photographs I took before 2012">A small selection of photographs I took before 2012</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+                        <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*Tx2XiBou-6qgq87_zDDFaQ.jpeg" alt="Preview" class="preview-image" style="max-width:100%; height:auto; border-radius:8px; margin-bottom:1.5rem; display:block;"><p class="first last">A small selection of photographs I took before 2012</p>
+<footer class="post-info minimal">
+        <span class="post-date">2026-04-14</span>
+<span class="post-category"> | <a href="/gistblog/category/art.html">Art</a></span><span class="post-tags"> | <a href="/gistblog/tag/art.html">art</a>, <a href="/gistblog/tag/photography.html">photography</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/04/a-small-selection-of-photographs-i-took-before-2012/">read more</a>
                     </div><!-- /.entry-content -->
                 </article></li>
 
@@ -100,6 +202,20 @@ yt-dlp --write-auto-sub --convert-subs=srt --skip-download 'https://www.youtube.
 
                 <li><article class="hentry">
                     <header>
+                        <h1><a href="/gistblog/posts/2026/04/understanding-uv-sync-and-dependency-conflicts/" rel="bookmark"
+                               title="Permalink to Understanding uv sync and dependency conflicts">Understanding <cite>uv sync</cite> and dependency conflicts</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+                        <p class="first last">While <cite>uv pip compile</cite> only resolves what you specifically request, <cite>uv sync</cite> attempts to resolve every optional dependency in your project simultaneously. This can lead to unexpected failures if different &quot;extras,&quot; such as ai and deploy, have conflicting requirements. You can fix this by explicitly declaring these incompatible extras in your <cite>pyproject.toml</cite> file to guide the resolver correctly.</p>
+<footer class="post-info minimal">
+        <span class="post-date">2026-04-07</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/uv.html">uv</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/04/understanding-uv-sync-and-dependency-conflicts/">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
+
+                <li><article class="hentry">
+                    <header>
                         <h1><a href="/gistblog/posts/2026/04/licence-normaliser-taming-licence-chaos-in-python/" rel="bookmark"
                                title="Permalink to licence-normaliser: Taming licence chaos in Python">licence-normaliser: Taming licence chaos in Python</a></h1>
                     </header>
@@ -109,6 +225,34 @@ yt-dlp --write-auto-sub --convert-subs=srt --skip-download 'https://www.youtube.
 <footer class="post-info minimal">
         <span class="post-date">2026-04-04</span>
 <span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/licence.html">licence</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/04/licence-normaliser-taming-licence-chaos-in-python/">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/gistblog/posts/2026/04/log4brains-images-support/" rel="bookmark"
+                               title="Permalink to Log4Brains images support">Log4Brains images support</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+                        <p class="first last">Tired of broken images in your Architecture Decision Records? This quick fix shows you how to add static image support to Log4brains. By setting up a docs/l4b-static folder and adding a simple copy command to your Build script or GitHub Action, you can finally use local icons and diagrams directly in your ADRs. Perfect for keeping your architecture docs visual and professional without the hosting headaches.</p>
+<footer class="post-info minimal">
+        <span class="post-date">2026-04-03</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/adrs.html">ADRs</a>, <a href="/gistblog/tag/log4brains.html">log4brains</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/04/log4brains-images-support/">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/gistblog/posts/2026/04/make-scrollbars-always-visible-in-vivaldi-browser-using-stylus/" rel="bookmark"
+                               title="Permalink to Make scrollbars always visible in Vivaldi browser using Stylus">Make scrollbars always visible in Vivaldi browser using Stylus</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+                        <p class="first last">Tired of scrollbars playing hide-and-seek? This quick guide shows you how to use the Stylus extension to force scrollbars to stay visible in Vivaldi. With a simple CSS snippet, you can reclaim your navigation bars and even give them a custom look so they never disappear on you again.</p>
+<footer class="post-info minimal">
+        <span class="post-date">2026-04-03</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/vivaldi.html">vivaldi</a>, <a href="/gistblog/tag/browsers.html">browsers</a>, <a href="/gistblog/tag/tweaks.html">tweaks</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/04/make-scrollbars-always-visible-in-vivaldi-browser-using-stylus/">read more</a>
                     </div><!-- /.entry-content -->
                 </article></li>
 
@@ -156,20 +300,6 @@ yt-dlp --write-auto-sub --convert-subs=srt --skip-download 'https://www.youtube.
 
                 <li><article class="hentry">
                     <header>
-                        <h1><a href="/gistblog/posts/2026/04/hide-pycover-files-from-ide/" rel="bookmark"
-                               title="Permalink to Hide *.py,cover files from IDE">Hide <tt class="docutils literal">*.py,cover</tt> files from IDE</a></h1>
-                    </header>
-
-                    <div class="entry-content">
-                        <p class="first last">Clean up your workspace by hiding those pesky <tt class="docutils literal">*.py,cover</tt> files from your IDE. Whether you're using VS Code or PyCharm, this quick setting change keeps your file tree focused on your actual source code by filtering out coverage reports. Just a few clicks in your editor's &quot;Excluded&quot; or &quot;Ignored&quot; file settings, and those clutter-causing files disappear from view while remaining safe on your disk.</p>
-<footer class="post-info minimal">
-        <span class="post-date">2026-04-02</span>
-<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/vscode.html">vscode</a>, <a href="/gistblog/tag/pycharm.html">pycharm</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/04/hide-pycover-files-from-ide/">read more</a>
-                    </div><!-- /.entry-content -->
-                </article></li>
-
-                <li><article class="hentry">
-                    <header>
                         <h1><a href="/gistblog/posts/2026/02/safezip-zero-dependency-wrapper-for-secure-zip-extraction/" rel="bookmark"
                                title="Permalink to Safezip - zero-dependency wrapper for secure ZIP extraction">Safezip - zero-dependency wrapper for secure ZIP extraction</a></h1>
                     </header>
@@ -198,20 +328,6 @@ yt-dlp --write-auto-sub --convert-subs=srt --skip-download 'https://www.youtube.
 
                 <li><article class="hentry">
                     <header>
-                        <h1><a href="/gistblog/posts/2025/09/pydata-amsterdam-2025-notes/" rel="bookmark"
-                               title="Permalink to PyData Amsterdam 2025 notes">PyData Amsterdam 2025 notes</a></h1>
-                    </header>
-
-                    <div class="entry-content">
-                        <p class="first last">PyData Amsterdam 2025 highlighted the latest advancements in data engineering and AI, focusing on efficiency, performance, and modern development tools. Key trends included automated prompt optimization, zero-copy data sharing, and the rise of next-generation notebook environments. The event also showcased the growing maturity of the LLM ecosystem through improved RAG architectures and lightweight models for faster development.</p>
-<footer class="post-info minimal">
-        <span class="post-date">2025-09-26</span>
-<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/pydata-amsterdam.html">pydata-amsterdam</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2025/09/pydata-amsterdam-2025-notes/">read more</a>
-                    </div><!-- /.entry-content -->
-                </article></li>
-
-                <li><article class="hentry">
-                    <header>
                         <h1><a href="/gistblog/posts/2025/03/why-is-vivaldi-browser-a-great-companion/" rel="bookmark"
                                title="Permalink to Why is Vivaldi browser a great companion?">Why is Vivaldi browser a great companion?</a></h1>
                     </header>
@@ -235,6 +351,20 @@ yt-dlp --write-auto-sub --convert-subs=srt --skip-download 'https://www.youtube.
 <footer class="post-info minimal">
         <span class="post-date">2024-10-30</span>
 <span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/vivaldi.html">vivaldi</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2024/10/how-to-uninstall-progressive-web-app-installed-with-vivaldi/">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/gistblog/posts/2022/06/how-to-debug-python-applications/" rel="bookmark"
+                               title="Permalink to How to debug Python applications">How to debug Python applications</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+                        <img src="https://i.postimg.cc/rp4SskQv/rp-L4mz-N2-ZJ0-Pnopju2da-1-kguub.jpg" alt="Preview" class="preview-image" style="max-width:100%; height:auto; border-radius:8px; margin-bottom:1.5rem; display:block;"><p class="first last">In software development, testing is an essential part of ensuring that code works as intended. One critical aspect of testing is debugging, which involves finding and fixing errors or bugs in a program. In this article, we’ll explore how to debug Python applications and highlight some of the most commonly used methods for debugging Python code.</p>
+<footer class="post-info minimal">
+        <span class="post-date">2022-06-21</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/debugging.html">debugging</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2022/06/how-to-debug-python-applications/">read more</a>
                     </div><!-- /.entry-content -->
                 </article></li>
                     </ol><!-- /#posts-list -->

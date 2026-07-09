@@ -33,39 +33,52 @@
 
                 <aside id="featured" class="body">
                     <article>
-                        <h1 class="entry-title"><a href="/gistblog/posts/2026/04/hide-pycover-files-from-ide/">Hide <tt class="docutils literal">*.py,cover</tt> files from IDE</a></h1>
-<footer class="post-info minimal">
-        <span class="post-date">2026-04-02</span>
-<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/vscode.html">vscode</a>, <a href="/gistblog/tag/pycharm.html">pycharm</a></span></footer><div class="section" id="vscode">
-<h2>VSCode</h2>
-<p>Settings -&gt; Text Editor -&gt; Files -&gt; Add Pattern: Add <tt class="docutils literal"><span class="pre">**/*.py,cover</span></tt></p>
-</div>
-<div class="section" id="pycharm">
-<h2>PyCharm</h2>
-<p>Editor -&gt; File Types -&gt; Ignored Files and Folders : Add <tt class="docutils literal">*.py,cover</tt></p>
-</div>
-<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/2e36de0a8b64198ed98e748a0a7b7f15" target="_blank" rel="noopener">GitHub Gist #2e36de0a8b64198ed98e748a0a7b7f15</a></p>                    </article>
-                </aside><!-- /#featured -->
-                    <section id="content" class="body">
-                        <h1>Other articles</h1>
-                        <hr />
-                        <ol id="posts-list" class="hfeed">
-
-                <li><article class="hentry">
-                    <header>
-                        <h1><a href="/gistblog/posts/2026/01/vs-code-for-pycharm-users/" rel="bookmark"
-                               title="Permalink to VS Code for Pycharm users">VS Code for Pycharm users</a></h1>
-                    </header>
-
-                    <div class="entry-content">
-                        <p class="first last">Switching to VS Code can be a headache if you're used to the JetBrains look. This guide helps you clone that experience in two simple steps.</p>
+                        <h1 class="entry-title"><a href="/gistblog/posts/2026/01/vs-code-for-pycharm-users/">VS Code for Pycharm users</a></h1>
 <footer class="post-info minimal">
         <span class="post-date">2026-01-12</span>
-<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/vscode.html">vscode</a>, <a href="/gistblog/tag/vscode-plugins.html">vscode-plugins</a>, <a href="/gistblog/tag/pycharm.html">pycharm</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/01/vs-code-for-pycharm-users/">read more</a>
-                    </div><!-- /.entry-content -->
-                </article></li>
-                    </ol><!-- /#posts-list -->
-                    </section><!-- /#content -->
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/vscode.html">vscode</a>, <a href="/gistblog/tag/vscode-plugins.html">vscode-plugins</a>, <a href="/gistblog/tag/pycharm.html">pycharm</a></span></footer><!-- References: -->
+<div class="section" id="install-pycharm-theme">
+<h2>1. Install <tt class="docutils literal">PyCharm</tt> theme</h2>
+<p>Choose from <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=nicohlr.pycharm">PyCharm Dark+ Theme</a> or <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=garytyler.darcula-pycharm">Darcula PyCharm Theme</a>.</p>
+</div>
+<div class="section" id="adjust-user-settings">
+<h2>2. Adjust user settings</h2>
+<p>Command Palette (<cite>Cmd+Shift+P</cite>) -&gt; type: <tt class="docutils literal">settings json</tt></p>
+<p>Paste the following:</p>
+<div class="highlight"><pre><span></span>{
+    &quot;telemetry.telemetryLevel&quot;: &quot;off&quot;,
+    &quot;python.createEnvironment.trigger&quot;: &quot;off&quot;,
+    &quot;workbench.startupEditor&quot;: &quot;none&quot;,
+    &quot;makefile.configureOnOpen&quot;: true,
+    &quot;editor.rulers&quot;: [80, 120],
+    &quot;files.exclude&quot;: {
+        &quot;**/__pycache__&quot;: true,
+        &quot;**/.idea&quot;: true,
+        &quot;**/.mypy_cache&quot;: true,
+        &quot;**/.pytest_cache&quot;: true,
+        &quot;**/.ruff_cache&quot;: true,
+        &quot;**/.venv&quot;: true,
+        &quot;**/.vscode&quot;: true,
+        &quot;**/*.py,cover&quot;: true,
+        &quot;**/htmlcov&quot;: true,
+        &quot;**/*.egg-info&quot;: true
+    },
+    &quot;workbench.colorTheme&quot;: &quot;PyCharm Dark+ Theme&quot;,
+    &quot;github.copilot.nextEditSuggestions.enabled&quot;: true,
+    &quot;git.enableSmartCommit&quot;: true,
+    &quot;workbench.tree.indent&quot;: 20,
+    &quot;workbench.tree.renderIndentGuides&quot;: &quot;always&quot;,
+    &quot;editor.fontSize&quot;: 14,
+    &quot;containers.containerClient&quot;: &quot;com.microsoft.visualstudio.containers.docker&quot;,
+    &quot;containers.orchestratorClient&quot;: &quot;com.microsoft.visualstudio.orchestrators.dockercompose&quot;,
+    &quot;makefile.configureOnOpen&quot;: true,
+    &quot;github.gitAuthentication&quot;: false,
+    &quot;git.terminalAuthentication&quot;: false
+}
+</pre></div>
+</div>
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/4ecebab0b626234f4a5125a4ab43187f" target="_blank" rel="noopener">GitHub Gist #4ecebab0b626234f4a5125a4ab43187f</a></p>                    </article>
+                </aside><!-- /#featured -->
                 <section id="extras" class="body">
                                 <div class="social">
                                         <h2>social</h2>

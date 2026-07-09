@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                        <meta charset="utf-8" />
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                        <meta name="generator" content="Pelican" />
+                        <title>Dev Notes - productivity</title>
+                        <link rel="stylesheet" href="/gistblog/theme/css/main.css" />
+                                <link href="/gistblog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dev Notes Atom Feed" />
+        </head>
+
+        <body id="index" class="home">
+                <header id="banner" class="body">
+                        <h1><a href="/gistblog/">Dev Notes</a></h1>
+                        <nav><ul>
+                                                <li><a href="/gistblog">Home</a></li>
+                                                <li id="nav-search"><a href="/gistblog/search.html" id="nav-search-link">Search</a></li>
+                                                <li><a href="/gistblog/category/art.html">Art</a></li>
+                                                <li><a href="/gistblog/category/tech.html">Tech</a></li>
+                        </ul></nav>
+                        <div id="search-dropdown" class="search-dropdown">
+                                <div class="search-dropdown-input-wrap">
+                                        <input type="search" id="search-dropdown-input" placeholder="Search posts..." autocomplete="off">
+                                </div>
+                                <div id="search-dropdown-results">
+                                        <div class="search-dropdown-hint">Type to search...</div>
+                                </div>
+                                <div class="search-dropdown-footer">
+                                        <a href="/gistblog/search.html" id="search-full-link">Full search page</a>
+                                </div>
+                        </div>
+                </header><!-- /#banner -->
+
+                <aside id="featured" class="body">
+                    <article>
+                        <h1 class="entry-title"><a href="/gistblog/posts/2026/05/managing-homebrew-upgrades-the-selective-lazy-method/">Managing Homebrew upgrades: the selective lazy method</a></h1>
+<footer class="post-info minimal">
+        <span class="post-date">2026-05-07</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/macos.html">macos</a>, <a href="/gistblog/tag/homebrew.html">homebrew</a>, <a href="/gistblog/tag/productivity.html">productivity</a></span></footer><div class="section" id="the-problem">
+<h2>The problem</h2>
+<p>Automating package updates is the dream for any developer who values their time. However, the &quot;bleeding edge&quot; can sometimes cut you. Recently, my preferred terminal, <strong>Tabby</strong>, broke following a series of macOS updates.</p>
+<p>When a core tool in your workflow fails after an unattended upgrade, it halts productivity. While Homebrew allows you to &quot;pin&quot; standard formulae to prevent them from updating, there is currently no native &quot;pin&quot; or &quot;hold&quot; feature for Homebrew Casks. This means a blanket upgrade command will always try to pull the latest (and potentially broken) version of your GUI applications.</p>
+</div>
+<div class="section" id="the-imperfect-solution">
+<h2>The (imperfect) solution</h2>
+<p>To keep using a specific version of a Cask while still upgrading everything else, you can use a filtered command. Instead of a blind global upgrade, you can list outdated casks and exclude the problematic one using <tt class="docutils literal">grep</tt>.</p>
+<p>For <strong>Tabby</strong>, the following command ensures everything else moves forward while the terminal remains untouched:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Upgrade all casks except Tabby</span>
+brew<span class="w"> </span>upgrade<span class="w"> </span>--cask<span class="w"> </span>--greedy<span class="w"> </span><span class="k">$(</span>brew<span class="w"> </span>outdated<span class="w"> </span>--cask<span class="w"> </span>--greedy<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;tabby&quot;</span><span class="k">)</span>
+</pre></div>
+<p>For standard CLI tools (formulae), you should use the built-in pinning mechanism:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Prevent a formula from being upgraded</span>
+brew<span class="w"> </span>pin<span class="w"> </span>&lt;package_name&gt;
+</pre></div>
+</div>
+<div class="section" id="why-this-improves-stability">
+<h2>Why this improves stability</h2>
+<dl class="docutils">
+<dt>The &quot;stay lazy&quot; workflow</dt>
+<dd><p class="first">Most of us use a &quot;one-liner&quot; to keep our systems current. My personal &quot;lazy&quot; script handles Homebrew, Python tools, and specific app fixes in one go:</p>
+<div class="last"><div class="highlight"><pre><span></span>brew<span class="w"> </span>update<span class="w"> </span><span class="o">||</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span>brew<span class="w"> </span>upgrade<span class="w"> </span><span class="o">||</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span>brew<span class="w"> </span>upgrade<span class="w"> </span>--cask<span class="w"> </span>--greedy<span class="w"> </span><span class="k">$(</span>brew<span class="w"> </span>outdated<span class="w"> </span>--cask<span class="w"> </span>--greedy<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;tabby&quot;</span><span class="k">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span>brew<span class="w"> </span>cleanup<span class="w"> </span>-s<span class="w"> </span><span class="o">||</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span>uv<span class="w"> </span>tool<span class="w"> </span>upgrade<span class="w"> </span>--all<span class="w"> </span><span class="o">||</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span>xattr<span class="w"> </span>-cr<span class="w"> </span>/Applications/Chromium.app
+</pre></div>
+</div></dd>
+<dt>Targeted exclusion</dt>
+<dd>By adding the <tt class="docutils literal">grep <span class="pre">-v</span></tt> logic to the middle of the chain, you maintain the automation. You don't have to remember to skip Tabby manually; the script handles the logic for you.</dd>
+<dt>Granular control</dt>
+<dd>This approach bridges the gap between the robust <tt class="docutils literal">pin</tt> feature available for formulae and the lack of such a feature for Casks. It ensures that known-stable versions of GUI apps stay put until you are ready to manually verify a fix.</dd>
+</dl>
+</div>
+<div class="section" id="the-perfect-solution-that-does-not-yet-exist">
+<h2>The perfect solution that does not yet exist</h2>
+<p>If only the Homebrew maintainers would implement a native <tt class="docutils literal">brew cask pin</tt> command. Having a unified way to freeze versions for both command-line tools and applications would eliminate the need for complex bash one-liners and custom grep filters.</p>
+</div>
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/02ac4c3c2b2bd1dd0d896f9c8e13b9bd" target="_blank" rel="noopener">GitHub Gist #02ac4c3c2b2bd1dd0d896f9c8e13b9bd</a></p>                    </article>
+                </aside><!-- /#featured -->
+                <section id="extras" class="body">
+                                <div class="social">
+                                        <h2>social</h2>
+                                        <ul>
+                                                        <li><a href="/gistblog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                                        </ul>
+                                </div><!-- /.social -->
+                </section><!-- /#extras -->
+
+                <footer id="contentinfo" class="body">
+                        <address id="about" class="vcard body">
+                                Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                        </address><!-- /#about -->
+
+                        <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+                </footer><!-- /#contentinfo -->
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
+                <script data-siteurl="/gistblog" src="/gistblog/theme/js/search.js"></script>
+                <!-- Cloudflare Web Analytics -->
+                 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "94bb2938c9ab42eba6b587c892a78d27"}'></script>
+                 <!-- End Cloudflare Web Analytics -->
+        </body>
+</html>

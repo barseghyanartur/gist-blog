@@ -33,243 +33,116 @@
 
                 <aside id="featured" class="body">
                     <article>
-                        <h1 class="entry-title"><a href="/gistblog/posts/2026/04/pytest-codeblock-a-pytest-plugin-for-testing-code-examples-in-markdown-and-restructuredtext-files/">pytest-codeblock - A pytest plugin for testing code examples in Markdown and reStructuredText files</a></h1>
+                        <h1 class="entry-title"><a href="/gistblog/posts/2026/06/httpx2-pydantic-takes-over-stewardship-of-httpx/">httpx2: Pydantic takes over stewardship of <cite>httpx</cite></a></h1>
 <footer class="post-info minimal">
-        <span class="post-date">2026-04-12</span>
-<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/pytest.html">pytest</a></span></footer><p><strong>I wrote a small pytest plugin that tests code blocks in your docs.</strong></p>
-<p><a class="reference external" href="https://github.com/barseghyanartur/pytest-codeblock">https://github.com/barseghyanartur/pytest-codeblock</a></p>
-<p><strong>What My Project Does</strong></p>
-<p><tt class="docutils literal"><span class="pre">pytest-codeblock</span></tt> is a minimal pytest plugin that finds Python code
-examples in your <tt class="docutils literal">.rst</tt> and <tt class="docutils literal">.md</tt> files and runs them as regular
-pytest tests. No dependencies beyond pytest itself (plus <tt class="docutils literal">tomli</tt> on
-Python 3.10).</p>
-<p>It handles:</p>
-<ul class="simple">
-<li><strong>reStructuredText and Markdown</strong> — <tt class="docutils literal">.. <span class="pre">code-block::</span> python</tt>,
-<tt class="docutils literal">.. code:: python</tt>, <tt class="docutils literal">.. literalinclude::</tt>, literal blocks, and
-fenced <tt class="docutils literal"><span class="pre">```python</span></tt> blocks</li>
-<li><strong>Grouping</strong> — split one logical example across several blocks using
-<tt class="docutils literal">.. continue:</tt> or <tt class="docutils literal"><span class="pre">&lt;!--</span> continue: <span class="pre">--&gt;</span></tt> and they run as a single
-test, or as cumulative incremental steps if each continuation has its
-own name</li>
-<li><strong>pytest markers and fixtures</strong> — <tt class="docutils literal">.. pytestmark: django_db</tt>,
-<tt class="docutils literal"><span class="pre">&lt;!--</span> pytestmark: skip <span class="pre">--&gt;</span></tt>, fixture injection via
-<tt class="docutils literal">.. pytestfixture: tmp_path</tt>; custom fixtures from <tt class="docutils literal">conftest.py</tt>
-work too</li>
-<li><strong>``pytestrun`` marker</strong> — run full pytest-style suites (test classes,
-fixtures, parametrize, setup/teardown) inside a single doc block</li>
-<li><strong>Async support</strong> — top-level <tt class="docutils literal">await</tt> is automatically wrapped, no
-config needed</li>
-<li><strong>Nameless code blocks</strong> — opt-in via <tt class="docutils literal">pyproject.toml</tt>; off by
-default, only <tt class="docutils literal">test_*</tt>-named blocks run unless you enable it</li>
-<li><strong>Custom languages and extensions</strong> — configurable if your docs use
-non-standard identifiers</li>
-</ul>
-<hr class="docutils" />
-<p><strong>Feature comparison</strong></p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="22%" />
-<col width="20%" />
-<col width="12%" />
-<col width="13%" />
-<col width="21%" />
-<col width="12%" />
-</colgroup>
-<thead valign="bottom">
-<tr><th class="head">Feature</th>
-<th class="head">pytest-codeblock</th>
-<th class="head">Sybil</th>
-<th class="head">phmdoctest</th>
-<th class="head">pytest-codeblocks</th>
-<th class="head">doctest</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr><td>RST support</td>
-<td>✅</td>
-<td>✅</td>
-<td>❌</td>
-<td>❌</td>
-<td>✅</td>
-</tr>
-<tr><td>Markdown support</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>❌</td>
-</tr>
-<tr><td>Both RST + MD</td>
-<td>✅</td>
-<td>✅</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-</tr>
-<tr><td>Native pytest
-collector</td>
-<td>✅</td>
-<td>✅</td>
-<td>❌</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-<tr><td>Fixture injection
-in docs</td>
-<td>✅</td>
-<td>⚠️
-conftest
-only</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-</tr>
-<tr><td>pytest markers in
-docs</td>
-<td>✅</td>
-<td>⚠️
-conftest
-only</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-</tr>
-<tr><td>Block grouping /
-continuation</td>
-<td>✅</td>
-<td>✅</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-</tr>
-<tr><td>Incremental
-grouping</td>
-<td>✅</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-</tr>
-<tr><td>Async support</td>
-<td>✅</td>
-<td>⚠️ manual</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-</tr>
-<tr><td>Test classes in
-doc blocks</td>
-<td>✅
-(<tt class="docutils literal">pytestrun</tt>)</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-</tr>
-<tr><td><tt class="docutils literal">literalinclude</tt>
-support</td>
-<td>✅</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-<td>❌</td>
-</tr>
-<tr><td>Nameless block
-testing</td>
-<td>✅ opt-in</td>
-<td>❌</td>
-<td>✅</td>
-<td>✅</td>
-<td>❌</td>
-</tr>
-<tr><td>Zero config to
-start</td>
-<td>✅</td>
-<td>❌</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-<tr><td>No generated files
-on disk</td>
-<td>✅</td>
-<td>✅</td>
-<td>❌</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-<tr><td>Zero extra
-dependencies</td>
-<td>✅</td>
-<td>❌</td>
-<td>❌</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-</tbody>
-</table>
-<p>⚠️ = supported but requires extra wiring outside the doc file</p>
-<hr class="docutils" />
-<p>Zero config to start. Install it, run <tt class="docutils literal">pytest</tt>. Any block named
-<tt class="docutils literal">test_*</tt> becomes a test.</p>
-<pre class="code sh literal-block">
-pip<span class="w"> </span>install<span class="w"> </span>pytest-codeblock
+        <span class="post-date">2026-06-02</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/httpx.html">httpx</a>, <a href="/gistblog/tag/httpx2.html">httpx2</a>, <a href="/gistblog/tag/pydantic.html">pydantic</a></span></footer><p><a class="reference external" href="https://github.com/encode/httpx">httpx</a> is no longer actively maintained.
+<a class="reference external" href="https://github.com/pydantic/httpx2">httpx2</a>, maintained by Pydantic,
+is its direct continuation — same API, same design philosophy, same everything.
+Only the package name changes.</p>
+<p>Migrating is a one-liner:</p>
+<pre class="literal-block">
+pip install httpx2
 </pre>
-<p><strong>reStructuredText:</strong></p>
-<pre class="code rst literal-block">
-<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> python<span class="w">
-</span>   <span class="nc">:name:</span> test_basic_example<span class="w">
-
-</span>   import math<span class="w">
-</span>   result = math.pow(3, 2)<span class="w">
-</span>   assert result == 9
+<p>And a global find-and-replace in your codebase:</p>
+<pre class="literal-block">
+import httpx  →  import httpx2
 </pre>
-<p><strong>Markdown:</strong></p>
-<pre class="code markdown literal-block">
-<span class="sb">```python</span><span class="w"> </span>name=test_basic_example<span class="w">
-</span><span class="kn">import</span> <span class="nn">math</span><span class="w">
-</span><span class="n">result</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="w">
-</span><span class="k">assert</span> <span class="n">result</span> <span class="o">==</span> <span class="mi">9</span><span class="w">
-</span><span class="sb">```</span>
-</pre>
-<p><strong>Target Audience</strong></p>
-<p>Library authors and anyone who has shipped broken doc examples and only
-found out from a user bug report. If you're already running pytest, the
-cost to add doc block testing is close to zero.</p>
-<p><strong>Comparison</strong></p>
-<ul class="simple">
-<li><strong>vs.&nbsp;doctest</strong>: <tt class="docutils literal">doctest</tt> is built for REPL-style <tt class="docutils literal">&gt;&gt;&gt;</tt> examples.
-It works fine for trivial cases but gets awkward fast — multiline
-logic, fixtures, and async are all painful. <tt class="docutils literal"><span class="pre">pytest-codeblock</span></tt> lets
-you write plain Python with <tt class="docutils literal">assert</tt> statements, so your examples
-look like real code rather than a terminal session.</li>
-<li><strong>vs.&nbsp;Sybil</strong>: Sybil is the most capable alternative and worth
-considering for complex setups. The tradeoff is configuration
-overhead: fixtures and regions need manual wiring in <tt class="docutils literal">conftest.py</tt>.
-<tt class="docutils literal"><span class="pre">pytest-codeblock</span></tt> keeps fixture requests in the doc file itself
-(<tt class="docutils literal">.. pytestfixture: tmp_path</tt>) and works with existing
-<tt class="docutils literal">conftest.py</tt> fixtures without extra setup. If Sybil's power is more
-than you need, <tt class="docutils literal"><span class="pre">pytest-codeblock</span></tt> is lighter.</li>
-<li><strong>vs.&nbsp;phmdoctest</strong>: <tt class="docutils literal">phmdoctest</tt> transpiles Markdown into <tt class="docutils literal">.py</tt>
-files on disk and runs those. <tt class="docutils literal"><span class="pre">pytest-codeblock</span></tt> is a native pytest
-collector — no generated files, nothing to add to <tt class="docutils literal">.gitignore</tt>, no
-intermediate artifacts.</li>
-<li><strong>vs.&nbsp;pytest-codeblocks (plural)</strong>: Similar name, different scope.
-<tt class="docutils literal"><span class="pre">pytest-codeblock</span></tt> adds fixture injection, grouping, async wrapping,
-and the <tt class="docutils literal">pytestrun</tt> marker for full test-class support inside doc
-blocks.</li>
-</ul>
-<p>The plugin is in beta. It's been used in a few projects for about a year
-and the core behavior is stable, but edge cases and feedback are welcome.</p>
-<p>Documentation: <a class="reference external" href="https://pytest-codeblock.readthedocs.io/en/latest/">https://pytest-codeblock.readthedocs.io/en/latest/</a></p>
-<p>Repository: <a class="reference external" href="https://github.com/barseghyanartur/pytest-codeblock">https://github.com/barseghyanartur/pytest-codeblock</a></p>
-<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/c48b645466bbd5d071e82588364f8123" target="_blank" rel="noopener">GitHub Gist #c48b645466bbd5d071e82588364f8123</a></p>                    </article>
+<p>That's the entire migration. No architectural changes, no new concepts to learn.</p>
+<p>Pydantic uses <cite>httpx2</cite> in their own AI products, which gives the
+project a concrete reason to stay healthy and receive timely security updates —
+particularly important for a library that sits in the request path of so many
+production systems.</p>
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/d02b6384b401b7d0f3a421075abfbf6f" target="_blank" rel="noopener">GitHub Gist #d02b6384b401b7d0f3a421075abfbf6f</a></p>                    </article>
                 </aside><!-- /#featured -->
                     <section id="content" class="body">
                         <h1>Other articles</h1>
                         <hr />
                         <ol id="posts-list" class="hfeed">
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/gistblog/posts/2026/06/maintained-alternatives-of-mkdocs-properdocs-and-zensical/" rel="bookmark"
+                               title="Permalink to Maintained alternatives of MkDocs: ProperDocs and Zensical">Maintained alternatives of MkDocs: ProperDocs and Zensical</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+                        <p class="first last">MkDocs is no longer actively maintained. ProperDocs is the drop-in replacement community fork. Zensical is a new project with the same goal.</p>
+<footer class="post-info minimal">
+        <span class="post-date">2026-06-02</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/documentation.html">documentation</a>, <a href="/gistblog/tag/mkdocs.html">mkdocs</a>, <a href="/gistblog/tag/static-site-generator.html">static-site-generator</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/06/maintained-alternatives-of-mkdocs-properdocs-and-zensical/">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/gistblog/posts/2026/05/dot-agents-skills-for-ai-agents/" rel="bookmark"
+                               title="Permalink to dot-agents: Skills for AI Agents">dot-agents: Skills for AI Agents</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+                        <p class="first last">A collection of SKILL.md files that tell AI agents how to manage repos, validate docs, and handle Python projects.</p>
+<footer class="post-info minimal">
+        <span class="post-date">2026-05-08</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/ai.html">ai</a>, <a href="/gistblog/tag/agents.html">agents</a>, <a href="/gistblog/tag/tooling.html">tooling</a>, <a href="/gistblog/tag/open-source.html">open-source</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/05/dot-agents-skills-for-ai-agents/">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/gistblog/posts/2026/05/pygrunn-2026-talk-agentic-engineering/" rel="bookmark"
+                               title="Permalink to PyGrunn 2026 talk: Agentic Engineering">PyGrunn 2026 talk: Agentic Engineering</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+                        <img src="https://pygrunn.org/wp-content/uploads/2026/03/pygrunn-26-header.png" alt="Preview" class="preview-image" style="max-width:100%; height:auto; border-radius:8px; margin-bottom:1.5rem; display:block;"><p class="first last">My talk at PyGrunn 2026 about Agentic Engineering.</p>
+<footer class="post-info minimal">
+        <span class="post-date">2026-05-08</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/agentic-engineering.html">agentic-engineering</a>, <a href="/gistblog/tag/pygrunn.html">pygrunn</a>, <a href="/gistblog/tag/pygrunn-2026.html">pygrunn-2026</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/05/pygrunn-2026-talk-agentic-engineering/">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/gistblog/posts/2026/05/avoid-risky-python-updates-the-7-day-safety-buffer/" rel="bookmark"
+                               title="Permalink to Avoid risky Python updates: The 7-day safety buffer">Avoid risky Python updates: The 7-day safety buffer</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+                        <p class="first last">Recent attacks on <strong>LiteLLM</strong> and <strong>PyTorch Lightning</strong> show how dangerous &quot;bleeding edge&quot; updates can be for your security. Use a seven-day time gate to ensure your packages are vetted by the community before they touch your code.</p>
+<footer class="post-info minimal">
+        <span class="post-date">2026-05-03</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/security.html">security</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/05/avoid-risky-python-updates-the-7-day-safety-buffer/">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/gistblog/posts/2026/04/pytest-codeblock-a-pytest-plugin-for-testing-code-examples-in-markdown-and-restructuredtext-files/" rel="bookmark"
+                               title="Permalink to pytest-codeblock - A pytest plugin for testing code examples in Markdown and reStructuredText files">pytest-codeblock - A pytest plugin for testing code examples in Markdown and reStructuredText files</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+                        <p class="first last">Tired of broken code snippets in your documentation? Try <cite>pytest-codeblock</cite>, a zero-config plugin that supports both <cite>Markdown</cite> and <cite>reStructuredText</cite>. It brings the full power of pytest—including fixtures, markers, and native async support—directly into your docs without any boilerplate or manual wiring. Just name your block <cite>test_name_of_your_block</cite> and stop relying on users to find your documentation bugs.</p>
+<footer class="post-info minimal">
+        <span class="post-date">2026-04-12</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/pytest.html">pytest</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/04/pytest-codeblock-a-pytest-plugin-for-testing-code-examples-in-markdown-and-restructuredtext-files/">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/gistblog/posts/2026/04/understanding-uv-sync-and-dependency-conflicts/" rel="bookmark"
+                               title="Permalink to Understanding uv sync and dependency conflicts">Understanding <cite>uv sync</cite> and dependency conflicts</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+                        <p class="first last">While <cite>uv pip compile</cite> only resolves what you specifically request, <cite>uv sync</cite> attempts to resolve every optional dependency in your project simultaneously. This can lead to unexpected failures if different &quot;extras,&quot; such as ai and deploy, have conflicting requirements. You can fix this by explicitly declaring these incompatible extras in your <cite>pyproject.toml</cite> file to guide the resolver correctly.</p>
+<footer class="post-info minimal">
+        <span class="post-date">2026-04-07</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/uv.html">uv</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/04/understanding-uv-sync-and-dependency-conflicts/">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
 
                 <li><article class="hentry">
                     <header>
@@ -315,20 +188,6 @@ and the core behavior is stable, but edge cases and feedback are welcome.</p>
 
                 <li><article class="hentry">
                     <header>
-                        <h1><a href="/gistblog/posts/2026/04/hide-pycover-files-from-ide/" rel="bookmark"
-                               title="Permalink to Hide *.py,cover files from IDE">Hide <tt class="docutils literal">*.py,cover</tt> files from IDE</a></h1>
-                    </header>
-
-                    <div class="entry-content">
-                        <p class="first last">Clean up your workspace by hiding those pesky <tt class="docutils literal">*.py,cover</tt> files from your IDE. Whether you're using VS Code or PyCharm, this quick setting change keeps your file tree focused on your actual source code by filtering out coverage reports. Just a few clicks in your editor's &quot;Excluded&quot; or &quot;Ignored&quot; file settings, and those clutter-causing files disappear from view while remaining safe on your disk.</p>
-<footer class="post-info minimal">
-        <span class="post-date">2026-04-02</span>
-<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/vscode.html">vscode</a>, <a href="/gistblog/tag/pycharm.html">pycharm</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2026/04/hide-pycover-files-from-ide/">read more</a>
-                    </div><!-- /.entry-content -->
-                </article></li>
-
-                <li><article class="hentry">
-                    <header>
                         <h1><a href="/gistblog/posts/2026/02/safezip-zero-dependency-wrapper-for-secure-zip-extraction/" rel="bookmark"
                                title="Permalink to Safezip - zero-dependency wrapper for secure ZIP extraction">Safezip - zero-dependency wrapper for secure ZIP extraction</a></h1>
                     </header>
@@ -357,15 +216,15 @@ and the core behavior is stable, but edge cases and feedback are welcome.</p>
 
                 <li><article class="hentry">
                     <header>
-                        <h1><a href="/gistblog/posts/2025/09/pydata-amsterdam-2025-notes/" rel="bookmark"
-                               title="Permalink to PyData Amsterdam 2025 notes">PyData Amsterdam 2025 notes</a></h1>
+                        <h1><a href="/gistblog/posts/2022/06/how-to-debug-python-applications/" rel="bookmark"
+                               title="Permalink to How to debug Python applications">How to debug Python applications</a></h1>
                     </header>
 
                     <div class="entry-content">
-                        <p class="first last">PyData Amsterdam 2025 highlighted the latest advancements in data engineering and AI, focusing on efficiency, performance, and modern development tools. Key trends included automated prompt optimization, zero-copy data sharing, and the rise of next-generation notebook environments. The event also showcased the growing maturity of the LLM ecosystem through improved RAG architectures and lightweight models for faster development.</p>
+                        <img src="https://i.postimg.cc/rp4SskQv/rp-L4mz-N2-ZJ0-Pnopju2da-1-kguub.jpg" alt="Preview" class="preview-image" style="max-width:100%; height:auto; border-radius:8px; margin-bottom:1.5rem; display:block;"><p class="first last">In software development, testing is an essential part of ensuring that code works as intended. One critical aspect of testing is debugging, which involves finding and fixing errors or bugs in a program. In this article, we’ll explore how to debug Python applications and highlight some of the most commonly used methods for debugging Python code.</p>
 <footer class="post-info minimal">
-        <span class="post-date">2025-09-26</span>
-<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/pydata-amsterdam.html">pydata-amsterdam</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2025/09/pydata-amsterdam-2025-notes/">read more</a>
+        <span class="post-date">2022-06-21</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/debugging.html">debugging</a></span></footer>                        <a class="readmore" href="/gistblog/posts/2022/06/how-to-debug-python-applications/">read more</a>
                     </div><!-- /.entry-content -->
                 </article></li>
                     </ol><!-- /#posts-list -->

@@ -4,10 +4,10 @@
                         <meta charset="utf-8" />
                         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                         <meta name="generator" content="Pelican" />
-                        <title>Hide *.py,cover files from IDE</title>
+                        <title>Maintained alternatives of MkDocs: ProperDocs and Zensical</title>
                         <link rel="stylesheet" href="/gistblog/theme/css/main.css" />
                                 <link href="/gistblog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dev Notes Atom Feed" />
-    <meta name="description" content="Clean up your workspace by hiding those pesky *.py,cover files from your IDE. Whether you're using VS Code or PyCharm, this quick setting change..." />
+    <meta name="description" content="MkDocs is no longer actively maintained. ProperDocs is the drop-in replacement community fork. Zensical is a new project with the same goal." />
         </head>
 
         <body id="index" class="home">
@@ -35,43 +35,51 @@
     <article>
       <header>
         <h1 class="entry-title">
-          <a href="/gistblog/posts/2026/04/hide-pycover-files-from-ide/" rel="bookmark"
-             title="Permalink to Hide *.py,cover files from IDE">Hide <tt class="docutils literal">*.py,cover</tt> files from IDE</a></h1>
+          <a href="/gistblog/posts/2026/06/maintained-alternatives-of-mkdocs-properdocs-and-zensical/" rel="bookmark"
+             title="Permalink to Maintained alternatives of MkDocs: ProperDocs and Zensical">Maintained alternatives of MkDocs: ProperDocs and Zensical</a></h1>
       </header>
 
       <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2026-04-02T14:00:00+00:00">
-                Published: Thu 02 April 2026
+        <abbr class="published" title="2026-06-02T00:33:00+00:00">
+                Published: Tue 02 June 2026
         </abbr>
                 <br />
-                <abbr class="modified" title="2026-07-08T23:04:27.573594+00:00">
-                        Updated: Wed 08 July 2026
+                <abbr class="modified" title="2026-07-09T02:44:03.857493+00:00">
+                        Updated: Thu 09 July 2026
                 </abbr>
 
                 <address class="vcard author">
                         By                                 <a class="url fn" href="/gistblog/author/artur-barseghyan.html">Artur Barseghyan</a>
                 </address>
         <p>In <a href="/gistblog/category/tech.html">Tech</a>.</p>
-<p>tags: <a href="/gistblog/tag/python.html">python</a> <a href="/gistblog/tag/vscode.html">vscode</a> <a href="/gistblog/tag/pycharm.html">pycharm</a> </p>        
-</footer><!-- /.post-info -->        <div class="section" id="vscode">
-<h2>VSCode</h2>
-<p>Settings -&gt; Text Editor -&gt; Files -&gt; Add Pattern: Add <tt class="docutils literal"><span class="pre">**/*.py,cover</span></tt></p>
-</div>
-<div class="section" id="pycharm">
-<h2>PyCharm</h2>
-<p>Editor -&gt; File Types -&gt; Ignored Files and Folders : Add <tt class="docutils literal">*.py,cover</tt></p>
-</div>
-<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/2e36de0a8b64198ed98e748a0a7b7f15" target="_blank" rel="noopener">GitHub Gist #2e36de0a8b64198ed98e748a0a7b7f15</a></p>
+<p>tags: <a href="/gistblog/tag/python.html">python</a> <a href="/gistblog/tag/documentation.html">documentation</a> <a href="/gistblog/tag/mkdocs.html">mkdocs</a> <a href="/gistblog/tag/static-site-generator.html">static-site-generator</a> </p>        
+</footer><!-- /.post-info -->        <p>MkDocs is no longer actively maintained. Two successors have emerged from the
+community: <a class="reference external" href="https://github.com/zensical/zensical">Zensical</a>, a full rewrite
+with its own architecture and philosophy, and
+<a class="reference external" href="https://github.com/ProperDocs/properdocs">ProperDocs</a>, a conservative fork
+that picks up exactly where MkDocs left off.</p>
+<p>If Zensical's migration cost isn't worth it yet, ProperDocs is the answer.
+Your <tt class="docutils literal">mkdocs.yml</tt>, plugins, and themes all work without modification.
+Switching is a two-step drop-in:</p>
+<pre class="literal-block">
+pip uninstall mkdocs
+pip install properdocs
+</pre>
+<p>Then replace <tt class="docutils literal">mkdocs build</tt> / <tt class="docutils literal">mkdocs serve</tt> with <tt class="docutils literal">properdocs build</tt> /
+<tt class="docutils literal">properdocs serve</tt>. Done.</p>
+<p>ProperDocs stays focused on bug fixes, dependency maintenance, and backward
+compatibility — no surprises, no breaking changes.</p>
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/9db6c291cbe3c5980bdc5afcbae218a4" target="_blank" rel="noopener">GitHub Gist #9db6c291cbe3c5980bdc5afcbae218a4</a></p>
       </div><!-- /.entry-content -->
         <div class="comments">
           <h2>Comments</h2>
           <div id="cusdis_thread"
             data-host="https://cusdis.com"
             data-app-id="a4b8dce4-dafd-4806-8dd6-5183f084f8dc"
-            data-page-id="hide-pycover-files-from-ide"
-            data-page-url="/gistblog/posts/2026/04/hide-pycover-files-from-ide/"
-            data-page-title="Hide *.py,cover files from IDE"
+            data-page-id="maintained-alternatives-of-mkdocs-properdocs-and-zensical"
+            data-page-url="/gistblog/posts/2026/06/maintained-alternatives-of-mkdocs-properdocs-and-zensical/"
+            data-page-title="Maintained alternatives of MkDocs: ProperDocs and Zensical"
           ></div>
           <script src="/gistblog/theme/js/cusdis-style.js"></script>
           <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
