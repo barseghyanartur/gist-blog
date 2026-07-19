@@ -92,18 +92,6 @@
     "content": "bat <https://github.com/sharkdp/bat> is a cat clone with extras. It improves terminal output by adding line numbers, syntax highlighting for various languages, and Git-aware gutter markers to show changes. Usage example: bat path/to/file.json bat path/to/file.rst bat path/to/file.md bat path/to/file.py A useful tweak - set page really high (put somewhere in your .bashrc or .zshrc): export BAT_PAGER='less -R -z 5000'"
   },
   {
-    "title": "How to debug Python applications",
-    "url": "posts/2022/06/how-to-debug-python-applications/",
-    "date": "2022-06-21",
-    "category": "Tech",
-    "tags": [
-      "python",
-      "debugging"
-    ],
-    "summary": "In software development, testing is an essential part of ensuring that code works as intended. One critical aspect of testing is debugging, which involves finding and fixing errors or bugs in a program. In this article, we’ll explore how to debug Python applications and highlight some of the most commonly used methods for debugging Python code.",
-    "content": ":target: https://postimg.cc/XZVZ1TM8 :alt: How to debug Python applications Introduction In software development, testing is an essential part of ensuring that code works as intended. One critical aspect of testing is debugging, which involves finding and fixing errors or bugs in a program. In this article, we’ll explore how to debug Python applications and highlight some of the most commonly used methods for debugging Python code. Debugging options When it comes to debugging Python, there are multiple options available, and you should consider which one suits your needs best. Two popular options are IDE debugging tools and package debugging tools. IDE Debugging Tools IDEs like PyCharm and VSCode offer debugging tools that allow you to set breakpoints in your code and run it in debug mode. This allows you to step through your code line by line, inspect variables, and evaluate expressions. Here are some resources for learning how to use the debugging tools in PyCharm and VSCode: `Debugg..."
-  },
-  {
     "title": "PyData Amsterdam 2025 notes",
     "url": "posts/2025/09/pydata-amsterdam-2025-notes/",
     "date": "2025-09-26",
