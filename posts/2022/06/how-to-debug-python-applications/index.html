@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                        <meta charset="utf-8" />
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                        <meta name="generator" content="Pelican" />
+                        <title>How to debug Python applications</title>
+                        <link rel="stylesheet" href="/gistblog/theme/css/main.css" />
+                                <link href="/gistblog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dev Notes Atom Feed" />
+    <meta name="description" content="In software development, testing is an essential part of ensuring that code works as intended. One critical aspect of testing is debugging, which..." />
+        </head>
+
+        <body id="index" class="home">
+                <header id="banner" class="body">
+                        <h1><a href="/gistblog/">Dev Notes</a></h1>
+                        <nav><ul>
+                                                <li><a href="/gistblog">Home</a></li>
+                                                <li id="nav-search"><a href="/gistblog/search.html" id="nav-search-link">Search</a></li>
+                                                <li><a href="/gistblog/category/art.html">Art</a></li>
+                                                <li class="active"><a href="/gistblog/category/tech.html">Tech</a></li>
+                        </ul></nav>
+                        <div id="search-dropdown" class="search-dropdown">
+                                <div class="search-dropdown-input-wrap">
+                                        <input type="search" id="search-dropdown-input" placeholder="Search posts..." autocomplete="off">
+                                </div>
+                                <div id="search-dropdown-results">
+                                        <div class="search-dropdown-hint">Type to search...</div>
+                                </div>
+                                <div class="search-dropdown-footer">
+                                        <a href="/gistblog/search.html" id="search-full-link">Full search page</a>
+                                </div>
+                        </div>
+                </header><!-- /#banner -->
+  <section id="content" class="body">
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/gistblog/posts/2022/06/how-to-debug-python-applications/" rel="bookmark"
+             title="Permalink to How to debug Python applications">How to debug Python applications</a></h1>
+      </header>
+
+      <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2022-06-21T11:00:00+00:00">
+                Published: Tue 21 June 2022
+        </abbr>
+                <br />
+                <abbr class="modified" title="2026-07-19T16:55:50.112587+00:00">
+                        Updated: Sun 19 July 2026
+                </abbr>
+
+                <address class="vcard author">
+                        By                                 <a class="url fn" href="/gistblog/author/artur-barseghyan.html">Artur Barseghyan</a>
+                </address>
+        <p>In <a href="/gistblog/category/tech.html">Tech</a>.</p>
+<p>tags: <a href="/gistblog/tag/python.html">python</a> <a href="/gistblog/tag/debugging.html">debugging</a> </p>        
+</footer><!-- /.post-info -->        <a class="reference external image-reference" href="https://postimg.cc/XZVZ1TM8">
+<img alt="How to debug Python applications" src="https://i.postimg.cc/rp4SskQv/rp-L4mz-N2-ZJ0-Pnopju2da-1-kguub.jpg" />
+</a>
+<div class="section" id="introduction">
+<h2>Introduction</h2>
+<p>In software development, testing is an essential part of ensuring that
+code works as intended. One critical aspect of testing is debugging,
+which involves finding and fixing errors or bugs in a program. In this
+article, we’ll explore how to debug Python applications and highlight
+some of the most commonly used methods for debugging Python code.</p>
+</div>
+<div class="section" id="debugging-options">
+<h2>Debugging options</h2>
+<p>When it comes to debugging Python, there are multiple options available,
+and you should consider which one suits your needs best. Two popular
+options are IDE debugging tools and package debugging tools.</p>
+<div class="section" id="ide-debugging-tools">
+<h3>IDE Debugging Tools</h3>
+<p>IDEs like PyCharm and VSCode offer debugging tools that allow you to set
+breakpoints in your code and run it in debug mode. This allows you to
+step through your code line by line, inspect variables, and evaluate
+expressions. Here are some resources for learning how to use the
+debugging tools in PyCharm and VSCode:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.jetbrains.com/help/pycharm/debugging-your-first-python-application.html">Debugging Python in
+PyCharm</a></li>
+<li><a class="reference external" href="https://code.visualstudio.com/docs/python/debugging">Debugging Python in
+VSCode</a></li>
+</ul>
+</div>
+<div class="section" id="package-debugging-tools">
+<h3>Package Debugging Tools</h3>
+<p>Links:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.python.org/3/library/pdb.html">pdb</a></li>
+<li><a class="reference external" href="https://pypi.org/project/ipdb/">ipdb</a></li>
+<li><a class="reference external" href="https://ipython.readthedocs.io/en/stable/interactive/tutorial.html">IPython</a></li>
+</ul>
+<p>Python also offers built-in debugging tools, such as the <tt class="docutils literal">pdb</tt> module,
+which allow you to set breakpoints and step through your code in a
+console-based debugger. Additionally, there are alternative packages
+like <tt class="docutils literal">ipdb</tt>, which is based on the <tt class="docutils literal">IPython</tt> tool and provides a
+more powerful debugger. Here is an example of how to use the <tt class="docutils literal">pdb</tt>
+module in your code:</p>
+<p><strong>my_module.py</strong></p>
+<pre class="code python literal-block">
+<span class="k">def</span> <span class="nf">something</span><span class="p">(</span><span class="n">val</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span><span class="w">
+</span>    <span class="n">val</span> <span class="o">+=</span> <span class="s2">&quot; world&quot;</span><span class="w">
+</span>    <span class="kn">import</span> <span class="nn">pdb</span><span class="p">;</span> <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>  <span class="c1"># set a breakpoint</span><span class="w">
+</span>    <span class="c1"># If you want a more powerful debugger, use `ipdb`.</span><span class="w">
+</span>    <span class="c1"># Note, that this requires installation of `ipdb`</span><span class="w">
+</span>    <span class="c1">#     $ pip install ipdb</span><span class="w">
+</span>    <span class="c1"># Then, comment out the `mport pdb; ...` and</span><span class="w">
+</span>    <span class="c1"># uncomment the following line:</span><span class="w">
+</span>    <span class="c1"># import ipdb; ipdb.set_trace()</span><span class="w">
+
+</span><span class="n">my_str</span> <span class="o">=</span> <span class="s2">&quot;Hello&quot;</span><span class="w">
+
+</span><span class="nb">print</span><span class="p">(</span><span class="n">something</span><span class="p">(</span><span class="n">my_str</span><span class="p">))</span>
+</pre>
+<p>In the example code above, we set a breakpoint in the <tt class="docutils literal">something()</tt>
+function using the <tt class="docutils literal">pdb.set_trace()</tt> function. When the code reaches
+this point, it will pause execution and drop into the debugger, allowing
+you to inspect variables and step through the code.</p>
+<p><strong>Run it</strong></p>
+<pre class="code sh literal-block">
+python<span class="w"> </span>my_module.py
+</pre>
+<p><strong>What would you see</strong></p>
+<pre class="code sh literal-block">
+$<span class="w"> </span>python<span class="w"> </span>my_module.py<span class="w">
+</span>--Return--<span class="w">
+</span>&gt;<span class="w"> </span>/home/artur.local/repos/tryouts/debug/my_module.py<span class="o">(</span><span class="m">3</span><span class="o">)</span>something<span class="o">()</span>-&gt;None<span class="w">
+</span>-&gt;<span class="w"> </span>import<span class="w"> </span>pdb<span class="p">;</span><span class="w"> </span>pdb.set_trace<span class="o">()</span><span class="w">  </span><span class="c1"># set a breakpoint
+</span><span class="o">(</span>Pdb<span class="o">)</span><span class="w"> </span>locals<span class="o">()</span><span class="w">
+</span><span class="o">{</span><span class="s1">'val'</span>:<span class="w"> </span><span class="s1">'Hello world'</span>,<span class="w"> </span><span class="s1">'pdb'</span>:<span class="w"> </span>&lt;module<span class="w"> </span><span class="s1">'pdb'</span><span class="w"> </span>from<span class="w"> </span><span class="s1">'/usr/lib64/python3.11/pdb.py'</span>&gt;,<span class="w"> </span><span class="s1">'__return__'</span>:<span class="w"> </span>None<span class="o">}</span><span class="w">
+</span><span class="o">(</span>Pdb<span class="o">)</span><span class="w"> </span>val<span class="w">
+</span><span class="s1">'Hello world'</span><span class="w">
+</span><span class="o">(</span>Pdb<span class="o">)</span>
+</pre>
+<p>Study <tt class="docutils literal">pdb</tt> documentation for more.</p>
+<p><strong>Good to know</strong></p>
+<p>It works similarly with your web views (like, FastAPI/Flask/Django).</p>
+<pre class="code python literal-block">
+<span class="k">def</span> <span class="nf">your_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span><span class="w">
+</span>   <span class="c1"># ...</span><span class="w">
+</span>   <span class="kn">import</span> <span class="nn">pdb</span><span class="p">;</span> <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+</pre>
+</div>
+</div>
+<div class="section" id="best-practices-for-debugging-python">
+<h2>Best Practices for Debugging Python</h2>
+<p>While debugging is an essential part of the development process, there
+are some best practices to keep in mind to ensure that your code remains
+clean and maintainable.</p>
+<div class="section" id="dont-commit-your-debug-code">
+<h3>Don’t commit your debug code!</h3>
+<p>Links:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://pre-commit.com/">precommit</a></li>
+<li><a class="reference external" href="https://github.com/charliermarsh/ruff">ruff</a></li>
+</ul>
+<p>One critical practice is to avoid committing your debug code to your
+code repository. Debug code can clutter your codebase and make it more
+challenging to maintain. To avoid committing debug code, use a tool like
+<tt class="docutils literal"><span class="pre">pre-commit</span></tt> and linters like <tt class="docutils literal">ruff</tt> to catch and prevent it from
+being committed.</p>
+</div>
+<div class="section" id="debugging-in-docker">
+<h3>Debugging in Docker</h3>
+<p>If you use Docker for development, you need to configure your
+<tt class="docutils literal"><span class="pre">docker-compose.yml</span></tt> to allow debugging. You can do this by setting
+the <tt class="docutils literal">stdin_open</tt> and <tt class="docutils literal">tty</tt> options for your service:</p>
+<pre class="code yaml literal-block">
+<span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">'3'</span><span class="w">
+
+</span><span class="nt">services</span><span class="p">:</span><span class="w">
+  </span><span class="nt">api</span><span class="p">:</span><span class="w">
+    </span><span class="c1"># Other configuration</span><span class="w">
+    </span><span class="nt">stdin_open</span><span class="p">:</span><span class="w"> </span><span class="l-Scalar-Plain">true</span><span class="w">
+    </span><span class="nt">tty</span><span class="p">:</span><span class="w"> </span><span class="l-Scalar-Plain">true</span>
+</pre>
+<p>After configuring your Docker environment, assuming that you have it
+running already, you can find the container ID (<tt class="docutils literal">CONTAINER ID</tt>) for
+your service (in the example above - <tt class="docutils literal">api</tt> service) using
+<tt class="docutils literal">docker ps</tt> and attach to it with the <tt class="docutils literal">docker attach</tt>
+(<tt class="docutils literal">docker attach {CONTAINER ID}</tt>) command to start debugging. Note,
+that you will need to run the <tt class="docutils literal">docker attach</tt> command in a separate
+shell/terminal tab and that’s where the debug prompt will appear.</p>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion</h2>
+<p>Debugging Python is an essential skill for any developer, and it’s
+crucial to understand the available options and best practices. In this
+article, we explored two popular options for debugging Python: IDE
+debugging tools and package debugging tools. We also highlighted some
+best practices for debugging in Python, including avoiding committing
+debug code and configuring Docker for debugging. With this knowledge,
+you’ll be better equipped to debug Python applications and write clean,
+maintainable code.</p>
+</div>
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/27c2f93e772330a4798fa7269a5ddb9b" target="_blank" rel="noopener">GitHub Gist #27c2f93e772330a4798fa7269a5ddb9b</a></p>
+      </div><!-- /.entry-content -->
+        <div class="comments">
+          <h2>Comments</h2>
+          <div id="cusdis_thread"
+            data-host="https://cusdis.com"
+            data-app-id="a4b8dce4-dafd-4806-8dd6-5183f084f8dc"
+            data-page-id="how-to-debug-python-applications"
+            data-page-url="/gistblog/posts/2022/06/how-to-debug-python-applications/"
+            data-page-title="How to debug Python applications"
+          ></div>
+          <script src="/gistblog/theme/js/cusdis-style.js"></script>
+          <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+        </div>
+
+    </article>
+  </section>
+                <section id="extras" class="body">
+                                <div class="social">
+                                        <h2>social</h2>
+                                        <ul>
+                                                        <li><a href="/gistblog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                                        </ul>
+                                </div><!-- /.social -->
+                </section><!-- /#extras -->
+
+                <footer id="contentinfo" class="body">
+                        <address id="about" class="vcard body">
+                                Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                        </address><!-- /#about -->
+
+                        <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+                </footer><!-- /#contentinfo -->
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
+                <script data-siteurl="/gistblog" src="/gistblog/theme/js/search.js"></script>
+                <!-- Cloudflare Web Analytics -->
+                 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "94bb2938c9ab42eba6b587c892a78d27"}'></script>
+                 <!-- End Cloudflare Web Analytics -->
+        </body>
+</html>
