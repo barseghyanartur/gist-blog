@@ -116,6 +116,19 @@
     "content": "Prompts Use DSpy https://dspy.ai/ for automatic prompt optimisation. Microsoft's attempt to fix the prompt management: https://github.com/microsoft/prompty. Supported by LangChain. Zero-copy Use DLPack https://dmlc.github.io/dlpack/latest/ for zero-data-copy of tensor data between between different libs (PyTorch, NumPy, etc.). Use Apache Arrow https://arrow.apache.org/ for zero-data-copy of tabular data between different libs (Pandas, Polars, DuckDB, etc.). End-to-end GPU processing If you're using NVIDIA GPUs, use cuDF-cu12 https://docs.rapids.ai/api/cudf/stable/ Vector DBs Qdrant https://github.com/qdrant/qdrant is generally loved by many as a vector DB. Face-recognition ArcFace https://github.com/deepinsight/insightface and SigLip2 https://huggingface.co/blog/siglip2 are your best friends here. Notebooks Marimo is emerging as a Jupyter notebook replacement. LLMs Some suggest to use universal LLM proxies for corporate use. LiteLLM https://docs.litellm.ai/ is one of such. Same folks s..."
   },
   {
+    "title": "Hide ``*.py,cover`` files from IDE",
+    "url": "posts/2026/04/hide-pycover-files-from-ide/",
+    "date": "2026-04-02",
+    "category": "Tech",
+    "tags": [
+      "python",
+      "vscode",
+      "pycharm"
+    ],
+    "summary": "Clean up your workspace by hiding those pesky ``*.py,cover`` files from your IDE. Whether you're using VS Code or PyCharm, this quick setting change keeps your file tree focused on your actual source code by filtering out coverage reports. Just a few clicks in your editor's \"Excluded\" or \"Ignored\" file settings, and those clutter-causing files disappear from view while remaining safe on your disk.",
+    "content": "VSCode Settings -> Text Editor -> Files -> Add Pattern: Add */.py,cover PyCharm Editor -> File Types -> Ignored Files and Folders : Add *.py,cover"
+  },
+  {
     "title": "Grab YouTube subtitles with `yt-dlp`",
     "url": "posts/2026/06/grab-youtube-subtitles-with-yt-dlp/",
     "date": "2026-06-01",
@@ -128,6 +141,20 @@
     ],
     "summary": "A one-liner to download auto-generated subtitles from YouTube as SRT files without touching the video.",
     "content": "Sometimes you need subtitles — for a transcript, for translation, for feeding into some other tool — but you don't want the video itself. yt-dlp handles this cleanly. One command does it:: yt-dlp --write-auto-sub --convert-subs=srt --skip-download 'https://www.youtube.com/watch?v=uniqueVideoID' What each flag does: --write-auto-sub — fetch the auto-generated subtitle track (the one YouTube generates automatically, not the manually uploaded captions) --convert-subs=srt — convert whatever format YouTube spits out (usually VTT) into the widely-supported SRT format --skip-download — don't download the video, just the subtitles The result is a .srt file sitting next to where you ran the command, named after the video title. If the video has manually uploaded captions instead of auto-generated ones, swap --write-auto-sub for --write-sub. You can also pass --sub-lang en to pin a specific language when multiple tracks are available."
+  },
+  {
+    "title": "VS Code for Pycharm users",
+    "url": "posts/2026/01/vs-code-for-pycharm-users/",
+    "date": "2026-01-12",
+    "category": "Tech",
+    "tags": [
+      "python",
+      "vscode",
+      "vscode-plugins",
+      "pycharm"
+    ],
+    "summary": "Switching to VS Code can be a headache if you're used to the JetBrains look. This guide helps you clone that experience in two simple steps.",
+    "content": "1. Install PyCharm theme Choose from PyCharm Dark+ Theme or Darcula PyCharm Theme. 2. Adjust user settings Command Palette (Cmd+Shift+P) -> type: settings json Paste the following: { \"telemetry.telemetryLevel\": \"off\", \"python.createEnvironment.trigger\": \"off\", \"workbench.startupEditor\": \"none\", \"makefile.configureOnOpen\": true, \"editor.rulers\": [80, 120], \"files.exclude\": { \"**/__pycache__\": true, \"**/.idea\": true, \"**/.mypy_cache\": true, \"**/.pytest_cache\": true, \"**/.ruff_cache\": true, \"**/.venv\": true, \"**/.vscode\": true, \"*/.py,cover\": true, \"**/htmlcov\": true, \"*/.egg-info\": true }, \"workbench.colorTheme\": \"PyCharm Dark+ Theme\", \"github.copilot.nextEditSuggestions.enabled\": true, \"git.enableSmartCommit\": true, \"workbench.tree.indent\": 20, \"workbench.tree.renderIndentGuides\": \"always\", \"editor.fontSize\": 14, \"containers.containerClient\": \"com.microsoft.visualstudio.containers.docker\", \"containers.orchestratorClient\": \"com.microsoft.visualstudio.orchestrators.dockercompose\", \"makefi..."
   },
   {
     "title": "Understanding `uv sync` and dependency conflicts",
@@ -229,6 +256,18 @@
     ],
     "summary": "Tired of scrollbars playing hide-and-seek? This quick guide shows you how to use the Stylus extension to force scrollbars to stay visible in Vivaldi. With a simple CSS snippet, you can reclaim your navigation bars and even give them a custom look so they never disappear on you again.",
     "content": "Steps #. Install Stylus Extension: Go to the Chrome Web Store and search for Stylus. Install the Stylus extension. #. Create a New Style in Stylus: Click on the Stylus icon in your browser toolbar. Click on Manage > Write new style. Add the following CSS code to make scrollbars always visible: / Always show vertical scrollbar / html, body { overflow-y: scroll !important; } / Always show horizontal scrollbar / html, body { overflow-x: scroll !important; } / Force scrollbar visibility for all elements / *::-webkit-scrollbar { width: 16px;  / Set the width for vertical scrollbars / height: 16px; / Set the height for horizontal scrollbars / -webkit-appearance: none; } *::-webkit-scrollbar-thumb { background-color: rgba(0, 0, 0, 0.5); / Customize the color of the scrollbar thumb / border-radius: 8px; / Customize the radius / border: 3px solid rgba(0, 0, 0, 0); / Adjust border if needed / } *::-webkit-scrollbar-track { background-color: rgba(0, 0, 0, 0.1); / Customize the background of the s..."
+  },
+  {
+    "title": "My recent sketches",
+    "url": "posts/2026/04/my-recent-sketches/",
+    "date": "2026-04-12",
+    "category": "Art",
+    "tags": [
+      "art",
+      "sketch"
+    ],
+    "summary": "Some of my recent sketches...",
+    "content": ":alt: n.n. :alt: n.n. :alt: n.n. :alt: n.n. :alt: n.n. :alt: n.n. :alt: n.n. :alt: n.n. :alt: n.n."
   },
   {
     "title": "pytest-codeblock - A pytest plugin for testing code examples in Markdown and reStructuredText files",

@@ -4,10 +4,10 @@
                         <meta charset="utf-8" />
                         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                         <meta name="generator" content="Pelican" />
-                        <title>bat is cat with extras</title>
+                        <title>VS Code for Pycharm users</title>
                         <link rel="stylesheet" href="/gistblog/theme/css/main.css" />
                                 <link href="/gistblog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dev Notes Atom Feed" />
-    <meta name="description" content="Use bat for a more readable terminal experience with syntax highlighting and Git integration." />
+    <meta name="description" content="Switching to VS Code can be a headache if you're used to the JetBrains look. This guide helps you clone that experience in two simple steps." />
         </head>
 
         <body id="index" class="home">
@@ -35,17 +35,17 @@
     <article>
       <header>
         <h1 class="entry-title">
-          <a href="/gistblog/posts/2026/04/bat-is-cat-with-extras/" rel="bookmark"
-             title="Permalink to bat is cat with extras">bat is cat with extras</a></h1>
+          <a href="/gistblog/posts/2026/01/vs-code-for-pycharm-users/" rel="bookmark"
+             title="Permalink to VS Code for Pycharm users">VS Code for Pycharm users</a></h1>
       </header>
 
       <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2026-04-21T17:00:00+00:00">
-                Published: Tue 21 April 2026
+        <abbr class="published" title="2026-01-12T18:14:00+00:00">
+                Published: Mon 12 January 2026
         </abbr>
                 <br />
-                <abbr class="modified" title="2026-08-18T21:20:27.724503+00:00">
+                <abbr class="modified" title="2026-08-18T21:20:29.165014+00:00">
                         Updated: Tue 18 August 2026
                 </abbr>
 
@@ -53,27 +53,58 @@
                         By                                 <a class="url fn" href="/gistblog/author/artur-barseghyan.html">Artur Barseghyan</a>
                 </address>
         <p>In <a href="/gistblog/category/tech.html">Tech</a>.</p>
-<p>tags: <a href="/gistblog/tag/shell.html">shell</a> <a href="/gistblog/tag/cat.html">cat</a> <a href="/gistblog/tag/bat.html">bat</a> </p>        
-</footer><!-- /.post-info -->        <p><a class="reference external" href="https://github.com/sharkdp/bat">bat</a> is a <tt class="docutils literal">cat</tt> clone with extras. It improves terminal output by adding line numbers, syntax highlighting for various languages, and Git-aware gutter markers to show changes.</p>
-<p>Usage example:</p>
-<div class="highlight"><pre><span></span>bat<span class="w"> </span>path/to/file.json
-bat<span class="w"> </span>path/to/file.rst
-bat<span class="w"> </span>path/to/file.md
-bat<span class="w"> </span>path/to/file.py
+<p>tags: <a href="/gistblog/tag/python.html">python</a> <a href="/gistblog/tag/vscode.html">vscode</a> <a href="/gistblog/tag/vscode-plugins.html">vscode-plugins</a> <a href="/gistblog/tag/pycharm.html">pycharm</a> </p>        
+</footer><!-- /.post-info -->        <!-- References: -->
+<div class="section" id="install-pycharm-theme">
+<h2>1. Install <tt class="docutils literal">PyCharm</tt> theme</h2>
+<p>Choose from <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=nicohlr.pycharm">PyCharm Dark+ Theme</a> or <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=garytyler.darcula-pycharm">Darcula PyCharm Theme</a>.</p>
+</div>
+<div class="section" id="adjust-user-settings">
+<h2>2. Adjust user settings</h2>
+<p>Command Palette (<cite>Cmd+Shift+P</cite>) -&gt; type: <tt class="docutils literal">settings json</tt></p>
+<p>Paste the following:</p>
+<div class="highlight"><pre><span></span>{
+    &quot;telemetry.telemetryLevel&quot;: &quot;off&quot;,
+    &quot;python.createEnvironment.trigger&quot;: &quot;off&quot;,
+    &quot;workbench.startupEditor&quot;: &quot;none&quot;,
+    &quot;makefile.configureOnOpen&quot;: true,
+    &quot;editor.rulers&quot;: [80, 120],
+    &quot;files.exclude&quot;: {
+        &quot;**/__pycache__&quot;: true,
+        &quot;**/.idea&quot;: true,
+        &quot;**/.mypy_cache&quot;: true,
+        &quot;**/.pytest_cache&quot;: true,
+        &quot;**/.ruff_cache&quot;: true,
+        &quot;**/.venv&quot;: true,
+        &quot;**/.vscode&quot;: true,
+        &quot;**/*.py,cover&quot;: true,
+        &quot;**/htmlcov&quot;: true,
+        &quot;**/*.egg-info&quot;: true
+    },
+    &quot;workbench.colorTheme&quot;: &quot;PyCharm Dark+ Theme&quot;,
+    &quot;github.copilot.nextEditSuggestions.enabled&quot;: true,
+    &quot;git.enableSmartCommit&quot;: true,
+    &quot;workbench.tree.indent&quot;: 20,
+    &quot;workbench.tree.renderIndentGuides&quot;: &quot;always&quot;,
+    &quot;editor.fontSize&quot;: 14,
+    &quot;containers.containerClient&quot;: &quot;com.microsoft.visualstudio.containers.docker&quot;,
+    &quot;containers.orchestratorClient&quot;: &quot;com.microsoft.visualstudio.orchestrators.dockercompose&quot;,
+    &quot;makefile.configureOnOpen&quot;: true,
+    &quot;github.gitAuthentication&quot;: false,
+    &quot;git.terminalAuthentication&quot;: false
+}
 </pre></div>
-<p>A useful tweak - set page really high (put somewhere in your <tt class="docutils literal">.bashrc</tt> or <tt class="docutils literal">.zshrc</tt>):</p>
-<div class="highlight"><pre><span></span>export BAT_PAGER=&#39;less -R -z 5000&#39;
-</pre></div>
-<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/21ec152ad147bbea741db55747cf36b6" target="_blank" rel="noopener">GitHub Gist #21ec152ad147bbea741db55747cf36b6</a></p>
+</div>
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/4ecebab0b626234f4a5125a4ab43187f" target="_blank" rel="noopener">GitHub Gist #4ecebab0b626234f4a5125a4ab43187f</a></p>
       </div><!-- /.entry-content -->
         <div class="comments">
           <h2>Comments</h2>
           <div id="cusdis_thread"
             data-host="https://cusdis.com"
             data-app-id="a4b8dce4-dafd-4806-8dd6-5183f084f8dc"
-            data-page-id="bat-is-cat-with-extras"
-            data-page-url="/gistblog/posts/2026/04/bat-is-cat-with-extras/"
-            data-page-title="bat is cat with extras"
+            data-page-id="vs-code-for-pycharm-users"
+            data-page-url="/gistblog/posts/2026/01/vs-code-for-pycharm-users/"
+            data-page-title="VS Code for Pycharm users"
           ></div>
           <script src="/gistblog/theme/js/cusdis-style.js"></script>
           <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>

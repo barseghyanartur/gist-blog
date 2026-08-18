@@ -4,10 +4,10 @@
                         <meta charset="utf-8" />
                         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                         <meta name="generator" content="Pelican" />
-                        <title>bat is cat with extras</title>
+                        <title>Hide *.py,cover files from IDE</title>
                         <link rel="stylesheet" href="/gistblog/theme/css/main.css" />
                                 <link href="/gistblog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dev Notes Atom Feed" />
-    <meta name="description" content="Use bat for a more readable terminal experience with syntax highlighting and Git integration." />
+    <meta name="description" content="Clean up your workspace by hiding those pesky *.py,cover files from your IDE. Whether you're using VS Code or PyCharm, this quick setting change..." />
         </head>
 
         <body id="index" class="home">
@@ -35,17 +35,17 @@
     <article>
       <header>
         <h1 class="entry-title">
-          <a href="/gistblog/posts/2026/04/bat-is-cat-with-extras/" rel="bookmark"
-             title="Permalink to bat is cat with extras">bat is cat with extras</a></h1>
+          <a href="/gistblog/posts/2026/04/hide-pycover-files-from-ide/" rel="bookmark"
+             title="Permalink to Hide *.py,cover files from IDE">Hide <tt class="docutils literal">*.py,cover</tt> files from IDE</a></h1>
       </header>
 
       <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2026-04-21T17:00:00+00:00">
-                Published: Tue 21 April 2026
+        <abbr class="published" title="2026-04-02T14:00:00+00:00">
+                Published: Thu 02 April 2026
         </abbr>
                 <br />
-                <abbr class="modified" title="2026-08-18T21:20:27.724503+00:00">
+                <abbr class="modified" title="2026-08-18T21:20:29.544179+00:00">
                         Updated: Tue 18 August 2026
                 </abbr>
 
@@ -53,27 +53,25 @@
                         By                                 <a class="url fn" href="/gistblog/author/artur-barseghyan.html">Artur Barseghyan</a>
                 </address>
         <p>In <a href="/gistblog/category/tech.html">Tech</a>.</p>
-<p>tags: <a href="/gistblog/tag/shell.html">shell</a> <a href="/gistblog/tag/cat.html">cat</a> <a href="/gistblog/tag/bat.html">bat</a> </p>        
-</footer><!-- /.post-info -->        <p><a class="reference external" href="https://github.com/sharkdp/bat">bat</a> is a <tt class="docutils literal">cat</tt> clone with extras. It improves terminal output by adding line numbers, syntax highlighting for various languages, and Git-aware gutter markers to show changes.</p>
-<p>Usage example:</p>
-<div class="highlight"><pre><span></span>bat<span class="w"> </span>path/to/file.json
-bat<span class="w"> </span>path/to/file.rst
-bat<span class="w"> </span>path/to/file.md
-bat<span class="w"> </span>path/to/file.py
-</pre></div>
-<p>A useful tweak - set page really high (put somewhere in your <tt class="docutils literal">.bashrc</tt> or <tt class="docutils literal">.zshrc</tt>):</p>
-<div class="highlight"><pre><span></span>export BAT_PAGER=&#39;less -R -z 5000&#39;
-</pre></div>
-<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/21ec152ad147bbea741db55747cf36b6" target="_blank" rel="noopener">GitHub Gist #21ec152ad147bbea741db55747cf36b6</a></p>
+<p>tags: <a href="/gistblog/tag/python.html">python</a> <a href="/gistblog/tag/vscode.html">vscode</a> <a href="/gistblog/tag/pycharm.html">pycharm</a> </p>        
+</footer><!-- /.post-info -->        <div class="section" id="vscode">
+<h2>VSCode</h2>
+<p>Settings -&gt; Text Editor -&gt; Files -&gt; Add Pattern: Add <tt class="docutils literal"><span class="pre">**/*.py,cover</span></tt></p>
+</div>
+<div class="section" id="pycharm">
+<h2>PyCharm</h2>
+<p>Editor -&gt; File Types -&gt; Ignored Files and Folders : Add <tt class="docutils literal">*.py,cover</tt></p>
+</div>
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/2e36de0a8b64198ed98e748a0a7b7f15" target="_blank" rel="noopener">GitHub Gist #2e36de0a8b64198ed98e748a0a7b7f15</a></p>
       </div><!-- /.entry-content -->
         <div class="comments">
           <h2>Comments</h2>
           <div id="cusdis_thread"
             data-host="https://cusdis.com"
             data-app-id="a4b8dce4-dafd-4806-8dd6-5183f084f8dc"
-            data-page-id="bat-is-cat-with-extras"
-            data-page-url="/gistblog/posts/2026/04/bat-is-cat-with-extras/"
-            data-page-title="bat is cat with extras"
+            data-page-id="hide-pycover-files-from-ide"
+            data-page-url="/gistblog/posts/2026/04/hide-pycover-files-from-ide/"
+            data-page-title="Hide *.py,cover files from IDE"
           ></div>
           <script src="/gistblog/theme/js/cusdis-style.js"></script>
           <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
