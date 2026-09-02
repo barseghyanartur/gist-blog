@@ -4,10 +4,10 @@
                         <meta charset="utf-8" />
                         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                         <meta name="generator" content="Pelican" />
-                        <title>VS Code for Pycharm users</title>
+                        <title>httpx2: Pydantic takes over stewardship of httpx</title>
                         <link rel="stylesheet" href="/gistblog/theme/css/main.css" />
                                 <link href="/gistblog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dev Notes Atom Feed" />
-    <meta name="description" content="Switching to VS Code can be a headache if you're used to the JetBrains look. This guide helps you clone that experience in two simple steps." />
+    <meta name="description" content="httpx is no longer actively maintained. Pydantic has picked up stewardship under the name httpx2 — a drop-in continuation with the same API, same..." />
         </head>
 
         <body id="index" class="home">
@@ -35,17 +35,17 @@
     <article>
       <header>
         <h1 class="entry-title">
-          <a href="/gistblog/posts/2026/01/vs-code-for-pycharm-users/" rel="bookmark"
-             title="Permalink to VS Code for Pycharm users">VS Code for Pycharm users</a></h1>
+          <a href="/gistblog/posts/2026/06/httpx2-pydantic-takes-over-stewardship-of-httpx/" rel="bookmark"
+             title="Permalink to httpx2: Pydantic takes over stewardship of httpx">httpx2: Pydantic takes over stewardship of <cite>httpx</cite></a></h1>
       </header>
 
       <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2026-01-12T18:14:00+00:00">
-                Published: Mon 12 January 2026
+        <abbr class="published" title="2026-06-02T00:38:00+00:00">
+                Published: Tue 02 June 2026
         </abbr>
                 <br />
-                <abbr class="modified" title="2026-09-02T10:36:24.963988+00:00">
+                <abbr class="modified" title="2026-09-02T10:36:21.362989+00:00">
                         Updated: Wed 02 September 2026
                 </abbr>
 
@@ -53,58 +53,34 @@
                         By                                 <a class="url fn" href="/gistblog/author/artur-barseghyan.html">Artur Barseghyan</a>
                 </address>
         <p>In <a href="/gistblog/category/tech.html">Tech</a>.</p>
-<p>tags: <a href="/gistblog/tag/python.html">python</a> <a href="/gistblog/tag/vscode.html">vscode</a> <a href="/gistblog/tag/vscode-plugins.html">vscode-plugins</a> <a href="/gistblog/tag/pycharm.html">pycharm</a> </p>        
-</footer><!-- /.post-info -->        <!-- References: -->
-<div class="section" id="install-pycharm-theme">
-<h2>1. Install <tt class="docutils literal">PyCharm</tt> theme</h2>
-<p>Choose from <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=nicohlr.pycharm">PyCharm Dark+ Theme</a> or <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=garytyler.darcula-pycharm">Darcula PyCharm Theme</a>.</p>
-</div>
-<div class="section" id="adjust-user-settings">
-<h2>2. Adjust user settings</h2>
-<p>Command Palette (<cite>Cmd+Shift+P</cite>) -&gt; type: <tt class="docutils literal">settings json</tt></p>
-<p>Paste the following:</p>
-<div class="highlight"><pre><span></span>{
-    &quot;telemetry.telemetryLevel&quot;: &quot;off&quot;,
-    &quot;python.createEnvironment.trigger&quot;: &quot;off&quot;,
-    &quot;workbench.startupEditor&quot;: &quot;none&quot;,
-    &quot;makefile.configureOnOpen&quot;: true,
-    &quot;editor.rulers&quot;: [80, 120],
-    &quot;files.exclude&quot;: {
-        &quot;**/__pycache__&quot;: true,
-        &quot;**/.idea&quot;: true,
-        &quot;**/.mypy_cache&quot;: true,
-        &quot;**/.pytest_cache&quot;: true,
-        &quot;**/.ruff_cache&quot;: true,
-        &quot;**/.venv&quot;: true,
-        &quot;**/.vscode&quot;: true,
-        &quot;**/*.py,cover&quot;: true,
-        &quot;**/htmlcov&quot;: true,
-        &quot;**/*.egg-info&quot;: true
-    },
-    &quot;workbench.colorTheme&quot;: &quot;PyCharm Dark+ Theme&quot;,
-    &quot;github.copilot.nextEditSuggestions.enabled&quot;: true,
-    &quot;git.enableSmartCommit&quot;: true,
-    &quot;workbench.tree.indent&quot;: 20,
-    &quot;workbench.tree.renderIndentGuides&quot;: &quot;always&quot;,
-    &quot;editor.fontSize&quot;: 14,
-    &quot;containers.containerClient&quot;: &quot;com.microsoft.visualstudio.containers.docker&quot;,
-    &quot;containers.orchestratorClient&quot;: &quot;com.microsoft.visualstudio.orchestrators.dockercompose&quot;,
-    &quot;makefile.configureOnOpen&quot;: true,
-    &quot;github.gitAuthentication&quot;: false,
-    &quot;git.terminalAuthentication&quot;: false
-}
-</pre></div>
-</div>
-<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/4ecebab0b626234f4a5125a4ab43187f" target="_blank" rel="noopener">GitHub Gist #4ecebab0b626234f4a5125a4ab43187f</a></p>
+<p>tags: <a href="/gistblog/tag/python.html">python</a> <a href="/gistblog/tag/httpx.html">httpx</a> <a href="/gistblog/tag/httpx2.html">httpx2</a> <a href="/gistblog/tag/pydantic.html">pydantic</a> </p>        
+</footer><!-- /.post-info -->        <p><a class="reference external" href="https://github.com/encode/httpx">httpx</a> is no longer actively maintained.
+<a class="reference external" href="https://github.com/pydantic/httpx2">httpx2</a>, maintained by Pydantic,
+is its direct continuation — same API, same design philosophy, same everything.
+Only the package name changes.</p>
+<p>Migrating is a one-liner:</p>
+<pre class="literal-block">
+pip install httpx2
+</pre>
+<p>And a global find-and-replace in your codebase:</p>
+<pre class="literal-block">
+import httpx  →  import httpx2
+</pre>
+<p>That's the entire migration. No architectural changes, no new concepts to learn.</p>
+<p>Pydantic uses <cite>httpx2</cite> in their own AI products, which gives the
+project a concrete reason to stay healthy and receive timely security updates —
+particularly important for a library that sits in the request path of so many
+production systems.</p>
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/d02b6384b401b7d0f3a421075abfbf6f" target="_blank" rel="noopener">GitHub Gist #d02b6384b401b7d0f3a421075abfbf6f</a></p>
       </div><!-- /.entry-content -->
         <div class="comments">
           <h2>Comments</h2>
           <div id="cusdis_thread"
             data-host="https://cusdis.com"
             data-app-id="a4b8dce4-dafd-4806-8dd6-5183f084f8dc"
-            data-page-id="vs-code-for-pycharm-users"
-            data-page-url="/gistblog/posts/2026/01/vs-code-for-pycharm-users/"
-            data-page-title="VS Code for Pycharm users"
+            data-page-id="httpx2-pydantic-takes-over-stewardship-of-httpx"
+            data-page-url="/gistblog/posts/2026/06/httpx2-pydantic-takes-over-stewardship-of-httpx/"
+            data-page-title="httpx2: Pydantic takes over stewardship of httpx"
           ></div>
           <script src="/gistblog/theme/js/cusdis-style.js"></script>
           <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>

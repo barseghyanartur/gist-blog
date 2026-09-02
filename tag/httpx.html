@@ -4,10 +4,9 @@
                         <meta charset="utf-8" />
                         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                         <meta name="generator" content="Pelican" />
-                        <title>bat is cat with extras</title>
+                        <title>Dev Notes - httpx</title>
                         <link rel="stylesheet" href="/gistblog/theme/css/main.css" />
                                 <link href="/gistblog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dev Notes Atom Feed" />
-    <meta name="description" content="Use bat for a more readable terminal experience with syntax highlighting and Git integration." />
         </head>
 
         <body id="index" class="home">
@@ -17,7 +16,7 @@
                                                 <li><a href="/gistblog">Home</a></li>
                                                 <li id="nav-search"><a href="/gistblog/search.html" id="nav-search-link">Search</a></li>
                                                 <li><a href="/gistblog/category/art.html">Art</a></li>
-                                                <li class="active"><a href="/gistblog/category/tech.html">Tech</a></li>
+                                                <li><a href="/gistblog/category/tech.html">Tech</a></li>
                         </ul></nav>
                         <div id="search-dropdown" class="search-dropdown">
                                 <div class="search-dropdown-input-wrap">
@@ -31,56 +30,31 @@
                                 </div>
                         </div>
                 </header><!-- /#banner -->
-  <section id="content" class="body">
-    <article>
-      <header>
-        <h1 class="entry-title">
-          <a href="/gistblog/posts/2026/04/bat-is-cat-with-extras/" rel="bookmark"
-             title="Permalink to bat is cat with extras">bat is cat with extras</a></h1>
-      </header>
 
-      <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2026-04-21T17:00:00+00:00">
-                Published: Tue 21 April 2026
-        </abbr>
-                <br />
-                <abbr class="modified" title="2026-09-02T10:36:23.072180+00:00">
-                        Updated: Wed 02 September 2026
-                </abbr>
-
-                <address class="vcard author">
-                        By                                 <a class="url fn" href="/gistblog/author/artur-barseghyan.html">Artur Barseghyan</a>
-                </address>
-        <p>In <a href="/gistblog/category/tech.html">Tech</a>.</p>
-<p>tags: <a href="/gistblog/tag/shell.html">shell</a> <a href="/gistblog/tag/cat.html">cat</a> <a href="/gistblog/tag/bat.html">bat</a> </p>        
-</footer><!-- /.post-info -->        <p><a class="reference external" href="https://github.com/sharkdp/bat">bat</a> is a <tt class="docutils literal">cat</tt> clone with extras. It improves terminal output by adding line numbers, syntax highlighting for various languages, and Git-aware gutter markers to show changes.</p>
-<p>Usage example:</p>
-<div class="highlight"><pre><span></span>bat<span class="w"> </span>path/to/file.json
-bat<span class="w"> </span>path/to/file.rst
-bat<span class="w"> </span>path/to/file.md
-bat<span class="w"> </span>path/to/file.py
-</pre></div>
-<p>A useful tweak - set page really high (put somewhere in your <tt class="docutils literal">.bashrc</tt> or <tt class="docutils literal">.zshrc</tt>):</p>
-<div class="highlight"><pre><span></span>export BAT_PAGER=&#39;less -R -z 5000&#39;
-</pre></div>
-<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/21ec152ad147bbea741db55747cf36b6" target="_blank" rel="noopener">GitHub Gist #21ec152ad147bbea741db55747cf36b6</a></p>
-      </div><!-- /.entry-content -->
-        <div class="comments">
-          <h2>Comments</h2>
-          <div id="cusdis_thread"
-            data-host="https://cusdis.com"
-            data-app-id="a4b8dce4-dafd-4806-8dd6-5183f084f8dc"
-            data-page-id="bat-is-cat-with-extras"
-            data-page-url="/gistblog/posts/2026/04/bat-is-cat-with-extras/"
-            data-page-title="bat is cat with extras"
-          ></div>
-          <script src="/gistblog/theme/js/cusdis-style.js"></script>
-          <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
-        </div>
-
-    </article>
-  </section>
+                <aside id="featured" class="body">
+                    <article>
+                        <h1 class="entry-title"><a href="/gistblog/posts/2026/06/httpx2-pydantic-takes-over-stewardship-of-httpx/">httpx2: Pydantic takes over stewardship of <cite>httpx</cite></a></h1>
+<footer class="post-info minimal">
+        <span class="post-date">2026-06-02</span>
+<span class="post-category"> | <a href="/gistblog/category/tech.html">Tech</a></span><span class="post-tags"> | <a href="/gistblog/tag/python.html">python</a>, <a href="/gistblog/tag/httpx.html">httpx</a>, <a href="/gistblog/tag/httpx2.html">httpx2</a>, <a href="/gistblog/tag/pydantic.html">pydantic</a></span></footer><p><a class="reference external" href="https://github.com/encode/httpx">httpx</a> is no longer actively maintained.
+<a class="reference external" href="https://github.com/pydantic/httpx2">httpx2</a>, maintained by Pydantic,
+is its direct continuation — same API, same design philosophy, same everything.
+Only the package name changes.</p>
+<p>Migrating is a one-liner:</p>
+<pre class="literal-block">
+pip install httpx2
+</pre>
+<p>And a global find-and-replace in your codebase:</p>
+<pre class="literal-block">
+import httpx  →  import httpx2
+</pre>
+<p>That's the entire migration. No architectural changes, no new concepts to learn.</p>
+<p>Pydantic uses <cite>httpx2</cite> in their own AI products, which gives the
+project a concrete reason to stay healthy and receive timely security updates —
+particularly important for a library that sits in the request path of so many
+production systems.</p>
+<p style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.9rem; color: #555; text-align: right;">Originally published as <a href="https://gist.github.com/barseghyanartur/d02b6384b401b7d0f3a421075abfbf6f" target="_blank" rel="noopener">GitHub Gist #d02b6384b401b7d0f3a421075abfbf6f</a></p>                    </article>
+                </aside><!-- /#featured -->
                 <section id="extras" class="body">
                                 <div class="social">
                                         <h2>social</h2>
